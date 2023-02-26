@@ -17,5 +17,12 @@
     "Issuer": "",
     "Audience": "",
     "Subject": ""
-  }
+  },
+  "EmailConfiguration": {
+  "From": "new-gmail-form@gmail.com",
+  "SmtpServer": "smtp.gmail.com",
+  "Port": 465,
+  "Username": "your-gmail@gmail.com",
+  "Password": "your-password"
+}
 }
