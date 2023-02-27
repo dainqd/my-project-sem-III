@@ -1,5 +1,6 @@
 using MailKit.Net.Smtp;
 using MimeKit;
+using MimeKit.Text;
 using myProject._mail_config.Interface;
 
 namespace myProject._mail_config.Implement;
@@ -26,8 +27,7 @@ public class EmailSender : IEmailSender
         emailMessage.From.Add(MailboxAddress.Parse(_emailConfig.From));
         emailMessage.To.AddRange(message.To);
         emailMessage.Subject = message.Subject;
-        emailMessage.Body = new TextPart(MimeKit.Text.TextFormat.Text) { Text = message.Content };
-
+        emailMessage.Body = new TextPart(TextFormat.Html) { Text = message.Content };
         return emailMessage;
     }
 

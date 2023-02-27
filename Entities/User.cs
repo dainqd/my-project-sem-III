@@ -19,6 +19,8 @@ public class User : BaseEntity
     public string birthday { get; set; } = "";
     public string gender { get; set; } = "";
     public string address { get; set; } = "";
+    public string verifyCode { get; set; } = "";
+    public bool isVerify { get; set; } = false;
     public UserStatus status { get; set; } = UserStatus.ACTIVE;
     public string password { get; set; }
     public Role role = Role.USER;
