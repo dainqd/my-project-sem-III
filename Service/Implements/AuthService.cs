@@ -5,6 +5,7 @@ using myProject.Context;
 using myProject.Dtos.Auth;
 using myProject.Entities;
 using myProject.Service.Interfaces;
+using myProject.Utils;
 using myProject.Utils.Enums;
 
 namespace myProject.Service.Implements;
@@ -42,6 +43,13 @@ public class AuthService : IAuthService
             throw new AppException("Account does not exist");
         // authentication successful
         var response = _mapper.Map<AuthenticateResponse>(user);
+        // save credential
+        Credential credential = new Credential();
+        credential.user_id = response.id;
+        credential.active = Constants.LOGIN;
+        credential.datetime = DateTimeOffset.Now.AddHours(7);
+        _context.Credentials.Add(credential);
+        _context.SaveChanges();
         response.token = _jwtUtils.GenerateToken(user);
         return response;
     }
@@ -54,6 +62,9 @@ public class AuthService : IAuthService
 
         if (model.username == null || model.password == null)
             throw new AppException("Username or Password invalid!");
+        
+        if (model.email == null)
+            throw new AppException("Email invalid!");
 
         if (model.password.Length < 6)
             throw new AppException("Password invalid!");
@@ -69,6 +80,15 @@ public class AuthService : IAuthService
 
         // save user
         _context.User.Add(user);
+        _context.SaveChanges();
+        // find new user created
+        var new_user = _context.User.SingleOrDefault(x => x.username == model.username);
+        // save credential
+        Credential credential = new Credential();
+        credential.user_id = new_user.id;
+        credential.active = Constants.REGISTER;
+        credential.datetime = DateTimeOffset.Now.AddHours(7);
+        _context.Credentials.Add(credential);
         _context.SaveChanges();
     }
 }

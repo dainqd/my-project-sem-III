@@ -4,6 +4,7 @@ using myProject.Context;
 using myProject.Dtos.User;
 using myProject.Entities;
 using myProject.Service.Interfaces;
+using myProject.Utils;
 using myProject.Utils.Enums;
 
 namespace myProject.Service.Implements;
@@ -66,6 +67,12 @@ public class UserService : IUserService
 
         // copy model to user and save
         _context.User.Update(user);
+        // save credential
+        Credential credential = new Credential();
+        credential.user_id = user.id;
+        credential.active = Constants.CHANGE_PASS;
+        credential.datetime = DateTimeOffset.Now.AddHours(7);
+        _context.Credentials.Add(credential);
         _context.SaveChanges();
     }
 
@@ -80,6 +87,12 @@ public class UserService : IUserService
         // copy model to user and save
         _mapper.Map(model, user);
         _context.User.Update(user);
+        // save credential
+        Credential credential = new Credential();
+        credential.user_id = user.id;
+        credential.active = Constants.UPDATE_INFO;
+        credential.datetime = DateTimeOffset.Now.AddHours(7);
+        _context.Credentials.Add(credential);
         _context.SaveChanges();
     }
 
@@ -116,6 +129,15 @@ public class UserService : IUserService
         user.CreatedAt = DateTimeOffset.Now.AddHours(7);
         // save user
         _context.User.Add(user);
+        _context.SaveChanges();
+        // find new user created
+        var new_user = _context.User.SingleOrDefault(x => x.username == model.username);
+        // save credential
+        Credential credential = new Credential();
+        credential.user_id = new_user.id;
+        credential.active = Constants.REGISTER;
+        credential.datetime = DateTimeOffset.Now.AddHours(7);
+        _context.Credentials.Add(credential);
         _context.SaveChanges();
     }
     
