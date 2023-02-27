@@ -1,4 +1,10 @@
+using System.Collections.Specialized;
+using System.Net.Mail;
+using System.Text;
 using AutoMapper;
+using myProject._mail_config;
+using myProject._mail_config.Interface;
+using myProject._mail_config.Template;
 using myProject.Authorization;
 using myProject.Config;
 using myProject.Context;
@@ -15,15 +21,18 @@ public class AuthService : IAuthService
     private MySQLDBContext _context;
     private IJwtUtils _jwtUtils;
     private readonly IMapper _mapper;
+    private IEmailSender _emailSender;
 
     public AuthService(
         MySQLDBContext context,
         IJwtUtils jwtUtils,
-        IMapper mapper)
+        IMapper mapper,
+        IEmailSender emailSender)
     {
         _context = context;
         _jwtUtils = jwtUtils;
         _mapper = mapper;
+        _emailSender = emailSender;
     }
 
     public AuthenticateResponse Authenticate(AuthenticateRequest model)
@@ -59,6 +68,9 @@ public class AuthService : IAuthService
         // validate
         if (_context.User.Any(x => x.username == model.username))
             throw new AppException("Username '" + model.username + "' is already taken");
+        
+        // if (_context.User.Any(x => x.email == model.email))
+        //     throw new AppException("Email '" + model.email + "' is already taken");
 
         if (model.username == null || model.password == null)
             throw new AppException("Username or Password invalid!");
@@ -77,7 +89,24 @@ public class AuthService : IAuthService
 
         // hash password
         user.password = BCrypt.Net.BCrypt.HashPassword(model.password);
-
+        user.status = UserStatus.INACTIVE;
+        // generate verify code
+        ProjectUtils projectUtils = new ProjectUtils();
+        var code = projectUtils.generateCode();
+        user.verifyCode = code;
+        // send code to email
+        // ListDictionary replacements = new ListDictionary();
+        // replacements.Add("{email}", model.email);
+        // replacements.Add("{code}", code);
+        // var build = new StringBuilder();
+        // build.Append(RegisterMail.body);
+        // var content = build.ToString();
+        var content = RegisterMail.body;
+        content = content.Replace("my_email_replace", model.email);
+        content = content.Replace("my_code_replace", code);
+        Console.WriteLine(content);
+        var message = new Message(new string[] { model.email }, Constants.EMAIL_VERIFY, content);
+        _emailSender.SendEmail(message);
         // save user
         _context.User.Add(user);
         _context.SaveChanges();
@@ -90,5 +119,10 @@ public class AuthService : IAuthService
         credential.datetime = DateTimeOffset.Now.AddHours(7);
         _context.Credentials.Add(credential);
         _context.SaveChanges();
+    }
+
+    public void verifyUser(string code)
+    {
+        
     }
 }
