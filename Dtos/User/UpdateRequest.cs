@@ -10,15 +10,13 @@ public class UpdateRequest
     public string lastName { get; set; } = "";
     [Required]
     public string username { get; set; }
-    public string email { get; set; } = "";
     public string phoneNumber { get; set; } = "";
     public string birthday { get; set; } = "";
     public string gender { get; set; } = "";
     public string address { get; set; }  = "";
-    [Required]
     [EnumDataType(typeof(UserStatus))]
-    public string status { get; set; }  = "";
+    public int status { get; set; }  = 1;
     [Required]
     [EnumDataType(typeof(Role))]
-    public string role { get; set; } = "User";
+    public int role { get; set; } = 1;
 }
