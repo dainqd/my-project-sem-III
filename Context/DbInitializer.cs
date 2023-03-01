@@ -21,7 +21,7 @@ public class DbInitializer
                 id = 1,
                 avatar = "https://img.myloview.com/stickers/default-avatar-profile-icon-vector-social-media-user-photo-700-205577532.jpg",
                 role = Role.ADMIN, username = "admin", email = "admin@gmail.com",
-                firstName = "supper", lastName = "admin",
+                firstName = "supper", lastName = "admin", isVerify = true,
                 phoneNumber = "0989889889", address = "Hai Phong",
                 birthday = "10-02-2003", gender = "Male", status = UserStatus.ACTIVE,
                 password = BCrypt.Net.BCrypt.HashPassword("123456")
@@ -31,7 +31,7 @@ public class DbInitializer
                 id = 2, 
                 avatar = "https://img.myloview.com/stickers/default-avatar-profile-icon-vector-social-media-user-photo-700-205577532.jpg",
                 role = Role.USER, username = "user", email = "user@gmail.com",
-                firstName = "User", lastName = "New",
+                firstName = "User", lastName = "New", isVerify = true,
                 phoneNumber = "0968886868", address = "Ha Noi",
                 birthday = "01-01-2003", gender = "Male", status = UserStatus.ACTIVE,
                 password = BCrypt.Net.BCrypt.HashPassword("123456")
