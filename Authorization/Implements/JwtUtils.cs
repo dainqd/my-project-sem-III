@@ -3,10 +3,11 @@ using System.Security.Claims;
 using System.Text;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using myProject.Authorization.Interfaces;
 using myProject.Config;
 using myProject.Entities;
 
-namespace myProject.Authorization;
+namespace myProject.Authorization.Implements;
 
 public class JwtUtils : IJwtUtils
 {
