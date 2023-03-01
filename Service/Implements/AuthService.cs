@@ -91,6 +91,7 @@ public class AuthService : IAuthService
 
         // map model to new user object
         var user = _mapper.Map<User>(model);
+        user.role = Role.USER;
 
         // hash password
         user.password = BCrypt.Net.BCrypt.HashPassword(model.password);
