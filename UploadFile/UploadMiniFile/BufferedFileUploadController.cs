@@ -3,7 +3,7 @@
 namespace myProject.UploadFile.UploadMiniFile;
 
 [ApiController]
-[Route("upload")]
+[Route("api")]
 public class BufferedFileUploadController : ControllerBase
 {
     readonly IBufferedFileUploadService _bufferedFileUploadService;
@@ -14,7 +14,7 @@ public class BufferedFileUploadController : ControllerBase
     }
     
     [HttpPost]
-    [Route("image")]
+    [Route("upload/image")]
     public async Task<ActionResult> Index(IFormFile file)
     {
         try
@@ -36,5 +36,30 @@ public class BufferedFileUploadController : ControllerBase
             var  message = "File Upload Failed";
             return BadRequest(message);
         }
+    }
+    
+    [HttpPost]
+    [Route("delete/image")]
+    public async Task<ActionResult> Delete(string image)
+    {
+        try
+        {
+            if (await _bufferedFileUploadService.DeleteFile(image))
+            {
+                var  message = "File Delete Successful";
+                return Ok(message);
+            }
+            else
+            {
+                var  message = "File Delete Failed";
+                return BadRequest(message);
+            }
+        }
+        catch (Exception e)
+        {
+            var  message = "File Delete Failed";
+            return BadRequest(message);
+        }
+        //return RedirectToAction("Index");
     }
 }

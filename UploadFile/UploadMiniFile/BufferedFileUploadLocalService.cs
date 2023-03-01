@@ -30,4 +30,25 @@ public class BufferedFileUploadLocalService : IBufferedFileUploadService
             throw new Exception("File Copy Failed", ex);
         }
     }
+
+    public async Task<bool> DeleteFile(string image)
+    {
+        var path = Path.Combine(Directory.GetCurrentDirectory(), "Resources\\Storage\\Image\\" , image);
+        try
+        {
+            if (File.Exists(path))
+            {
+                File.Delete(path);
+                return true;
+            }
+            else
+            {
+                throw new Exception("File path not found");  
+            }
+        }
+        catch (Exception e)
+        {
+            throw new Exception("Delete file fail", e);
+        }
+    }
 }
