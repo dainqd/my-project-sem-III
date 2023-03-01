@@ -125,7 +125,7 @@ public class AuthService : IAuthService
 
     public void VerifyUser(RegisterRequest model)
     {
-        var user = _context.User.SingleOrDefault(x => x.username == model.username);
+        var user = _context.User.SingleOrDefault(x => x.email == model.email);
         
         if (user == null)
         {

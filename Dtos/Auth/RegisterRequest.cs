@@ -9,5 +9,6 @@ public class RegisterRequest
     public string password { get; set; }
     [Compare("password")]
     public string confirmPassword { get; set; }
-    public string code { get; set; }
+
+    public string code { get; set; } = "";
 }
