@@ -8,6 +8,8 @@ using myProject._mail_config;
 using myProject._mail_config.Implement;
 using myProject._mail_config.Interface;
 using myProject.Authorization;
+using myProject.Authorization.Implements;
+using myProject.Authorization.Interfaces;
 using myProject.Config;
 using myProject.Context;
 using myProject.Service.Implements;

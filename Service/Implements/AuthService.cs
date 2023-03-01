@@ -3,6 +3,7 @@ using myProject._mail_config;
 using myProject._mail_config.Interface;
 using myProject._mail_config.Template;
 using myProject.Authorization;
+using myProject.Authorization.Interfaces;
 using myProject.Config;
 using myProject.Context;
 using myProject.Dtos.Auth;
