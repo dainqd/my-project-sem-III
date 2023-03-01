@@ -12,6 +12,7 @@ using myProject.Config;
 using myProject.Context;
 using myProject.Service.Implements;
 using myProject.Service.Interfaces;
+using myProject.UploadFile.UploadMiniFile;
 using myProject.Utils.Enums;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -74,6 +75,8 @@ services.AddScoped<IUserService, UserService>();
 services.AddScoped<IAuthService, AuthService>();
 services.AddScoped<IProductService, ProductService>();
 services.AddScoped<ICategoryService, CategoryService>();
+
+builder.Services.AddTransient<IBufferedFileUploadService, BufferedFileUploadLocalService>();
 
 var emailConfig = builder.Configuration
     .GetSection("EmailConfiguration")
