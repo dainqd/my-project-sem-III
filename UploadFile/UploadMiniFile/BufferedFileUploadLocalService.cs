@@ -5,6 +5,9 @@ public class BufferedFileUploadLocalService : IBufferedFileUploadService
     public async Task<bool> UploadFile(IFormFile file)
     {
         string path = "";
+        string time = "";
+        var localtime = DateTimeOffset.Now.AddHours(7);
+        time = localtime.Ticks.ToString();
         try
         {
             if (file.Length > 0)
@@ -14,7 +17,7 @@ public class BufferedFileUploadLocalService : IBufferedFileUploadService
                 {
                     Directory.CreateDirectory(path);
                 }
-                using (var fileStream = new FileStream(Path.Combine(path, file.FileName), FileMode.Create))
+                using (var fileStream = new FileStream(Path.Combine(path ,time + file.FileName), FileMode.Create))
                 {
                     await file.CopyToAsync(fileStream);
                 }
@@ -50,5 +53,25 @@ public class BufferedFileUploadLocalService : IBufferedFileUploadService
         {
             throw new Exception("Delete file fail", e);
         }
+    }
+
+    public async  Task<string> ViewFile(string image)
+    {
+        var path = Path.Combine(Directory.GetCurrentDirectory(), "Resources\\Storage\\Image\\" , image);
+        try
+        {
+            if (File.Exists(path))
+            {
+                return path;
+            }
+            else
+            {
+                throw new Exception("File not found");  
+            }
+        }
+        catch (Exception e)
+        {
+            throw new Exception("Views file fail", e);
+        }  
     }
 }
