@@ -17,7 +17,7 @@ public class BufferedFileUploadLocalService : IBufferedFileUploadService
                 {
                     Directory.CreateDirectory(path);
                 }
-                using (var fileStream = new FileStream(Path.Combine(path ,time + file.FileName), FileMode.Create))
+                using (var fileStream = new FileStream(Path.Combine(path ,time + "_" + file.FileName), FileMode.Create))
                 {
                     await file.CopyToAsync(fileStream);
                 }
