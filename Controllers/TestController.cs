@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using myProject._mail_config;
 using myProject._mail_config.Interface;
 using myProject.Utils;
+using myProject.Utils.Enums;
 using NETCore.MailKit.Core;
 
 namespace myProject.Controllers;
@@ -31,5 +32,14 @@ public class TestController : ControllerBase
     {
         ProjectUtils projectUtils = new ProjectUtils();
         return projectUtils.generateCode();
+    }
+    
+    [HttpGet("view-role")]
+    public IActionResult? GetRole()
+    {
+        var message =  nameof(Role.ADMIN);
+        //policy => policy.RequireRole(User);
+        Console.WriteLine(nameof(Role.ADMIN));
+        return Ok(message);
     }
 }

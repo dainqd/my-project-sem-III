@@ -13,6 +13,8 @@ public static class Constants
     public const string CHANGE_PASS = "CHANGE_PASSWORD_ACCOUNT";
     public const string FORGOT_PASS = "PORGOT_PASSWORD_ACCOUNT";
     public const string UPDATE_INFO = "UPDATE_INFORMATION_ACCOUNT";
+    public const string CHANGE_ROLE = "CHANGE_ROLE";
+    public const string CHANGE_STATUS = "CHANGE_STATUS";
     // Value random create code
     public const string MINNUMBER = "100000";
     public const string MAXNUMBER = "999999";
