@@ -1,5 +1,6 @@
 using AutoMapper;
 using myProject.Dtos.Auth;
+using myProject.Dtos.Permission;
 using myProject.Dtos.Products;
 using myProject.Dtos.User;
 using myProject.Entities;
@@ -31,6 +32,13 @@ public class AutoMapperProfile : Profile
                     return true;
                 }
             ));
+        
+        // RegisterRequest -> User
+        CreateMap<ChangeRoleRequest, User>();
+        
+        // CreateRequest -> User
+        CreateMap<ChangeStatusRequest, User>();
+        
         // Products -> ProductResponse
         CreateMap<Products, ProductResponse>();
         

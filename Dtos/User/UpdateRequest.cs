@@ -14,9 +14,4 @@ public class UpdateRequest
     public string birthday { get; set; } = "";
     public string gender { get; set; } = "";
     public string address { get; set; }  = "";
-    [EnumDataType(typeof(UserStatus))]
-    public int status { get; set; }  = 1;
-    [Required]
-    [EnumDataType(typeof(Role))]
-    public int role { get; set; } = 1;
 }
