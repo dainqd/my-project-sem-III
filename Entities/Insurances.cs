@@ -5,16 +5,15 @@ using myProject.Utils.Enums;
 
 namespace myProject.Entities;
 
-public class Products : BaseEntity
+public class Insurances : BaseEntity
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int id { get; set; }
-    public string name { get; set; } 
-    public int quantity { get; set; } = 1;
-    public string price { get; set; }
-    public string thubnail { get; set; } = "";
-    public string description { get; set; } = "";
-    public ProductStatus status { get; set; } = ProductStatus.INACTIVE;
     public int category_id { get; set; } = 1;
+    public string name { get; set; } = "";
+    public string price { get; set; }
+    public string thumbnail { get; set; } = "";
+    public string description { get; set; } = "";
+    public InsuranceStatus status { get; set; } = InsuranceStatus.INACTIVE;
 }

@@ -1,7 +1,7 @@
 using AutoMapper;
 using myProject.Dtos.Auth;
+using myProject.Dtos.Insurances;
 using myProject.Dtos.Permission;
-using myProject.Dtos.Products;
 using myProject.Dtos.User;
 using myProject.Entities;
 
@@ -39,13 +39,13 @@ public class AutoMapperProfile : Profile
         // CreateRequest -> User
         CreateMap<ChangeStatusRequest, User>();
         
-        // Products -> ProductResponse
-        CreateMap<Products, ProductResponse>();
+        // Insurances -> InsuranceResponse
+        CreateMap<Insurances, InsuranceResponse>();
         
-        // CreateProductRequest -> Products
-        CreateMap<CreateProductRequest, Products>();
+        // CreateInsuranceRequest -> Insurances
+        CreateMap<CreateInsuranceRequest, Insurances>();
         
-        // UpdateProductRequest -> Products
-        CreateMap<UpdateProductRequest, Products>();
+        // UpdateInsuranceRequest -> Insurances
+        CreateMap<UpdateInsuranceRequest, Insurances>();
     }
 }

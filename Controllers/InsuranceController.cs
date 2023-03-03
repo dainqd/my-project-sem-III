@@ -7,22 +7,22 @@ using myProject.Utils.Enums;
 
 namespace myProject.Controllers;
 
-[Route("api/products")]
+[Route("api/insurances")]
 [ApiController]
-public class ProductController : ControllerBase
+public class InsuranceController : ControllerBase
 {
-    private IProductService _productService;
+    private IInsuranceService _insuranceService;
     private ICategoryService _categoryService;
     private IMapper _mapper;
     private readonly AppSettings _appSettings;
     
-    public ProductController(
-        IProductService productService,
+    public InsuranceController(
+        IInsuranceService insuranceService,
         ICategoryService categoryService,
         IMapper mapper,
         IOptions<AppSettings> appSettings)
     {
-        _productService = productService;
+        _insuranceService = insuranceService;
         _categoryService = categoryService;
         _mapper = mapper;
     }
@@ -30,14 +30,14 @@ public class ProductController : ControllerBase
     [HttpGet("list")]
     public IActionResult? GetAll()
     {
-        var products = _productService.GetAllByStatus(ProductStatus.ACTIVE);
-        return Ok(products);
+        var insurances = _insuranceService.GetAllByStatus(InsuranceStatus.ACTIVE);
+        return Ok(insurances);
     }
     
     [HttpGet("detail/{id}")]
     public IActionResult? GetById(int id)
     {
-        var product = _productService.GetByIdAndStatus(id);
-        return Ok(product);
+        var insurance = _insuranceService.GetByIdAndStatus(id);
+        return Ok(insurance);
     }
 }

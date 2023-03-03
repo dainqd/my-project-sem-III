@@ -75,7 +75,7 @@ services.AddScoped<IJwtUtils, JwtUtils>();
 //configure DI for application services
 services.AddScoped<IUserService, UserService>();
 services.AddScoped<IAuthService, AuthService>();
-services.AddScoped<IProductService, ProductService>();
+services.AddScoped<IInsuranceService, InsuranceService>();
 services.AddScoped<ICategoryService, CategoryService>();
 
 builder.Services.AddTransient<IBufferedFileUploadService, BufferedFileUploadLocalService>();

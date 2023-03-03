@@ -1,6 +1,6 @@
 namespace myProject.Utils.Enums;
 
-public enum ProductStatus
+public enum InsuranceStatus
 {
     ACTIVE,
     INACTIVE,
