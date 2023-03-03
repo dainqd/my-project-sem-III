@@ -51,6 +51,7 @@ public class UserController : ControllerBase
     [HttpPut("update-info/{id}")]
     public IActionResult Update(int id, UpdateRequest model)
     {
+        Console.WriteLine(model.username);
         _userService.UpdateInfo(id, model);
         return Ok(new { message = "User updated" });
     }

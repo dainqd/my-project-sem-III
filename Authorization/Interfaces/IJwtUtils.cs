@@ -1,6 +1,6 @@
 using myProject.Entities;
 
-namespace myProject.Authorization;
+namespace myProject.Authorization.Interfaces;
 
 public interface IJwtUtils
 {

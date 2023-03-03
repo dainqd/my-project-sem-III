@@ -4,11 +4,17 @@ using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using myProject._mail_config;
+using myProject._mail_config.Implement;
+using myProject._mail_config.Interface;
 using myProject.Authorization;
+using myProject.Authorization.Implements;
+using myProject.Authorization.Interfaces;
 using myProject.Config;
 using myProject.Context;
 using myProject.Service.Implements;
 using myProject.Service.Interfaces;
+using myProject.UploadFile.UploadMiniFile;
 using myProject.Utils.Enums;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -71,6 +77,17 @@ services.AddScoped<IUserService, UserService>();
 services.AddScoped<IAuthService, AuthService>();
 services.AddScoped<IProductService, ProductService>();
 services.AddScoped<ICategoryService, CategoryService>();
+
+builder.Services.AddTransient<IBufferedFileUploadService, BufferedFileUploadLocalService>();
+
+var emailConfig = builder.Configuration
+    .GetSection("EmailConfiguration")
+    .Get<EmailConfiguration>();
+builder.Services.AddSingleton(emailConfig);
+
+services.AddScoped<IEmailSender, EmailSender>();
+
+builder.Services.AddSingleton(emailConfig);
 
 services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

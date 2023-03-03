@@ -1,3 +1,4 @@
+using myProject.Authorization.Interfaces;
 using myProject.Service.Interfaces;
 
 namespace myProject.Authorization;
