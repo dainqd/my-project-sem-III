@@ -6,8 +6,9 @@ namespace myProject.Context;
 public class MySQLDBContext : DbContext
 {
     public DbSet<User> User { get; set; }
-    public DbSet<Products> Products { get; set; }
+    public DbSet<Insurances> Insurances { get; set; }
     public DbSet<Categories> Categories { get; set; }
+    public DbSet<Customer> Customers { get; set; }
     public DbSet<Credential> Credentials { get; set; }
     
     public MySQLDBContext(DbContextOptions<MySQLDBContext> options) : base(options)

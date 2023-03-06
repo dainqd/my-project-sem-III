@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using myProject.Entities;
+using myProject.Utils;
 using myProject.Utils.Enums;
 
 namespace myProject.Context;
@@ -22,7 +23,7 @@ public class DbInitializer
                 avatar = "https://img.myloview.com/stickers/default-avatar-profile-icon-vector-social-media-user-photo-700-205577532.jpg",
                 role = Role.ADMIN, username = "admin", email = "admin@gmail.com",
                 firstName = "supper", lastName = "admin", isVerify = true,
-                phoneNumber = "0989889889", address = "Hai Phong",
+                phoneNumber = "0989889889", address = "Ha Noi",
                 birthday = "10-02-2003", gender = "Male", status = UserStatus.ACTIVE,
                 password = BCrypt.Net.BCrypt.HashPassword("123456")
             },
@@ -41,33 +42,45 @@ public class DbInitializer
         modelBuilder.Entity<Categories>().HasData(
             new Categories()
             {
-                id = 1, category = "Home", status = CategoryStatus.ACTIVE
+                id = 1, category = Constants.HOME_INSURACE, status = CategoryStatus.ACTIVE
             },
             new Categories()
             {
-                id = 2, category = "Technology", status = CategoryStatus.ACTIVE
+                id = 2, category = Constants.LIFE_INSURACE, status = CategoryStatus.ACTIVE
             },
             new Categories()
             {
-                id = 3, category = "Electronic", status = CategoryStatus.ACTIVE
+                id = 3, category = Constants.MOTOR_INSURACE, status = CategoryStatus.ACTIVE
+            },
+            new Categories()
+            {
+                id = 4, category = Constants.MEDICAL_INSURACE, status = CategoryStatus.ACTIVE
             }
         );
-        modelBuilder.Entity<Products>().HasData(
-            new Products()
+        modelBuilder.Entity<Insurances>().HasData(
+            new Insurances()
             {
-                id = 1, category_id = 1, name = "Macbook Pro M1", description = "Apple",
-                quantity = 100,
-                thubnail =
-                    "https://gaumobile.com/images/products/2022/05/06/original/61y30dpqrvl_ac_sl1500__1651831708.jpg",
-                status = ProductStatus.ACTIVE, price = "999.99"
+                id = 1, category_id = 1, description = "Insurances",
+                thumbnail = "", name = "Home Insurance",
+                status = InsuranceStatus.ACTIVE, price = "999.99"
             },
-            new Products()
+            new Insurances()
             {
-                id = 2, category_id = 1, name = "iPhone 14 Pro Max", description = "Apple",
-                quantity = 250,
-                thubnail =
-                    "https://imgs.viettelstore.vn/Images/Product/ProductImage/dien-thoai/Apple/iPhone%2014%20Pro%20Max%20128/iPhone-14-Pro-Max-3.jpg",
-                status = ProductStatus.ACTIVE, price = "599.99"
+                id = 2, category_id = 2, description = "Insurances",
+                thumbnail = "", name = "Life Insurance",
+                status = InsuranceStatus.ACTIVE, price = "599.99"
+            }
+        );
+        modelBuilder.Entity<Customer>().HasData(
+            new Customer()
+            {
+                id = 1, address = "New York", avatar = "https://img.myloview.com/stickers/default-avatar-profile-icon-vector-social-media-user-photo-700-205577532.jpg",
+                fullName = "Mary Jr.", user_id = 2, phoneNumber = "046409665", status = CustomerStatus.ACTIVE
+            },
+            new Customer()
+            {
+                id = 2, address = "Paris", avatar = "https://img.myloview.com/stickers/default-avatar-profile-icon-vector-social-media-user-photo-700-205577532.jpg",
+                fullName = "John AS.", user_id = 2, phoneNumber = "046409665", status = CustomerStatus.ACTIVE
             }
         );
     }

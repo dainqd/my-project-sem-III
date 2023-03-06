@@ -4,6 +4,11 @@ namespace myProject.Utils;
 
 public static class Constants
 {
+    // Insurances categories
+    public const string LIFE_INSURACE = "LIFE_INSURACE";
+    public const string MEDICAL_INSURACE = "MEDICAL_INSURACE";
+    public const string MOTOR_INSURACE = "MOTOR_INSURACE";
+    public const string HOME_INSURACE = "HOME_INSURACE";
     //Auth message
     public const string LOGIN = "LOGIN_ACCONT";
     public const string LOGOUT = "LOGOUT_ACCOUNT";
