@@ -13,6 +13,7 @@ public class Customer : BaseEntity
     public string avatar { get; set; } = "";
     public int user_id { get; set; }
     public string fullName { get; set; } = "";
+    public string email { get; set; } = "";
     public string phoneNumber { get; set; } = "";
     public string address { get; set; } = "";
     public CustomerStatus status { get; set; } = CustomerStatus.INACTIVE;

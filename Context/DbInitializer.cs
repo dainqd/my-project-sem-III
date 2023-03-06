@@ -75,12 +75,12 @@ public class DbInitializer
             new Customer()
             {
                 id = 1, address = "New York", avatar = "https://img.myloview.com/stickers/default-avatar-profile-icon-vector-social-media-user-photo-700-205577532.jpg",
-                fullName = "Mary Jr.", user_id = 2, phoneNumber = "046409665", status = CustomerStatus.ACTIVE
+                fullName = "Mary Jr.", user_id = 2, email = "user@gmail.com", phoneNumber = "046409665", status = CustomerStatus.ACTIVE
             },
             new Customer()
             {
                 id = 2, address = "Paris", avatar = "https://img.myloview.com/stickers/default-avatar-profile-icon-vector-social-media-user-photo-700-205577532.jpg",
-                fullName = "John AS.", user_id = 2, phoneNumber = "046409665", status = CustomerStatus.ACTIVE
+                fullName = "John AS.", user_id = 2, email = "customer@gmail.com", phoneNumber = "046409665", status = CustomerStatus.ACTIVE
             }
         );
     }

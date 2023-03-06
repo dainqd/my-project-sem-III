@@ -1,5 +1,6 @@
 using AutoMapper;
 using myProject.Dtos.Auth;
+using myProject.Dtos.Customer;
 using myProject.Dtos.Insurances;
 using myProject.Dtos.Permission;
 using myProject.Dtos.User;
@@ -47,5 +48,14 @@ public class AutoMapperProfile : Profile
         
         // UpdateInsuranceRequest -> Insurances
         CreateMap<UpdateInsuranceRequest, Insurances>();
+        
+        // CreateCustomerRequest -> Customer
+        CreateMap<CreateCustomerRequest, Customer>();
+        
+        // UpdateCustomerRequest -> Customer
+        CreateMap<UpdateCustomerRequest, Customer>();
+        
+        // Customer -> CustomerResponse
+        CreateMap<Customer, CustomerResponse>();
     }
 }
