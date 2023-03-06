@@ -5,7 +5,7 @@ using myProject.Utils.Enums;
 
 namespace myProject.Entities;
 
-public class Customer : BaseEntity
+public class Customers : BaseEntity
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
