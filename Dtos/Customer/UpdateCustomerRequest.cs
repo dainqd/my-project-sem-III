@@ -1,3 +1,5 @@
+using myProject.Utils.Enums;
+
 namespace myProject.Dtos.Customer;
 
 public class UpdateCustomerRequest
@@ -8,5 +10,5 @@ public class UpdateCustomerRequest
     public string email { get; set; }
     public string phoneNumber { get; set; } = "";
     public string address { get; set; } = "";
-    public string status { get; set; } = "INACTIVE";
+    public CustomerStatus status { get; set; } = CustomerStatus.INACTIVE;
 }

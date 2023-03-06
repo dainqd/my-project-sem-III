@@ -71,13 +71,13 @@ public class DbInitializer
                 status = InsuranceStatus.ACTIVE, price = "599.99"
             }
         );
-        modelBuilder.Entity<Customer>().HasData(
-            new Customer()
+        modelBuilder.Entity<Customers>().HasData(
+            new Customers()
             {
                 id = 1, address = "New York", avatar = "https://img.myloview.com/stickers/default-avatar-profile-icon-vector-social-media-user-photo-700-205577532.jpg",
                 fullName = "Mary Jr.", user_id = 2, email = "user@gmail.com", phoneNumber = "046409665", status = CustomerStatus.ACTIVE
             },
-            new Customer()
+            new Customers()
             {
                 id = 2, address = "Paris", avatar = "https://img.myloview.com/stickers/default-avatar-profile-icon-vector-social-media-user-photo-700-205577532.jpg",
                 fullName = "John AS.", user_id = 2, email = "customer@gmail.com", phoneNumber = "046409665", status = CustomerStatus.ACTIVE

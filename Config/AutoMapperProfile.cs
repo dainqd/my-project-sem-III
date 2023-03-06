@@ -49,13 +49,13 @@ public class AutoMapperProfile : Profile
         // UpdateInsuranceRequest -> Insurances
         CreateMap<UpdateInsuranceRequest, Insurances>();
         
-        // CreateCustomerRequest -> Customer
-        CreateMap<CreateCustomerRequest, Customer>();
+        // CreateCustomerRequest -> Customers
+        CreateMap<CreateCustomerRequest, Customers>();
         
         // UpdateCustomerRequest -> Customer
-        CreateMap<UpdateCustomerRequest, Customer>();
+        CreateMap<UpdateCustomerRequest, Customers>();
         
         // Customer -> CustomerResponse
-        CreateMap<Customer, CustomerResponse>();
+        CreateMap<Customers, CustomerResponse>();
     }
 }

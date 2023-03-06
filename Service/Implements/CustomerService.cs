@@ -21,18 +21,18 @@ public class CustomerService : ICustomerService
 
     }
 
-    public IEnumerable<Customer> GetAll()
+    public IEnumerable<Customers> GetAll()
     {
        return _context.Customers;
     }
 
-    public IEnumerable<Customer> GetAllByStatus(CustomerStatus status)
+    public IEnumerable<Customers> GetAllByStatus(CustomerStatus status)
     {
         status = CustomerStatus.ACTIVE;
         return _context.Customers.Where(v => v.status == status).ToList();
     }
 
-    public Customer GetById(int id)
+    public Customers GetById(int id)
     {
         return getCustomerById(id);
     }
@@ -49,7 +49,16 @@ public class CustomerService : ICustomerService
         if(model.email == null)
             throw new AppException("Email invalid!");
         customer.UpdatedAt = DateTimeOffset.Now.AddHours(7);
-        _mapper.Map(model, customer);
+        // _mapper.Map(model, customer);
+       
+        customer.user_id = model.user_id;
+        customer.fullName = model.fullName;
+        customer.address = model.address;
+        customer.avatar = model.avatar;
+        customer.email = model.email;
+        customer.phoneNumber = model.phoneNumber;
+        customer.status = model.status;
+        
         _context.Customers.Update(customer);
         _context.SaveChanges();
     }
@@ -65,21 +74,29 @@ public class CustomerService : ICustomerService
 
     public void Create(CreateCustomerRequest model)
     {
+        // var customer = _mapper.Map<Customers>(model);
+        
         if (model.email == null)
         {
             throw new AppException("Email invalid!");
         }
         
-        var customer = _mapper.Map<Customer>(model);
-        
+        var customer = new Customers();
+        customer.user_id = model.user_id;
+        customer.fullName = model.fullName;
+        customer.address = model.address;
+        customer.avatar = model.avatar;
+        customer.email = model.email;
+        customer.phoneNumber = model.phoneNumber;
+        customer.status = model.status;
         customer.CreatedAt = DateTimeOffset.Now.AddHours(7);
-
+        // _mapper.Map(model, customer);
         _context.Customers.Add(customer);
         _context.SaveChanges();
     }
     
     
-    private Customer getCustomerById(int id)
+    private Customers getCustomerById(int id)
     {
         var customer = _context.Customers.Find(id);
         if (customer == null) 
