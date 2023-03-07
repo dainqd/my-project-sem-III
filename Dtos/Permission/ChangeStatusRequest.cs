@@ -6,7 +6,7 @@ namespace myProject.Dtos.Permission;
 public class ChangeStatusRequest
 {
     [Required]
-    [EnumDataType(typeof(UserStatus))]
+    [EnumDataType(typeof(Enums.UserStatus))]
     public string status { get; set; } 
     [Required]
     [MinLength(6)]

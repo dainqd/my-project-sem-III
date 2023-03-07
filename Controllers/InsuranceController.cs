@@ -30,7 +30,7 @@ public class InsuranceController : ControllerBase
     [HttpGet("list")]
     public IActionResult? GetAll()
     {
-        var insurances = _insuranceService.GetAllByStatus(InsuranceStatus.ACTIVE);
+        var insurances = _insuranceService.GetAllByStatus(Enums.InsuranceStatus.ACTIVE);
         return Ok(insurances);
     }
     

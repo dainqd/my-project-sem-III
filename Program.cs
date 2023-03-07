@@ -24,8 +24,8 @@ var services = builder.Services;
 var settings = builder.Configuration.GetSection("AppSettings").Get<AppSettings>();
 var key = settings.Secret;
 
-const string Admin = nameof(Role.ADMIN);
-const string User = nameof(Role.USER);
+const string Admin = nameof(Enums.Role.ADMIN);
+const string User = nameof(Enums.Role.USER);
 
 // Add services to the container.
 

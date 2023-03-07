@@ -29,7 +29,7 @@ public class PermissionService : IPermissionService
             throw new KeyNotFoundException(Constants.account_not_found);
         }
         
-        if (admin.role != Role.ADMIN)
+        if (admin.role != Enums.Role.ADMIN)
         {
             throw new KeyNotFoundException(Constants.account_not_found);
         }
@@ -41,7 +41,7 @@ public class PermissionService : IPermissionService
         
         var user = getUser(id);
         var newRole = model.role;
-        Role role = (Role) Enum.Parse(typeof(Role), newRole);
+        Enums.Role role = (Enums.Role) Enum.Parse(typeof(Enums.Role), newRole);
         user.role = role;
         user.UpdatedAt = DateTimeOffset.Now.AddHours(7);
         user.UpdatedBy = adminId;
@@ -60,7 +60,7 @@ public class PermissionService : IPermissionService
     public void ChangeStatus(int id, int adminId, ChangeStatusRequest model)
     {
         var admin = getUser(adminId);
-        if (admin.role != Role.ADMIN)
+        if (admin.role != Enums.Role.ADMIN)
         {
             throw new KeyNotFoundException(Constants.account_not_found);
         }
@@ -72,7 +72,7 @@ public class PermissionService : IPermissionService
         
         var user = getUser(id);
         var newStatus = model.status;
-        UserStatus status = (UserStatus) Enum.Parse(typeof(UserStatus), newStatus);
+        Enums.UserStatus status = (Enums.UserStatus) Enum.Parse(typeof(Enums.UserStatus), newStatus);
         user.status = status;
         user.UpdatedAt = DateTimeOffset.Now.AddHours(7);
         user.UpdatedBy = adminId;

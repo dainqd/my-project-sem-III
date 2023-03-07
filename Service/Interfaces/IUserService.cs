@@ -7,7 +7,7 @@ namespace myProject.Service.Interfaces;
 public interface IUserService
 {
     IEnumerable<User> GetAll();
-    IEnumerable<User> GetAllByStatus(UserStatus status);
+    IEnumerable<User> GetAllByStatus(Enums.UserStatus status);
     User GetById(int id);
     User GetByIdAndStatus(int id);
     void ChangPass(int id, ChangePasswordRequest model);

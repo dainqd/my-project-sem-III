@@ -44,16 +44,16 @@ public class AuthService : IAuthService
         if (user.isVerify == false)
             throw new AppException(Constants.account_not_verified);
         
-        if (user.status == UserStatus.INACTIVE)
+        if (user.status == Enums.UserStatus.INACTIVE)
             throw new AppException(Constants.account_not_active);
         
-        if (user.status == UserStatus.BLOCKED)
+        if (user.status == Enums.UserStatus.BLOCKED)
             throw new AppException(Constants.account_blocked);
         
-        if (user.status == UserStatus.BANNED)
+        if (user.status == Enums.UserStatus.BANNED)
             throw new AppException(Constants.account_banned);
         
-        if (user.status == UserStatus.DELETED)
+        if (user.status == Enums.UserStatus.DELETED)
             throw new AppException(Constants.account_deleted);
         
         // authentication successful
@@ -92,11 +92,11 @@ public class AuthService : IAuthService
 
         // map model to new user object
         var user = _mapper.Map<User>(model);
-        user.role = Role.USER;
+        user.role = Enums.Role.USER;
 
         // hash password
         user.password = BCrypt.Net.BCrypt.HashPassword(model.password);
-        user.status = UserStatus.INACTIVE;
+        user.status = Enums.UserStatus.INACTIVE;
         // generate verify code
         ProjectUtils projectUtils = new ProjectUtils();
         var code = projectUtils.generateCode();
@@ -159,7 +159,7 @@ public class AuthService : IAuthService
         var user = _context.User.SingleOrDefault(x => x.email == email);
         user.verifyCode = "";
         user.isVerify = true;
-        user.status = UserStatus.ACTIVE;
+        user.status = Enums.UserStatus.ACTIVE;
         user.UpdatedAt = DateTimeOffset.Now.AddHours(7);
         _context.User.Update(user);
         // save credential
@@ -190,22 +190,22 @@ public class AuthService : IAuthService
             throw new AppException(Constants.account_not_verified); 
         }
         
-        if (user.status == UserStatus.INACTIVE)
+        if (user.status == Enums.UserStatus.INACTIVE)
         {
             throw new AppException(Constants.account_not_active); 
         }
         
-        if (user.status == UserStatus.BLOCKED)
+        if (user.status == Enums.UserStatus.BLOCKED)
         {
             throw new AppException(Constants.account_blocked); 
         }
         
-        if (user.status == UserStatus.BANNED)
+        if (user.status == Enums.UserStatus.BANNED)
         {
             throw new AppException(Constants.account_banned); 
         }
         
-        if (user.status == UserStatus.DELETED)
+        if (user.status == Enums.UserStatus.DELETED)
         {
             throw new AppException(Constants.account_deleted); 
         }

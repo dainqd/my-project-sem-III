@@ -11,5 +11,5 @@ public class Categories : BaseEntity
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int id { get; set; }
     public string category { get; set; }
-    public CategoryStatus status = CategoryStatus.INACTIVE;
+    public Enums.CategoryStatus status = Enums.CategoryStatus.INACTIVE;
 }

@@ -43,14 +43,14 @@ public class AdminCategoryController : ControllerBase
     [HttpPost]
     public IActionResult Create(string name, int status)
     { 
-        CategoryStatus my_status = CategoryStatus.ACTIVE;
-        if (status == (int)CategoryStatus.INACTIVE)
+        Enums.CategoryStatus my_status = Enums.CategoryStatus.ACTIVE;
+        if (status == (int)Enums.CategoryStatus.INACTIVE)
         {
-            my_status = CategoryStatus.INACTIVE;
+            my_status = Enums.CategoryStatus.INACTIVE;
         }
         else
         {
-            my_status = CategoryStatus.ACTIVE;
+            my_status = Enums.CategoryStatus.ACTIVE;
         }
         _categoryService.Create(name, my_status);
         return Ok(new { message = "Category created" });
@@ -59,14 +59,14 @@ public class AdminCategoryController : ControllerBase
     [HttpPut("{id}")]
     public IActionResult Update(int id, string name, int status)
     {
-        CategoryStatus my_status = CategoryStatus.ACTIVE;
-        if (status == (int)CategoryStatus.INACTIVE)
+        Enums.CategoryStatus my_status = Enums.CategoryStatus.ACTIVE;
+        if (status == (int)Enums.CategoryStatus.INACTIVE)
         {
-            my_status = CategoryStatus.INACTIVE;
+            my_status = Enums.CategoryStatus.INACTIVE;
         }
         else
         {
-            my_status = CategoryStatus.ACTIVE;
+            my_status = Enums.CategoryStatus.ACTIVE;
         }
         _categoryService.Update(id, name, my_status);
         return Ok(new { message = "Category updated" });

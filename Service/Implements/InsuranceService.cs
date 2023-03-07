@@ -26,9 +26,9 @@ public class InsuranceService : IInsuranceService
         return _context.Insurances;
     }
 
-    public IEnumerable<Insurances> GetAllByStatus(InsuranceStatus status)
+    public IEnumerable<Insurances> GetAllByStatus(Enums.InsuranceStatus status)
     {
-        status = InsuranceStatus.ACTIVE;
+        status = Enums.InsuranceStatus.ACTIVE;
         return _context.Insurances.Where(v => v.status == status).ToList();
     }
 
@@ -62,7 +62,7 @@ public class InsuranceService : IInsuranceService
     public void Delete(int id)
     {
         var insurances = getInsurances(id);
-        insurances.status = InsuranceStatus.DELETED;
+        insurances.status = Enums.InsuranceStatus.DELETED;
         insurances.DeletedAt = DateTimeOffset.Now.AddHours(7);
         _context.Insurances.Update(insurances);
         _context.SaveChanges();
@@ -100,7 +100,7 @@ public class InsuranceService : IInsuranceService
         var insurances = _context.Insurances.Find(id);
         if (insurances == null) 
             throw new KeyNotFoundException("Insurance not found");
-        if (insurances.status != InsuranceStatus.ACTIVE)
+        if (insurances.status != Enums.InsuranceStatus.ACTIVE)
             throw new KeyNotFoundException("Insurance not found");
         var category = _context.Categories.Find(insurances.category_id);
         if (category == null)
