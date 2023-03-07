@@ -1,6 +1,7 @@
 using AutoMapper;
 using myProject.Dtos.Auth;
 using myProject.Dtos.Customer;
+using myProject.Dtos.Feedback;
 using myProject.Dtos.Insurances;
 using myProject.Dtos.Permission;
 using myProject.Dtos.User;
@@ -39,7 +40,7 @@ public class AutoMapperProfile : Profile
         
         // CreateRequest -> User
         CreateMap<ChangeStatusRequest, User>();
-        
+        //Insurances
         // Insurances -> InsuranceResponse
         CreateMap<Insurances, InsuranceResponse>();
         
@@ -48,7 +49,7 @@ public class AutoMapperProfile : Profile
         
         // UpdateInsuranceRequest -> Insurances
         CreateMap<UpdateInsuranceRequest, Insurances>();
-        
+        // Customer
         // CreateCustomerRequest -> Customers
         CreateMap<CreateCustomerRequest, Customers>();
         
@@ -57,5 +58,14 @@ public class AutoMapperProfile : Profile
         
         // Customer -> CustomerResponse
         CreateMap<Customers, CustomerResponse>();
+        // Feedbacks
+        // CreateFeedbackRequest -> Feedbacks
+        CreateMap<CreateFeedbackRequest, Feedbacks>();
+        
+        // UpdateFeedbackRequest -> Feedbacks
+        CreateMap<UpdateFeedbackRequest, Feedbacks>();
+        
+        // Feedbacks -> FeedbackResponse
+        CreateMap<Feedbacks, FeedbackResponse>();
     }
 }
