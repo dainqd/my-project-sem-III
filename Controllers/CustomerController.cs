@@ -27,7 +27,7 @@ public class CustomerController : ControllerBase
     [HttpGet("list")]
     public IActionResult? GetAll()
     {
-        var customers = _customerService.GetAllByStatus(CustomerStatus.ACTIVE);
+        var customers = _customerService.GetAllByStatus(Enums.CustomerStatus.ACTIVE);
         return Ok(customers);
     }
     

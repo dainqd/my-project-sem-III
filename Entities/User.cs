@@ -23,8 +23,8 @@ public class User : BaseEntity
     public string address { get; set; } = "";
     public string verifyCode { get; set; } = "";
     public bool isVerify { get; set; } = false;
-    public UserStatus status { get; set; } = UserStatus.INACTIVE;
+    public Enums.UserStatus status { get; set; } = Enums.UserStatus.INACTIVE;
     [Required]
     public string password { get; set; }
-    public Role role { get; set; } = Role.USER;
+    public Enums.Role role { get; set; } = Enums.Role.USER;
 }

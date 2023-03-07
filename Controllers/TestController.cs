@@ -37,9 +37,9 @@ public class TestController : ControllerBase
     [HttpGet("view-role")]
     public IActionResult? GetRole()
     {
-        var message =  nameof(Role.ADMIN);
+        var message =  nameof(Enums.Role.ADMIN);
         //policy => policy.RequireRole(User);
-        Console.WriteLine(nameof(Role.ADMIN));
+        Console.WriteLine(nameof(Enums.Role.ADMIN));
         return Ok(message);
     }
 }

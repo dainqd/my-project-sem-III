@@ -26,9 +26,9 @@ public class CustomerService : ICustomerService
        return _context.Customers;
     }
 
-    public IEnumerable<Customers> GetAllByStatus(CustomerStatus status)
+    public IEnumerable<Customers> GetAllByStatus(Enums.CustomerStatus status)
     {
-        status = CustomerStatus.ACTIVE;
+        status = Enums.CustomerStatus.ACTIVE;
         return _context.Customers.Where(v => v.status == status).ToList();
     }
 
@@ -66,7 +66,7 @@ public class CustomerService : ICustomerService
     public void Delete(int id)
     {
         var customer = getCustomerById(id);
-        customer.status = CustomerStatus.DELETED;
+        customer.status = Enums.CustomerStatus.DELETED;
         customer.DeletedAt = DateTimeOffset.Now.AddHours(7);
         _context.Customers.Update(customer);
         _context.SaveChanges();
@@ -109,7 +109,7 @@ public class CustomerService : ICustomerService
         var customer = _context.Customers.Find(id);
         if (customer == null) 
             throw new KeyNotFoundException("Customer not found");
-        if (customer.status != CustomerStatus.ACTIVE)
+        if (customer.status != Enums.CustomerStatus.ACTIVE)
             throw new KeyNotFoundException("Customer not found");
         
         // var response = _mapper.Map<CustomerResponse>(customer);

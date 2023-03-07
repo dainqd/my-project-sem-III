@@ -10,6 +10,7 @@ public class MySQLDBContext : DbContext
     public DbSet<Categories> Categories { get; set; }
     public DbSet<Customers> Customers { get; set; }
     public DbSet<Credential> Credentials { get; set; }
+    public DbSet<Feedbacks> Feedbacks { get; set; }
     
     public MySQLDBContext(DbContextOptions<MySQLDBContext> options) : base(options)
     {

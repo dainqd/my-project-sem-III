@@ -8,7 +8,7 @@ namespace myProject.Service.Interfaces;
 public interface ICustomerService
 {
     IEnumerable<Customers> GetAll();
-    IEnumerable<Customers> GetAllByStatus(CustomerStatus status);
+    IEnumerable<Customers> GetAllByStatus(Enums.CustomerStatus status);
     Customers GetById(int id);
     CustomerResponse GetByIdAndStatus(int id);
     void Update(int id, UpdateCustomerRequest model);

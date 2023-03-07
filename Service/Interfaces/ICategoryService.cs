@@ -7,7 +7,7 @@ public interface ICategoryService
 {
     IEnumerable<Categories> GetAll();
     Categories GetById(int id);
-    void Update(int id, string name, CategoryStatus status);
+    void Update(int id, string name, Enums.CategoryStatus status);
     void Delete(int id);
-    void Create(string name, CategoryStatus status);
+    void Create(string name, Enums.CategoryStatus status);
 }

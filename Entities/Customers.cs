@@ -16,5 +16,5 @@ public class Customers : BaseEntity
     public string email { get; set; } = "";
     public string phoneNumber { get; set; } = "";
     public string address { get; set; } = "";
-    public CustomerStatus status { get; set; } = CustomerStatus.INACTIVE;
+    public Enums.CustomerStatus status { get; set; } = Enums.CustomerStatus.INACTIVE;
 }

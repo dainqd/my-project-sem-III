@@ -16,10 +16,10 @@ public class CreateRequest
     public string gender { get; set; } = "";
     public string address { get; set; }  = "";
     [Required]
-    [EnumDataType(typeof(UserStatus))]
+    [EnumDataType(typeof(Enums.UserStatus))]
     public string status { get; set; }  = "";
     [Required]
-    [EnumDataType(typeof(Role))]
+    [EnumDataType(typeof(Enums.Role))]
     public string role { get; set; } = "User";
     [Required]
     [MinLength(6)]

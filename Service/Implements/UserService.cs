@@ -28,9 +28,9 @@ public class UserService : IUserService
         return _context.User;
     }
 
-    public IEnumerable<User> GetAllByStatus(UserStatus status)
+    public IEnumerable<User> GetAllByStatus(Enums.UserStatus status)
     {
-        status = UserStatus.ACTIVE;
+        status = Enums.UserStatus.ACTIVE;
         return _context.User.Where(v => v.status == status).ToList();
     }
 
@@ -101,7 +101,7 @@ public class UserService : IUserService
     public void Delete(int id)
     {
         var user = getUser(id);
-        user.status = UserStatus.DELETED;
+        user.status = Enums.UserStatus.DELETED;
         user.DeletedAt = DateTimeOffset.Now.AddHours(7);
         _context.User.Update(user);
         _context.SaveChanges();
@@ -156,7 +156,7 @@ public class UserService : IUserService
         var user = _context.User.Find(id);
         if (user == null) 
             throw new KeyNotFoundException("User not found");
-        if (user.status != UserStatus.ACTIVE)
+        if (user.status != Enums.UserStatus.ACTIVE)
             throw new KeyNotFoundException("User not found");
         return user;
     }

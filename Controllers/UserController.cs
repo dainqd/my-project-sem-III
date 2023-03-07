@@ -30,7 +30,7 @@ public class UserController : ControllerBase
     [HttpGet("list")]
     public IActionResult GetAll()
     {
-        var users = _userService.GetAllByStatus(UserStatus.ACTIVE);
+        var users = _userService.GetAllByStatus(Enums.UserStatus.ACTIVE);
         return Ok(users);
     }
     

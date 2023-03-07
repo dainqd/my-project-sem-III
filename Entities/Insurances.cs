@@ -15,5 +15,5 @@ public class Insurances : BaseEntity
     public string price { get; set; }
     public string thumbnail { get; set; } = "";
     public string description { get; set; } = "";
-    public InsuranceStatus status { get; set; } = InsuranceStatus.INACTIVE;
+    public Enums.InsuranceStatus status { get; set; } = Enums.InsuranceStatus.INACTIVE;
 }

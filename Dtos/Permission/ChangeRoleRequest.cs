@@ -6,7 +6,7 @@ namespace myProject.Dtos.Permission;
 public class ChangeRoleRequest
 {
     [Required]
-    [EnumDataType(typeof(Role))]
+    [EnumDataType(typeof(Enums.Role))]
     public string role { get; set; }
     [Required]
     [MinLength(6)]

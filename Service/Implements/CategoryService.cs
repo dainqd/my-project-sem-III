@@ -30,7 +30,7 @@ public class CategoryService : ICategoryService
         return getCategory(id);
     }
 
-    public void Update(int id, string name, CategoryStatus status)
+    public void Update(int id, string name, Enums.CategoryStatus status)
     {
         var categories = getCategory(id);
         if (name == null)
@@ -41,7 +41,7 @@ public class CategoryService : ICategoryService
         {
             throw new KeyNotFoundException("Category status valid");
         }
-        if (status == CategoryStatus.DELETED)
+        if (status == Enums.CategoryStatus.DELETED)
         {
             throw new KeyNotFoundException("Category status illegal");
         }
@@ -59,14 +59,14 @@ public class CategoryService : ICategoryService
         _context.SaveChanges();
     }
 
-    public void Create(string name, CategoryStatus status)
+    public void Create(string name, Enums.CategoryStatus status)
     {
         if (name == null)
         {
             throw new KeyNotFoundException("Category name valid");
         }
 
-        if (status != CategoryStatus.ACTIVE)
+        if (status != Enums.CategoryStatus.ACTIVE)
         {
             throw new KeyNotFoundException("Category status valid");
         }
