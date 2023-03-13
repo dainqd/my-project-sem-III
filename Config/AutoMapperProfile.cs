@@ -62,10 +62,5 @@ public class AutoMapperProfile : Profile
         // CreateFeedbackRequest -> Feedbacks
         CreateMap<CreateFeedbackRequest, Feedbacks>();
         
-        // UpdateFeedbackRequest -> Feedbacks
-        CreateMap<UpdateFeedbackRequest, Feedbacks>();
-        
-        // Feedbacks -> FeedbackResponse
-        CreateMap<Feedbacks, FeedbackResponse>();
     }
 }
