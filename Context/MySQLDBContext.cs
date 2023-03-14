@@ -14,6 +14,7 @@ public class MySQLDBContext : DbContext
     public DbSet<Claims> Claims { get; set; }
     public DbSet<Orders> Orders { get; set; }
     public DbSet<Payment> Payments { get; set; }
+    public DbSet<Transactions> Transactions { get; set; }
     
     public MySQLDBContext(DbContextOptions<MySQLDBContext> options) : base(options)
     {
