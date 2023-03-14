@@ -62,4 +62,10 @@ public class Enums
         PAID,
         DELETED
     }
+    
+    public enum TransactionStatus
+    {
+        PAID,
+        DELETED
+    }
 }
