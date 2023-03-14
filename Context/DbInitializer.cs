@@ -69,6 +69,18 @@ public class DbInitializer
                 id = 2, category_id = 2, description = "Insurances",
                 thumbnail = "", name = "Life Insurance",
                 status = Enums.InsuranceStatus.ACTIVE, price = "599.99"
+            },
+            new Insurances()
+            {
+                id = 3, category_id = 3, description = "Insurances",
+                thumbnail = "", name = "Motor Insurance",
+                status = Enums.InsuranceStatus.ACTIVE, price = "399.99"
+            },
+            new Insurances()
+            {
+                id = 4, category_id = 4, description = "Insurances",
+                thumbnail = "", name = "Medical Insurance",
+                status = Enums.InsuranceStatus.ACTIVE, price = "399.99"
             }
         );
         modelBuilder.Entity<Customers>().HasData(

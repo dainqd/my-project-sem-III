@@ -46,4 +46,20 @@ public class Enums
         INACTIVE,
         DELETED
     }
+    
+    public enum OrderStatus
+    {
+        PREPARING, 
+        DELIVERY, 
+        SUCCESS, 
+        FAIL, 
+        DELETED
+    }
+    
+    public enum PaymentStatus
+    {
+        UNPAID,
+        PAID,
+        DELETED
+    }
 }

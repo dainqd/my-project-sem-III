@@ -11,6 +11,9 @@ public class MySQLDBContext : DbContext
     public DbSet<Customers> Customers { get; set; }
     public DbSet<Credential> Credentials { get; set; }
     public DbSet<Feedbacks> Feedbacks { get; set; }
+    public DbSet<Claims> Claims { get; set; }
+    public DbSet<Orders> Orders { get; set; }
+    public DbSet<Payment> Payments { get; set; }
     
     public MySQLDBContext(DbContextOptions<MySQLDBContext> options) : base(options)
     {
