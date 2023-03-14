@@ -31,7 +31,7 @@ public class TestController : ControllerBase
     public string genCode()
     {
         ProjectUtils projectUtils = new ProjectUtils();
-        return projectUtils.generateCode();
+        return projectUtils.generateCodeOrder();
     }
     
     [HttpGet("view-role")]
