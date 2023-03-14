@@ -70,6 +70,24 @@ public class FeedbackService : IFeedbackService
         _context.SaveChanges();
     }
     
+    public void Update(int id, Enums.FeedbackStatus status)
+    {
+        var feedback = getFeedback(id);
+        
+        if(status == null)
+            throw new AppException("Status invalid!");
+        if (status == Enums.FeedbackStatus.DELETED)
+        {
+            throw new AppException("Status invalid!");
+        }
+        
+        feedback.status = status;
+        feedback.UpdatedAt = DateTimeOffset.Now.AddHours(7);
+        
+        _context.Feedbacks.Update(feedback);
+        _context.SaveChanges();
+    }
+    
     private Feedbacks getFeedback(int id)
     {
         var feedback = _context.Feedbacks.Find(id);

@@ -78,6 +78,7 @@ services.AddScoped<IAuthService, AuthService>();
 services.AddScoped<IInsuranceService, InsuranceService>();
 services.AddScoped<ICategoryService, CategoryService>();
 services.AddScoped<ICustomerService, CustomerService>();
+services.AddScoped<IFeedbackService, FeedbackService>();
 
 builder.Services.AddTransient<IBufferedFileUploadService, BufferedFileUploadLocalService>();
 

@@ -20,10 +20,10 @@
     "Subject": ""
   },
   "EmailConfiguration": {
-  "From": "new-gmail-form@gmail.com",
+  "From": "your-email-from@gmail.com",
   "SmtpServer": "smtp.gmail.com",
   "Port": 465,
-  "Username": "your-gmail@gmail.com",
+  "Username": "your-email@gmail.com",
   "Password": "your-password"
 }
 }
