@@ -1,20 +1,14 @@
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using myProject.Entities.Basic;
 using myProject.Utils.Enums;
 
-namespace myProject.Entities;
+namespace myProject.Dtos.Order;
 
-public class Orders : BaseEntity
+public class CreateOrderRequest
 {
-    [Key]
-    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public int id { get; set; }
     public string orderCode { get; set; }
     public string name { get; set; } 
     public string phoneNumber { get; set; } 
     public string totalMoney { get; set; } 
-    public string address { get; set; } 
+    public string address { get; set; }
     public int customer_id { get; set; } 
     public int insurance_id { get; set; } 
     public int payment_id { get; set; } 

@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using myProject.Entities;
+using myProject.Entities.Location;
 
 namespace myProject.Context;
 
@@ -15,6 +16,9 @@ public class MySQLDBContext : DbContext
     public DbSet<Orders> Orders { get; set; }
     public DbSet<Payment> Payments { get; set; }
     public DbSet<Transactions> Transactions { get; set; }
+    public DbSet<Location> Locations { get; set; }
+    public DbSet<Province> Provinces { get; set; }
+    public DbSet<City> Cities { get; set; }
     
     public MySQLDBContext(DbContextOptions<MySQLDBContext> options) : base(options)
     {
