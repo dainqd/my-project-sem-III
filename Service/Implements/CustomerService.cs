@@ -18,6 +18,7 @@ public class CustomerService : ICustomerService
         IMapper mapper)
     {
         _context = context;
+        _mapper = mapper;
 
     }
 
@@ -49,16 +50,8 @@ public class CustomerService : ICustomerService
         if(model.email == null)
             throw new AppException("Email invalid!");
         customer.UpdatedAt = DateTimeOffset.Now.AddHours(7);
-        // _mapper.Map(model, customer);
-       
-        customer.user_id = model.user_id;
-        customer.fullName = model.fullName;
-        customer.address = model.address;
-        customer.avatar = model.avatar;
-        customer.email = model.email;
-        customer.phoneNumber = model.phoneNumber;
-        customer.status = model.status;
-        
+         _mapper.Map(model, customer);
+
         _context.Customers.Update(customer);
         _context.SaveChanges();
     }
@@ -74,23 +67,15 @@ public class CustomerService : ICustomerService
 
     public void Create(CreateCustomerRequest model)
     {
-        // var customer = _mapper.Map<Customers>(model);
+        var customer = _mapper.Map<Customers>(model);
         
         if (model.email == null)
         {
             throw new AppException("Email invalid!");
         }
         
-        var customer = new Customers();
-        customer.user_id = model.user_id;
-        customer.fullName = model.fullName;
-        customer.address = model.address;
-        customer.avatar = model.avatar;
-        customer.email = model.email;
-        customer.phoneNumber = model.phoneNumber;
-        customer.status = model.status;
         customer.CreatedAt = DateTimeOffset.Now.AddHours(7);
-        // _mapper.Map(model, customer);
+        _mapper.Map(model, customer);
         _context.Customers.Add(customer);
         _context.SaveChanges();
     }
@@ -112,16 +97,7 @@ public class CustomerService : ICustomerService
         if (customer.status != Enums.CustomerStatus.ACTIVE)
             throw new KeyNotFoundException("Customer not found");
         
-        // var response = _mapper.Map<CustomerResponse>(customer);
-        var response = new CustomerResponse();
-        response.id = customer.id;
-        response.user_id = customer.user_id;
-        response.fullName = customer.fullName;
-        response.address = customer.address;
-        response.avatar = customer.avatar;
-        response.email = customer.email;
-        response.phoneNumber = customer.phoneNumber;
-        response.status = customer.status.ToString();
+        var response = _mapper.Map<CustomerResponse>(customer);
         return response;
     }
 }

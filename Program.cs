@@ -12,6 +12,7 @@ using myProject.Authorization.Implements;
 using myProject.Authorization.Interfaces;
 using myProject.Config;
 using myProject.Context;
+using myProject.Entities;
 using myProject.Service.Implements;
 using myProject.Service.Interfaces;
 using myProject.UploadFile.UploadMiniFile;
@@ -80,6 +81,8 @@ services.AddScoped<ICategoryService, CategoryService>();
 services.AddScoped<ICustomerService, CustomerService>();
 services.AddScoped<IFeedbackService, FeedbackService>();
 services.AddScoped<IOrderService, OrderService>();
+services.AddScoped<IPaymentService, PaymentService>();
+services.AddScoped<ITransactionService, TransactionService>();
 
 builder.Services.AddTransient<IBufferedFileUploadService, BufferedFileUploadLocalService>();
 
