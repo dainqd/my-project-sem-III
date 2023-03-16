@@ -13,7 +13,7 @@ public class Orders : BaseEntity
     public string orderCode { get; set; }
     public string name { get; set; } 
     public string phoneNumber { get; set; } 
-    public string totalMoney { get; set; } 
+    public float totalMoney { get; set; } 
     public string address { get; set; } 
     public int customer_id { get; set; } 
     public int insurance_id { get; set; } 
