@@ -3,7 +3,6 @@ using myProject._mail_config;
 using myProject._mail_config.Interface;
 using myProject.Utils;
 using myProject.Utils.Enums;
-using NETCore.MailKit.Core;
 
 namespace myProject.Controllers;
 

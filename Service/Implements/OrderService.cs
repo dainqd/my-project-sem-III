@@ -4,6 +4,7 @@ using myProject.Context;
 using myProject.Dtos.Order;
 using myProject.Entities;
 using myProject.Service.Interfaces;
+using myProject.Utils;
 using myProject.Utils.Enums;
 
 namespace myProject.Service.Implements;
@@ -125,24 +126,37 @@ public class OrderService : IOrderService
             throw new AppException("Name invalid!");
         }
         
+        ProjectUtils projectUtils = new ProjectUtils();
+        order.orderCode = projectUtils.generateCodeOrder();
+
         var customer = _context.Customers.Find(model.customer_id);
-        if (customer == null)
+        if (customer == null || customer.status != Enums.CustomerStatus.ACTIVE)
         {
             throw new KeyNotFoundException("Category not found");
         }
         
         var insurance = _context.Insurances.Find(model.insurance_id);
-        if (insurance == null)
+        if (insurance == null || insurance.status != Enums.InsuranceStatus.ACTIVE)
         {
             throw new KeyNotFoundException("Insurance not found");
         }
         
-        var payment = _context.Payments.Find(model.payment_id);
-        if (payment == null)
+        Payment payment = new Payment();
+        payment.totalPrice = order.totalMoney;
+        payment.paymentCode = order.orderCode + "PAY" + order.customer_id + order.insurance_id;
+        Console.WriteLine(payment.paymentCode);
+        payment.paymentMethods = Constants.PAY_DIRECT;
+        payment.status = Enums.PaymentStatus.UNPAID;
+        _context.Payments.Add(payment);
+        _context.SaveChanges();
+
+        var new_payment = _context.Payments.Last(x => x.paymentCode == payment.paymentCode);
+        if (new_payment == null)
         {
             throw new KeyNotFoundException("Payment not found");
         }
-        
+        Console.WriteLine(new_payment.id);
+        order.payment_id = new_payment.id;
         order.CreatedAt = DateTimeOffset.Now.AddHours(7);
 
         _context.Orders.Add(order);
@@ -169,19 +183,19 @@ public class OrderService : IOrderService
         }
 
         var customer = _context.Customers.Find(order.customer_id);
-        if (customer == null)
+        if (customer == null || customer.status != Enums.CustomerStatus.ACTIVE)
         {
             throw new KeyNotFoundException("Customer of not found"); 
         }
         
         var insurance = _context.Insurances.Find(order.insurance_id);
-        if (insurance == null)
+        if (insurance == null || insurance.status != Enums.InsuranceStatus.ACTIVE)
         {
             throw new KeyNotFoundException("Insurance of not found"); 
         }
         
         var payment = _context.Payments.Find(order.payment_id);
-        if (payment == null)
+        if (payment == null || payment.status == Enums.PaymentStatus.DELETED)
         {
             throw new KeyNotFoundException("Payment of not found"); 
         }
