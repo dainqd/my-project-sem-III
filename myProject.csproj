@@ -22,8 +22,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Dtos\Payment" />
-      <Folder Include="Dtos\Transaction" />
       <Folder Include="UploadFile" />
     </ItemGroup>
 
