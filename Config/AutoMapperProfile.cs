@@ -4,7 +4,9 @@ using myProject.Dtos.Customer;
 using myProject.Dtos.Feedback;
 using myProject.Dtos.Insurances;
 using myProject.Dtos.Order;
+using myProject.Dtos.Payment;
 using myProject.Dtos.Permission;
+using myProject.Dtos.Transaction;
 using myProject.Dtos.User;
 using myProject.Entities;
 
@@ -71,6 +73,27 @@ public class AutoMapperProfile : Profile
         CreateMap<EditOrderRequest, Orders>();
         // Orders -> OrderResponse
         CreateMap<Orders, OrderResponse>();
+        
+        // Payment
+        // CreatePaymentRequest -> Payment
+        CreateMap<CreatePaymentRequest, Payment>();
+        // UpdatePaymentRequest -> Payment
+        CreateMap<UpdatePaymentRequest, Payment>();
+        // EditPaymentRequest -> Payment
+        CreateMap<EditPaymentRequest, Payment>();
+        // Check payment
+        // PaymentRequest -> Payment
+        CreateMap<PaymentRequest, Payment>();
+        // Payment -> PaymentResponse
+        CreateMap<Orders, PaymentResponse>();
+        
+        // Transactions
+        // CreateTransactionRequest -> Transactions
+        CreateMap<CreateTransactionRequest, Transactions>();
+        // UpdateTransactionRequest -> Transactions
+        CreateMap<UpdateTransactionRequest, Transactions>();
+        // Transactions -> TransactionResponse
+        CreateMap<Transactions, TransactionResponse>();
         
     }
 }
