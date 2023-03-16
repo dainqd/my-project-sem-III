@@ -14,4 +14,4 @@ You need to run it locally by following these steps:
 8. At the new window terminal, you need to run command:<p> cp .appsettings.example.json appsettings.json </p>to create a new appsettings.json file needed
 9. At the appsettings.json file, must make a connection to the database and set up more add variables and keys for the project environment 
 10. Run the following commands:<p> dotnet tool install --global dotnet-ef </p><p> dotnet ef migrations add InitialCreate </p><p> dotnet ef database update </p> 
-11. Launch the project
+11. Launch the project with command: <p> dotnet run Project </p>
