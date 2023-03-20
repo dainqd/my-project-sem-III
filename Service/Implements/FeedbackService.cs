@@ -29,7 +29,7 @@ public class FeedbackService : IFeedbackService
     public IEnumerable<Feedbacks> GetAllByStatus(Enums.FeedbackStatus status)
     {
         var newstatus = status;
-        if (newstatus == null)
+        if (newstatus == null || status == Enums.FeedbackStatus.DELETED)
         {
             newstatus = Enums.FeedbackStatus.PENDING;
         }

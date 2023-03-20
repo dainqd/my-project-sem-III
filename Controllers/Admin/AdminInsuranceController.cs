@@ -5,6 +5,7 @@ using Microsoft.Extensions.Options;
 using myProject.Config;
 using myProject.Dtos.Insurances;
 using myProject.Service.Interfaces;
+using myProject.Utils.Enums;
 
 namespace myProject.Controllers.Admin;
 
@@ -30,6 +31,13 @@ public class AdminInsuranceController : ControllerBase
     public IActionResult GetAll()
     {
         var insurances = _insuranceService.GetAll();
+        return Ok(insurances);
+    }
+    
+    [HttpGet("list/{status}")]
+    public IActionResult GetAllByStatus(Enums.InsuranceStatus status)
+    {
+        var insurances = _insuranceService.GetAllByStatus(status);
         return Ok(insurances);
     }
     

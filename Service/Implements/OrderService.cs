@@ -30,7 +30,7 @@ public class OrderService : IOrderService
     public IEnumerable<Orders> GetAllByStatus(Enums.OrderStatus status)
     {
         var newstatus = status;
-        if (newstatus == null)
+        if (newstatus == null || status == Enums.OrderStatus.DELETED)
         {
             newstatus = Enums.OrderStatus.PREPARING;
         }

@@ -34,6 +34,13 @@ public class AdminCustomerController : ControllerBase
         return Ok(customers);
     }
     
+    [HttpGet("list/{status}")]
+    public IActionResult? GetAllByStatus(Enums.CustomerStatus status)
+    {
+        var customers = _customerService.GetAllByStatus(status);
+        return Ok(customers);
+    }
+    
     [HttpGet("detail/{id}")]
     public IActionResult? GetById(int id)
     {
