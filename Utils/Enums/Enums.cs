@@ -63,6 +63,14 @@ public class Enums
         DELETED
     }
     
+    public enum PaymentMethod
+    {
+        PAY_DIRECT,
+        PAY_CARD,
+        PAY_WALLET,
+        PAY_BANK
+    }
+    
     public enum TransactionStatus
     {
         PAID,

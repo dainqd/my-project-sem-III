@@ -31,21 +31,21 @@ public class AdminOrderController : ControllerBase
     [HttpGet("list")]
     public IActionResult? GetAll()
     {
-        var insurances = _orderService.GetAll();
-        return Ok(insurances);
+        var orders = _orderService.GetAll();
+        return Ok(orders);
     }
     
     [HttpGet("list/{status}")]
     public IActionResult? GetAll(Enums.OrderStatus status)
     {
-        var insurances = _orderService.GetAllByStatus(status);
-        return Ok(insurances);
+        var orders = _orderService.GetAllByStatus(status);
+        return Ok(orders);
     }
 
     [HttpGet("detail/{id}")]
     public IActionResult? GetById(int id)
     {
-        var order = _orderService.GetByIdAndStatus(id);
+        var order = _orderService.GetById(id);
         return Ok(order);
     }
     
