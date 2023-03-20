@@ -5,6 +5,7 @@ using Microsoft.Extensions.Options;
 using myProject.Config;
 using myProject.Dtos.Payment;
 using myProject.Service.Interfaces;
+using myProject.Utils.Enums;
 
 namespace myProject.Controllers.Admin;
 
@@ -30,6 +31,13 @@ public class AdminPaymentController : ControllerBase
     public IActionResult? GetAll()
     {
         var payments = _paymentService.GetAll();
+        return Ok(payments);
+    }
+    
+    [HttpGet("list/{status}")]
+    public IActionResult GetAllByStatus(Enums.PaymentStatus status)
+    {
+        var payments = _paymentService.GetAllByStatus(status);
         return Ok(payments);
     }
 

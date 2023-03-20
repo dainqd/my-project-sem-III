@@ -36,8 +36,8 @@ public class AdminFeedbackController : ControllerBase
     [HttpGet("list/{status}")]
     public IActionResult? GetAllByStatus(Enums.FeedbackStatus status)
     {
-        var customers = _feedbackService.GetAllByStatus(status);
-        return Ok(customers);
+        var feedbacks = _feedbackService.GetAllByStatus(status);
+        return Ok(feedbacks);
     }
     
     [HttpGet("detail/{id}")]

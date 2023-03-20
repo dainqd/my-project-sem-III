@@ -29,7 +29,7 @@ public class PaymentService : IPaymentService
     public IEnumerable<Payment> GetAllByStatus(Enums.PaymentStatus status)
     {
         var newstatus = status;
-        if (newstatus == null)
+        if (newstatus == null || status == Enums.PaymentStatus.DELETED)
         {
             newstatus = Enums.PaymentStatus.UNPAID;
         }
@@ -68,6 +68,24 @@ public class PaymentService : IPaymentService
 
         payment.status = Enums.PaymentStatus.PAID;
         payment.UpdatedAt = DateTimeOffset.Now;
+
+        var order = _context.Orders.Find(payment.order_id);
+        if (order == null || order.status == Enums.OrderStatus.DELETED)
+        {
+            throw new KeyNotFoundException("Order not found");
+        }
+        
+        var transaction = new Transactions();
+        
+        transaction.customer_id = order.customer_id;
+        transaction.dateTime = DateTimeOffset.Now;
+        transaction.insurance_id = order.insurance_id;
+        transaction.payment_id = payment.id;
+        transaction.total_money = payment.totalPrice.ToString();
+        transaction.status = Enums.TransactionStatus.PAID;
+        transaction.CreatedAt = DateTimeOffset.Now;
+        
+        _context.Transactions.Add(transaction);
         
         _context.Update(payment);
         _context.SaveChanges();

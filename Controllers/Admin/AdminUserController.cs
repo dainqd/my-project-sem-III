@@ -5,6 +5,7 @@ using Microsoft.Extensions.Options;
 using myProject.Config;
 using myProject.Dtos.User;
 using myProject.Service.Interfaces;
+using myProject.Utils.Enums;
 
 namespace myProject.Controllers.Admin;
 
@@ -30,6 +31,13 @@ public class AdminUserController : ControllerBase
     public IActionResult GetAll()
     {
         var users = _userService.GetAll();
+        return Ok(users);
+    }
+    
+    [HttpGet("list/{status}")]
+    public IActionResult GetAllByStatus(Enums.UserStatus status)
+    {
+        var users = _userService.GetAllByStatus(status);
         return Ok(users);
     }
     
