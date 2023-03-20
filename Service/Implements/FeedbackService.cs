@@ -73,14 +73,12 @@ public class FeedbackService : IFeedbackService
     public void Update(int id, Enums.FeedbackStatus status)
     {
         var feedback = getFeedback(id);
-        
-        if(status == null)
-            throw new AppException("Status invalid!");
-        if (status == Enums.FeedbackStatus.DELETED)
+
+        if (status == null || status == Enums.FeedbackStatus.DELETED)
         {
-            throw new AppException("Status invalid!");
+            throw new AppException("Status invalid!");   
         }
-        
+
         feedback.status = status;
         feedback.UpdatedAt = DateTimeOffset.Now.AddHours(7);
         
@@ -91,8 +89,10 @@ public class FeedbackService : IFeedbackService
     private Feedbacks getFeedback(int id)
     {
         var feedback = _context.Feedbacks.Find(id);
-        if (feedback == null) 
+        if (feedback == null || feedback.status == Enums.FeedbackStatus.DELETED)
+        {
             throw new KeyNotFoundException("Feedback not found");
+        }
         return feedback;
     }
 }

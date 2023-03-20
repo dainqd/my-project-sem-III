@@ -81,7 +81,7 @@ public class CategoryService : ICategoryService
     private Categories getCategory(int id)
     {
         var categories = _context.Categories.Find(id);
-        if (categories == null)
+        if (categories == null || categories.status == Enums.CategoryStatus.DELETED)
         {
             throw new KeyNotFoundException("Category not found");
         }

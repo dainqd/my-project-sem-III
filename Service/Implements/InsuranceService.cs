@@ -90,7 +90,7 @@ public class InsuranceService : IInsuranceService
     private Insurances getInsurances(int id)
     {
         var insurances = _context.Insurances.Find(id);
-        if (insurances == null) 
+        if (insurances == null || insurances.status == Enums.InsuranceStatus.DELETED) 
             throw new KeyNotFoundException("Insurance not found");
         return insurances;
     }
@@ -98,9 +98,7 @@ public class InsuranceService : IInsuranceService
     private InsuranceResponse getInsurancesByIdAndStatus(int id)
     {
         var insurances = _context.Insurances.Find(id);
-        if (insurances == null) 
-            throw new KeyNotFoundException("Insurance not found");
-        if (insurances.status != Enums.InsuranceStatus.ACTIVE)
+        if (insurances == null || insurances.status != Enums.InsuranceStatus.ACTIVE) 
             throw new KeyNotFoundException("Insurance not found");
         var category = _context.Categories.Find(insurances.category_id);
         if (category == null)

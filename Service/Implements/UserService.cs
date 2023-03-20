@@ -146,7 +146,7 @@ public class UserService : IUserService
     private User getUser(int id)
     {
         var user = _context.User.Find(id);
-        if (user == null) 
+        if (user == null || user.status == Enums.UserStatus.DELETED) 
             throw new KeyNotFoundException("User not found");
         return user;
     }
@@ -154,9 +154,7 @@ public class UserService : IUserService
     private User getUserByIdAndStatus(int id)
     {
         var user = _context.User.Find(id);
-        if (user == null) 
-            throw new KeyNotFoundException("User not found");
-        if (user.status != Enums.UserStatus.ACTIVE)
+        if (user == null || user.status != Enums.UserStatus.ACTIVE) 
             throw new KeyNotFoundException("User not found");
         return user;
     }
