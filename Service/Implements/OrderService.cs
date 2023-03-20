@@ -152,7 +152,7 @@ public class OrderService : IOrderService
         _context.SaveChanges();
 
         var new_payment = _context.Payments.Last(x => x.paymentCode == payment.paymentCode);
-        if (new_payment == null)
+        if (new_payment == null || payment.status == Enums.PaymentStatus.DELETED)
         {
             throw new KeyNotFoundException("Payment not found");
         }
@@ -164,7 +164,7 @@ public class OrderService : IOrderService
         _context.SaveChanges();
         
         var new_order = _context.Orders.Last(x => x.orderCode == order.orderCode);
-        if (new_order == null)
+        if (new_order == null || order.status == Enums.OrderStatus.DELETED)
         {
             throw new KeyNotFoundException("Order not found");
         }
@@ -178,7 +178,7 @@ public class OrderService : IOrderService
     private Orders getOrdeById(int id)
     {
         var order = _context.Orders.Find(id);
-        if (order == null) 
+        if (order == null || order.status == Enums.OrderStatus.DELETED) 
             throw new KeyNotFoundException("Order not found");
         return order;
     }
@@ -186,13 +186,8 @@ public class OrderService : IOrderService
     private OrderResponse getOrderByIdAndStatus(int id)
     {
         var order = _context.Orders.Find(id);
-        if (order == null) 
+        if (order == null || order.status == Enums.OrderStatus.DELETED) 
             throw new KeyNotFoundException("Order not found");
-
-        if (order.status == Enums.OrderStatus.DELETED)
-        {
-            throw new KeyNotFoundException("Order not found");
-        }
 
         var customer = _context.Customers.Find(order.customer_id);
         if (customer == null || customer.status != Enums.CustomerStatus.ACTIVE)

@@ -91,7 +91,7 @@ public class PermissionService : IPermissionService
     private User getUser(int id)
     {
         var user = _context.User.Find(id);
-        if (user == null) 
+        if (user == null || user.status == Enums.UserStatus.DELETED) 
             throw new KeyNotFoundException(Constants.account_not_found);
         return user;
     }

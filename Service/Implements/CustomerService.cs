@@ -84,19 +84,22 @@ public class CustomerService : ICustomerService
     private Customers getCustomerById(int id)
     {
         var customer = _context.Customers.Find(id);
-        if (customer == null) 
-            throw new KeyNotFoundException("Customer not found");
+        if (customer == null || customer.status == Enums.CustomerStatus.DELETED)
+        {
+            throw new KeyNotFoundException("Customer not found");   
+        }
+        
         return customer;
     }
     
     private CustomerResponse getInsurancesByIdAndStatus(int id)
     {
         var customer = _context.Customers.Find(id);
-        if (customer == null) 
-            throw new KeyNotFoundException("Customer not found");
-        if (customer.status != Enums.CustomerStatus.ACTIVE)
-            throw new KeyNotFoundException("Customer not found");
-        
+        if (customer == null || customer.status != Enums.CustomerStatus.ACTIVE)
+        {
+            throw new KeyNotFoundException("Customer not found");   
+        }
+
         var response = _mapper.Map<CustomerResponse>(customer);
         return response;
     }
