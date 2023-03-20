@@ -100,7 +100,7 @@ public class DbInitializer
         modelBuilder.Entity<TestBankTransfer>().HasData(
             new TestBankTransfer()
             {
-                id = 1,  nameOfCard = "bank", numberOfCard = "123456789", phoneNumber = "0989898989"
+                id = 1,  nameOfCard = Constants.PAY_NAME, numberOfCard = Constants.PAY_NUMBER, phoneNumber = Constants.PAY_PHONE
             }
         );
     }

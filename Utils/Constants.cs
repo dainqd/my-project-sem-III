@@ -9,11 +9,10 @@ public static class Constants
     public const string MEDICAL_INSURACE = "MEDICAL_INSURACE";
     public const string MOTOR_INSURACE = "MOTOR_INSURACE";
     public const string HOME_INSURACE = "HOME_INSURACE";
-    // Payment method
-    public const string PAY_DIRECT = "Payment by direct";
-    public const string PAY_CARD = "Payment by card";
-    public const string PAY_WALLET = "Payment by e-wallet";
-    public const string PAY_BANK = "Payment by bank transfer";
+    // Payment 
+    public const string PAY_PHONE = "0989898989";
+    public const string PAY_NAME = "bank";
+    public const string PAY_NUMBER = "123456789";
 
     //Auth message
     public const string LOGIN = "LOGIN_ACCONT";

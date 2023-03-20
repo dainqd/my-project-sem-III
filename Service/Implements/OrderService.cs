@@ -145,8 +145,9 @@ public class OrderService : IOrderService
         payment.totalPrice = order.totalMoney;
         payment.paymentCode = order.orderCode + "PAY" + order.customer_id + order.insurance_id;
         Console.WriteLine(payment.paymentCode);
-        payment.paymentMethods = Constants.PAY_DIRECT;
+        payment.paymentMethods = Enums.PaymentMethod.PAY_DIRECT;
         payment.status = Enums.PaymentStatus.UNPAID;
+        payment.CreatedAt = DateTimeOffset.Now;
         _context.Payments.Add(payment);
         _context.SaveChanges();
 
@@ -160,6 +161,17 @@ public class OrderService : IOrderService
         order.CreatedAt = DateTimeOffset.Now.AddHours(7);
 
         _context.Orders.Add(order);
+        _context.SaveChanges();
+        
+        var new_order = _context.Orders.Last(x => x.orderCode == order.orderCode);
+        if (new_order == null)
+        {
+            throw new KeyNotFoundException("Order not found");
+        }
+
+        payment.order_id = new_order.id;
+        payment.UpdatedAt = DateTimeOffset.Now;
+        _context.Payments.Update(payment);
         _context.SaveChanges();
     }
     

@@ -12,18 +12,15 @@ namespace myProject.Controllers;
 public class InsuranceController : ControllerBase
 {
     private IInsuranceService _insuranceService;
-    private ICategoryService _categoryService;
     private IMapper _mapper;
     private readonly AppSettings _appSettings;
     
     public InsuranceController(
         IInsuranceService insuranceService,
-        ICategoryService categoryService,
         IMapper mapper,
         IOptions<AppSettings> appSettings)
     {
         _insuranceService = insuranceService;
-        _categoryService = categoryService;
         _mapper = mapper;
     }
     
