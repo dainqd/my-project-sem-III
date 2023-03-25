@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Header from '../../Shared/Header/Header';
 import Sidebar from '../../Shared/Sidebar/Sidebar';
 
-function Dasboard() {
+function Dashboard() {
     return (
         <>
             <Header />
@@ -396,4 +396,4 @@ function Dasboard() {
     )
 }
 
-export default Dasboard;
+export default Dashboard;
