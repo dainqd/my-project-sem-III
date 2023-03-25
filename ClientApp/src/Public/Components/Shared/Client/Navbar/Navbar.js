@@ -20,10 +20,14 @@ import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import { message } from 'antd';
 
+import img_icon_2_pri from '../../../images/client/icon/icon-02-primary.png'
+
 function NavbarClient() {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
 
     const AuthAdmin = true;
+
+    let isLogin = true;
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -52,6 +56,11 @@ function NavbarClient() {
     const Auth = sessionStorage.getItem("accessToken")
     const AuthName = sessionStorage.getItem("username")
 
+    if (AuthName == null || Auth == null)
+    {
+        isLogin = false;
+    }
+
     return (
         <nav
             className="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5"
@@ -60,7 +69,7 @@ function NavbarClient() {
                 <h1 className="m-0">
                     <img
                         className="img-fluid me-3"
-                        src="img/icon/icon-02-primary.png"
+                        src={img_icon_2_pri}
                         alt=""
                     />Insure
                 </h1>
@@ -95,7 +104,7 @@ function NavbarClient() {
                     <Link to="contact.html" className="nav-item nav-link">Contact Us</Link>
                 </div>
             </div>
-            <Link to="/login" className="btn btn-primary px-3 d-none d-lg-block">Login</Link>
+            <Link to={isLogin ? '/profile' : '/Login'} className="btn btn-primary px-3 d-none d-lg-block">{isLogin ? AuthName : 'Login'}</Link>
         </nav>
     )
 }

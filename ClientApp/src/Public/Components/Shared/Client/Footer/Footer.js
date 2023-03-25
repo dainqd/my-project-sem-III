@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import img_icon_2_li from '../../../images/client/icon/icon-02-light.png'
 
 function Footer() {
     return (
@@ -13,7 +14,7 @@ function Footer() {
                         <h1 className="text-white mb-4">
                             <img
                                 className="img-fluid me-3"
-                                src="img/icon/icon-02-light.png"
+                                src={img_icon_2_li}
                                 alt=""
                             />Insure
                         </h1>
@@ -22,16 +23,16 @@ function Footer() {
                             ipsum et lorem et sit, sed stet lorem sit clita
                         </p>
                         <div className="d-flex pt-2">
-                            <Link className="btn btn-square me-1" href=""
+                            <Link className="btn btn-square me-1" to=""
                             ><i className="fab fa-twitter"></i
                             ></Link>
-                            <Link className="btn btn-square me-1" href=""
+                            <Link className="btn btn-square me-1" to=""
                             ><i className="fab fa-facebook-f"></i
                             ></Link>
-                            <Link className="btn btn-square me-1" href=""
+                            <Link className="btn btn-square me-1" to=""
                             ><i className="fab fa-youtube"></i
                             ></Link>
-                            <Link className="btn btn-square me-0" href=""
+                            <Link className="btn btn-square me-0" to=""
                             ><i className="fab fa-linkedin-in"></i
                             ></Link>
                         </div>
@@ -46,11 +47,11 @@ function Footer() {
                     </div>
                     <div className="col-lg-3 col-md-6">
                         <h5 className="text-light mb-4">Quick Links</h5>
-                        <Link className="btn btn-link" href="">About Us</Link>
-                        <Link className="btn btn-link" href="">Contact Us</Link>
-                        <Link className="btn btn-link" href="">Our Services</Link>
-                        <Link className="btn btn-link" href="">Terms & Condition</Link>
-                        <Link className="btn btn-link" href="">Support</Link>
+                        <Link className="btn btn-link" to="">About Us</Link>
+                        <Link className="btn btn-link" to="">Contact Us</Link>
+                        <Link className="btn btn-link" to="">Our Services</Link>
+                        <Link className="btn btn-link" to="">Terms & Condition</Link>
+                        <Link className="btn btn-link" to="">Support</Link>
                     </div>
                     <div className="col-lg-3 col-md-6">
                         <h5 className="text-light mb-4">Newsletter</h5>
@@ -75,12 +76,12 @@ function Footer() {
                 <div className="container">
                     <div className="row">
                         <div className="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                            &copy; <a href="#">Your Site Name</a>, All Right Reserved.
+                            <span className="text-white">&copy;</span> <Link to="#">FiveSupperHero</Link><span className="text-white">, All Right Reserved.</span>
                         </div>
                         <div className="col-md-6 text-center text-md-end">
-                            Designed By <Link href="https://htmlcodex.com">HTML Codex</Link>
-                            <br/>Distributed By:
-                            <Link href="https://themewagon.com" target="_blank">ThemeWagon</Link>
+                            <span className="text-white">Designed By: </span> <Link to="">FiveSupperHero Team Design</Link>
+                            <br/><span className="text-white">Distributed By: </span>
+                            <Link to="" target="_blank">FiveSupperHero Team Distribute</Link>
                         </div>
                     </div>
                 </div>
