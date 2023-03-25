@@ -25,9 +25,9 @@ function Register() {
         await authService.registerAccount(data)
             .then((res) => {
                 console.log("register", res.data)
-                localStorage.setItem("username", res.data.username);
-                localStorage.setItem("email", res.data.email);
-                localStorage.setItem("password", res.data.password);
+                localStorage.setItem("username", data.username);
+                localStorage.setItem("email", data.email);
+                localStorage.setItem("password", data.password);
                 message.success("Create account success! Please verify account")
                 navigate("/register-verify")
             })

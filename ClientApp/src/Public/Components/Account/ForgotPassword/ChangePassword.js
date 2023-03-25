@@ -10,12 +10,15 @@ function ChangePassword() {
     const onFinish = async (values) => {
         let data = {
             code: values.code,
+            email: localStorage.getItem('email'),
+            username: "string",
             password: values.password,
             confirmPassword: values.confirmPassword
         }
-        await authService.loginAccount(data)
+        await authService.changePasswordForgot(data)
             .then((res) => {
                 console.log("change-password", res.data)
+                localStorage.clear();
                 message.success("Change password account success! Please login to continue...")
                 navigate("/login")
             })

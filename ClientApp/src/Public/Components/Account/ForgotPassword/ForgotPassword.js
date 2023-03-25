@@ -9,12 +9,15 @@ function ForgotPassword() {
 
     const onFinish = async (values) => {
         let data = {
-            email: values.email
+            email: values.email,
+            username: "string",
+            password: "string",
+            confirmPassword: "string"
         }
-        await authService.loginAccount(data)
+        await authService.forgotPassword(data)
             .then((res) => {
                 console.log("forgot password", res.data)
-                localStorage.setItem("email", res.data.email);
+                localStorage.setItem("email", data.email);
                 message.success("Success! Please check your email...")
                 navigate("/change-password")
             })
