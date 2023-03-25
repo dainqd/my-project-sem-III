@@ -15,7 +15,7 @@ function HeaderClient() {
                     </div>
                     <div className="h-100 d-inline-flex align-items-center me-4">
                         <small className="far fa-envelope-open me-2"></small>
-                        <small>info@example.com</small>
+                        <small>support.fivesuperhero@gmail.com</small>
                     </div>
                     <div className="h-100 d-inline-flex align-items-center me-4">
                         <small className="far fa-clock me-2"></small>
@@ -24,6 +24,7 @@ function HeaderClient() {
                 </div>
                 <div className="col-lg-5 px-5 text-end">
                     <div className="h-100 d-inline-flex align-items-center">
+                        <span style={{marginRight:"-16px"}}>Follow me:</span>
                         <Link className="text-white-50 ms-4" to=""
                         ><i className="fab fa-facebook-f"></i
                         ></Link>

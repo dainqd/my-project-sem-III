@@ -28,6 +28,49 @@
     <ItemGroup>
       <_ContentIncludedByDefault Remove="Pages\Error.cshtml" />
       <_ContentIncludedByDefault Remove="Pages\_ViewImports.cshtml" />
+      <_ContentIncludedByDefault Remove="Templates\insurance.admin\assets\vendor\apexcharts\locales\ar.json" />
+      <_ContentIncludedByDefault Remove="Templates\insurance.admin\assets\vendor\apexcharts\locales\ca.json" />
+      <_ContentIncludedByDefault Remove="Templates\insurance.admin\assets\vendor\apexcharts\locales\cs.json" />
+      <_ContentIncludedByDefault Remove="Templates\insurance.admin\assets\vendor\apexcharts\locales\de.json" />
+      <_ContentIncludedByDefault Remove="Templates\insurance.admin\assets\vendor\apexcharts\locales\el.json" />
+      <_ContentIncludedByDefault Remove="Templates\insurance.admin\assets\vendor\apexcharts\locales\en.json" />
+      <_ContentIncludedByDefault Remove="Templates\insurance.admin\assets\vendor\apexcharts\locales\es.json" />
+      <_ContentIncludedByDefault Remove="Templates\insurance.admin\assets\vendor\apexcharts\locales\et.json" />
+      <_ContentIncludedByDefault Remove="Templates\insurance.admin\assets\vendor\apexcharts\locales\fa.json" />
+      <_ContentIncludedByDefault Remove="Templates\insurance.admin\assets\vendor\apexcharts\locales\fi.json" />
+      <_ContentIncludedByDefault Remove="Templates\insurance.admin\assets\vendor\apexcharts\locales\fr.json" />
+      <_ContentIncludedByDefault Remove="Templates\insurance.admin\assets\vendor\apexcharts\locales\he.json" />
+      <_ContentIncludedByDefault Remove="Templates\insurance.admin\assets\vendor\apexcharts\locales\hi.json" />
+      <_ContentIncludedByDefault Remove="Templates\insurance.admin\assets\vendor\apexcharts\locales\hr.json" />
+      <_ContentIncludedByDefault Remove="Templates\insurance.admin\assets\vendor\apexcharts\locales\hu.json" />
+      <_ContentIncludedByDefault Remove="Templates\insurance.admin\assets\vendor\apexcharts\locales\hy.json" />
+      <_ContentIncludedByDefault Remove="Templates\insurance.admin\assets\vendor\apexcharts\locales\id.json" />
+      <_ContentIncludedByDefault Remove="Templates\insurance.admin\assets\vendor\apexcharts\locales\it.json" />
+      <_ContentIncludedByDefault Remove="Templates\insurance.admin\assets\vendor\apexcharts\locales\ja.json" />
+      <_ContentIncludedByDefault Remove="Templates\insurance.admin\assets\vendor\apexcharts\locales\ka.json" />
+      <_ContentIncludedByDefault Remove="Templates\insurance.admin\assets\vendor\apexcharts\locales\ko.json" />
+      <_ContentIncludedByDefault Remove="Templates\insurance.admin\assets\vendor\apexcharts\locales\lt.json" />
+      <_ContentIncludedByDefault Remove="Templates\insurance.admin\assets\vendor\apexcharts\locales\lv.json" />
+      <_ContentIncludedByDefault Remove="Templates\insurance.admin\assets\vendor\apexcharts\locales\nb.json" />
+      <_ContentIncludedByDefault Remove="Templates\insurance.admin\assets\vendor\apexcharts\locales\nl.json" />
+      <_ContentIncludedByDefault Remove="Templates\insurance.admin\assets\vendor\apexcharts\locales\pl.json" />
+      <_ContentIncludedByDefault Remove="Templates\insurance.admin\assets\vendor\apexcharts\locales\pt-br.json" />
+      <_ContentIncludedByDefault Remove="Templates\insurance.admin\assets\vendor\apexcharts\locales\pt.json" />
+      <_ContentIncludedByDefault Remove="Templates\insurance.admin\assets\vendor\apexcharts\locales\rs.json" />
+      <_ContentIncludedByDefault Remove="Templates\insurance.admin\assets\vendor\apexcharts\locales\ru.json" />
+      <_ContentIncludedByDefault Remove="Templates\insurance.admin\assets\vendor\apexcharts\locales\se.json" />
+      <_ContentIncludedByDefault Remove="Templates\insurance.admin\assets\vendor\apexcharts\locales\sk.json" />
+      <_ContentIncludedByDefault Remove="Templates\insurance.admin\assets\vendor\apexcharts\locales\sl.json" />
+      <_ContentIncludedByDefault Remove="Templates\insurance.admin\assets\vendor\apexcharts\locales\sq.json" />
+      <_ContentIncludedByDefault Remove="Templates\insurance.admin\assets\vendor\apexcharts\locales\th.json" />
+      <_ContentIncludedByDefault Remove="Templates\insurance.admin\assets\vendor\apexcharts\locales\tr.json" />
+      <_ContentIncludedByDefault Remove="Templates\insurance.admin\assets\vendor\apexcharts\locales\ua.json" />
+      <_ContentIncludedByDefault Remove="Templates\insurance.admin\assets\vendor\apexcharts\locales\zh-cn.json" />
+      <_ContentIncludedByDefault Remove="Templates\insurance.admin\assets\vendor\apexcharts\locales\zh-tw.json" />
+      <_ContentIncludedByDefault Remove="Templates\insurance.admin\assets\vendor\bootstrap-icons\bootstrap-icons.json" />
+      <_ContentIncludedByDefault Remove="Templates\insurance.admin\assets\vendor\tinymce\bower.json" />
+      <_ContentIncludedByDefault Remove="Templates\insurance.admin\assets\vendor\tinymce\composer.json" />
+      <_ContentIncludedByDefault Remove="Templates\insurance.admin\assets\vendor\tinymce\package.json" />
     </ItemGroup>
 
 </Project>
