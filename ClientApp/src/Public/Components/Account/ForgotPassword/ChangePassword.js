@@ -1,86 +1,56 @@
-import { Form, Input, message } from 'antd';
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { Form, Input, message } from 'antd';
 import authService from '../../Service/AuthService';
-import Background from "../images/bg.jpg";
+import Background from '../images/bg.jpg';
 
-function check_pass() {
-    if (document.getElementById('password-field').value === document.getElementById('password-confirm').value) {
-        document.getElementById('submit').disabled = false;
-    } else {
-        document.getElementById('submit').disabled = true;
-    }
-}
-
-function Register() {
-
+function ChangePassword() {
     const navigate = useNavigate();
+
     const onFinish = async (values) => {
         let data = {
-            username: values.username,
-            email: values.email,
+            code: values.code,
             password: values.password,
             confirmPassword: values.confirmPassword
         }
-        await authService.registerAccount(data)
+        await authService.loginAccount(data)
             .then((res) => {
-                console.log("register", res.data)
-                localStorage.setItem("username", res.data.username);
-                localStorage.setItem("email", res.data.email);
-                localStorage.setItem("password", res.data.password);
-                message.success("Create account success! Please verify account")
-                navigate("/register-verify")
+                console.log("change-password", res.data)
+                message.success("Change password account success! Please login to continue...")
+                navigate("/login")
             })
             .catch((err) => {
                 console.log(err)
-                message.error("Create error")
+                message.error("Please check password!")
             })
     };
 
     return (
         <body className="img-full-screen" style={{backgroundImage: `url(${Background})`}} >
-        <div id='register-page'>
+        <div id='login-form'>
             <section className="ftco-section">
                 <div className="container">
                     <div className="row justify-content-center">
                         <div className="col-md-6 text-center mb-5">
-                            <h2 className="heading-section">Register</h2>
+                            <h2 className="heading-section">Change Password</h2>
                         </div>
                     </div>
                     <div className="row justify-content-center">
                         <div className="col-md-6 col-lg-4">
                             <div className="login-wrap p-0">
-                                <Form className="signin-form" onFinish={onFinish}>
+                                <Form className="signin-form" onFinish={onFinish} autoComplete="off">
                                     <div className="form-group">
                                         <Form.Item
-                                            name="username"
+                                            name="code"
                                             rules={[
                                                 {
                                                     required: true,
-                                                    message: 'Please input your username!' ,
+                                                    message: 'Please input your code!' ,
                                                 }
                                             ]}
                                             hasFeedback
                                         >
-                                            <Input allowClear type="text" placeholder="Username" />
-                                        </Form.Item>
-                                    </div>
-                                    <div className="form-group">
-                                        <Form.Item
-                                            name="email"
-                                            rules={[
-                                                {
-                                                    required: true,
-                                                    message: 'Please input your E-mail!',
-                                                },
-                                                {
-                                                    type: "email",
-                                                    message: "Invalid E-mail!"
-                                                }
-                                            ]}
-                                            hasFeedback
-                                        >
-                                            <Input allowClear  placeholder="Email"  />
+                                            <Input allowClear type="text" placeholder="Verify Code" />
                                         </Form.Item>
                                     </div>
                                     <div className="form-group">
@@ -89,11 +59,11 @@ function Register() {
                                             rules={[
                                                 {
                                                     required: true,
-                                                    message: 'Please input your password!',
+                                                    message: 'Please input your new password!',
                                                 }
                                             ]}
                                         >
-                                            <Input allowClear onKeyUp="check_pass();" type="password"  placeholder="Password" />
+                                            <Input allowClear type="password"  placeholder="New Password" />
                                             {/*<span toggle="#password-field"*/}
                                             {/*      className="fa fa-fw fa-eye field-icon toggle-password"></span>*/}
                                         </Form.Item>
@@ -104,23 +74,23 @@ function Register() {
                                             rules={[
                                                 {
                                                     required: true,
-                                                    message: 'Please input your password confirm!',
+                                                    message: 'Please input your new password confirm!',
                                                 }
                                             ]}
                                         >
-                                            <Input allowClear onKeyUp="check_pass();" type="password"  placeholder="Password Confirm" />
+                                            <Input allowClear  type="password"  placeholder="New Password Confirm" />
                                             {/*<span toggle="#password-confirm"*/}
                                             {/*      className="fa fa-fw fa-eye field-icon toggle-password"></span>*/}
                                         </Form.Item>
                                     </div>
                                     <div className="form-group">
-                                        <button id="submit" type="submit"
-                                                className="form-control btn btn-primary submit px-3">Register
+                                        <button type="submit"
+                                                className="form-control btn btn-primary submit px-3">Submit
                                         </button>
                                     </div>
                                     <div className="form-group d-md-flex">
                                         <div className="w-50 text-md-left ml-2">
-                                            <Link to="/forgot-password" style={{color:"#fff"}}>Forgot Password</Link>
+                                            <Link to="/" style={{color:"#fff"}}>Back to HOME</Link>
                                         </div>
                                         <div className="w-50 text-md-right mr-2">
                                             <Link to="/login" style={{color:"#fff"}}>Login</Link>
@@ -137,4 +107,4 @@ function Register() {
     )
 }
 
-export default Register
+export default ChangePassword
