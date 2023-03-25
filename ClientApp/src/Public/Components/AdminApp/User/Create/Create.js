@@ -1,6 +1,6 @@
 import React from 'react'
-import Header from '../../../Shared/Header/Header'
-import Sidebar from '../../../Shared/Sidebar/Sidebar'
+import Header from '../../../Shared/Admin/Header/Header'
+import Sidebar from '../../../Shared/Admin/Sidebar/Sidebar'
 import { Button, Form, Input, message } from 'antd'
 import { DatePicker, Space } from 'antd';
 import { useNavigate } from 'react-router-dom'

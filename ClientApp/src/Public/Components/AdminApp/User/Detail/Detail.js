@@ -2,8 +2,8 @@ import { Button, Form, Input, message } from 'antd';
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import accountService from '../../../Service/AccountService';
-import Header from '../../../Shared/Header/Header';
-import Sidebar from '../../../Shared/Sidebar/Sidebar';
+import Header from '../../../Shared/Admin/Header/Header';
+import Sidebar from '../../../Shared/Admin/Sidebar/Sidebar';
 
 
 function Detail() {

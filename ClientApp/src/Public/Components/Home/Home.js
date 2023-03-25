@@ -1,11 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import Navbar from '../Shared/Navbar/Navbar';
+import Navbar from '../Shared/Client/Navbar/Navbar';
+import Header from '../Shared/Client/Header/Header';
+import Footer from '../Shared/Client/Footer/Footer'
 import "./Home.scss"
 
 function Home() {
     return (
         <div>
+            <Header />
             <Navbar />
             <div id='home-page'>
                 <div className="banner-area">
@@ -18,6 +21,7 @@ function Home() {
                     </div>
                 </div>
             </div>
+            <Footer />
         </div>
     )
 }

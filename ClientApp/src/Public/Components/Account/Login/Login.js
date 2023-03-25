@@ -52,7 +52,7 @@ function Login() {
                                             ]}
                                             hasFeedback
                                         >
-                                            <Input allowClear type="text" class="form-control" placeholder="Username" />
+                                            <Input allowClear type="text" placeholder="Username" />
                                         </Form.Item>
                                     </div>
                                     <div className="form-group">
@@ -65,9 +65,9 @@ function Login() {
                                                 }
                                             ]}
                                         >
-                                            <Input allowClear type="password" class="form-control" placeholder="Password" />
-                                            <span toggle="#password-field"
-                                                  className="fa fa-fw fa-eye field-icon toggle-password"></span>
+                                            <Input allowClear type="password"  placeholder="Password" />
+                                            {/*<span toggle="#password-field"*/}
+                                            {/*      className="fa fa-fw fa-eye field-icon toggle-password"></span>*/}
                                         </Form.Item>
                                     </div>
                                     <div className="form-group">

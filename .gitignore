@@ -8,3 +8,11 @@ obj
 
 .idea/
 appsettings.json
+#
+*.DS_Store*
+Authorization/.DS_Store
+Dtos/.DS_Store
+Entities/.DS_Store
+Resources/.DS_Store
+Service/.DS_Store
+_mail_config/.DS_Store

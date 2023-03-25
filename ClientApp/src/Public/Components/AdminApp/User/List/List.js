@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import Header from '../../../Shared/Header/Header'
-import Sidebar from '../../../Shared/Sidebar/Sidebar'
+import Header from '../../../Shared/Admin/Header/Header'
+import Sidebar from '../../../Shared/Admin/Sidebar/Sidebar'
 import { Button, message, Table } from 'antd';
 import accountService from '../../../Service/AccountService';
 import { Link } from 'react-router-dom';
