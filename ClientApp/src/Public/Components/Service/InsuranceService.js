@@ -15,11 +15,11 @@ const API_ENDPOINT = {
 class InsuranceStatus {
     // USER
     listInsurance = () => {
-        return axios.post(BASE_URL_SERVER + API_ENDPOINT.LIST_INSURANCE);
+        return axios.get(BASE_URL_SERVER + API_ENDPOINT.LIST_INSURANCE);
     }
 
     detailInsurance = (id) => {
-        return axios.post(BASE_URL_SERVER + API_ENDPOINT.DETAIL_INSURANCE + id);
+        return axios.get(BASE_URL_SERVER + API_ENDPOINT.DETAIL_INSURANCE + id);
     }
     // ADMIN
     adminListInsurance = () => {
@@ -49,7 +49,7 @@ class InsuranceStatus {
                 'Authorization': `Bearer ${sessionStorage.getItem("accessToken")}`
             }
         };
-        return axios.delete(BASE_URL_SERVER + API_ENDPOINT.ADMIN_DETAIL_INSURANCE + id, config);
+        return axios.get(BASE_URL_SERVER + API_ENDPOINT.ADMIN_DETAIL_INSURANCE + id, config);
     }
 
     adminCreateInsurance = (data) => {
@@ -59,7 +59,7 @@ class InsuranceStatus {
                 'Authorization': `Bearer ${sessionStorage.getItem("accessToken")}`
             }
         };
-        return axios.put(BASE_URL_SERVER + API_ENDPOINT.ADMIN_POST_INSURANCE, data, config);
+        return axios.post(BASE_URL_SERVER + API_ENDPOINT.ADMIN_POST_INSURANCE, data, config);
     }
 
     adminUpdateInsurance = (id, data) => {
@@ -69,7 +69,7 @@ class InsuranceStatus {
                 'Authorization': `Bearer ${sessionStorage.getItem("accessToken")}`
             }
         };
-        return axios.get(BASE_URL_SERVER + API_ENDPOINT.ADMIN_UPDATE_INSURANCE + id, data, config)
+        return axios.put(BASE_URL_SERVER + API_ENDPOINT.ADMIN_UPDATE_INSURANCE + id, data, config)
     }
 
     adminDeleteInsurance = (id) => {
