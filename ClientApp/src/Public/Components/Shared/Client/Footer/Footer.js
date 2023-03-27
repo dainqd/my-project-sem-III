@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import img_icon_2_li from '../../../images/client/icon/icon-02-light.png'
+import logo from '../../../images/client/bannerAsset 1.png'
 
 function Footer() {
     return (
@@ -14,8 +14,9 @@ function Footer() {
                         <h1 className="text-white mb-4">
                             <img
                                 className="img-fluid me-3"
-                                src={img_icon_2_li}
+                                src={logo}
                                 alt=""
+                                style={{width:"80px"}}
                             />Insure
                         </h1>
                         <p>
