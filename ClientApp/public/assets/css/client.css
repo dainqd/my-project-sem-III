@@ -187,7 +187,7 @@
 }
 
 .page-header {
-    background: url(../img/carousel-1.jpg) center center no-repeat;
+    background: url(../public/assets/images/carousel-1.jpg) center center no-repeat;
     background-size: cover;
 }
 

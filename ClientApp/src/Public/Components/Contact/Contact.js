@@ -5,6 +5,7 @@ import contactService from '../Service/ContactService';
 import Header from "../Shared/Client/Header/Header";
 import Navbar from "../Shared/Client/Navbar/Navbar";
 import Footer from "../Shared/Client/Footer/Footer";
+import Background from '../images/client/carousel-1.jpg';
 
 function Contact() {
     const navigate = useNavigate();
@@ -23,7 +24,7 @@ function Contact() {
         await contactService.sendFeedback(data)
             .then((res) => {
                 console.log("send feedback", res.data)
-                message.success(`Send success! Thanks you very much!`)
+                alert(`Send success! Thanks you very much!`)
                 navigate("/contact")
             })
             .catch((err) => {
@@ -33,9 +34,25 @@ function Contact() {
     };
 
     return (
-        <div style={{backgroundColor:"rgb(211 201 201)"}}>
+        <div style={{backgroundColor:"#fff"}}>
             <Header />
             <Navbar />
+            <div
+                className="container-fluid page-header py-5 mb-5 wow fadeIn" style={{backgroundImage: `url(${Background})`}}
+                data-wow-delay="0.1s">
+                <div className="container py-5">
+                    <h1 className="display-4 animated slideInDown mb-4">Contact Us</h1>
+                    <nav aria-label="breadcrumb animated slideInDown">
+                        <ol className="breadcrumb mb-0">
+                            <li className="breadcrumb-item"><Link to="/">Home</Link></li>
+                            <li className="breadcrumb-item"><Link to="#">Pages</Link></li>
+                            <li className="breadcrumb-item active" aria-current="page">
+                                Contact Us
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
             <div className="container-xxl py-5">
                 <div className="container">
                     <div className="row g-5">
@@ -51,7 +68,7 @@ function Contact() {
                             </p>
                             <Form onFinish={onFinish}>
                                 <div className="row g-3">
-                                    <div className="col-12">
+                                    <div className="col-md-6">
                                         <div className="form-floating">
                                             <input
                                                 type="text"
@@ -59,10 +76,13 @@ function Contact() {
                                                 className="form-control"
                                                 placeholder="Your Name"
                                                 required=""
+                                                style={{border: "2px solid #ccc",
+                                                    borderRadius: "16px"}}
                                             />
+                                            <label htmlFor="name">Your Name</label>
                                         </div>
                                     </div>
-                                    <div className="col-12">
+                                    <div className="col-md-6">
                                         <div className="form-floating">
                                             <input
                                                 type="email"
@@ -70,7 +90,10 @@ function Contact() {
                                                 name="email"
                                                 className="form-control"
                                                 placeholder="Your Email"
+                                                style={{border: "2px solid #ccc",
+                                                    borderRadius: "16px"}}
                                             />
+                                            <label htmlFor="email">Your Email</label>
                                         </div>
                                     </div>
                                     <div className="col-12">
@@ -82,8 +105,10 @@ function Contact() {
                         id="message"
                         style={{height: "100px"}}
                         required=""
+                        style={{border: "2px solid #ccc",
+                            borderRadius: "16px"}}
                     ></textarea>
-
+                                            <label htmlFor="message">Message</label>
                                         </div>
                                     </div>
                                     <div className="col-12">
