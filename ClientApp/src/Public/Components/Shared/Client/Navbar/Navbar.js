@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Logout from '@mui/icons-material/Logout';
 import { message } from 'antd';
 
-import img_icon_2_pri from '../../../images/client/icon/icon-02-primary.png'
+import logo from '../../../images/client/bannerAsset 1.png'
 
 function NavbarClient() {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -52,7 +52,7 @@ function NavbarClient() {
                 <h1 className="m-0">
                     <img
                         className="img-fluid me-3"
-                        src={img_icon_2_pri}
+                        src={logo}
                         alt=""
                     />Insure
                 </h1>
@@ -69,7 +69,7 @@ function NavbarClient() {
                 <div className="navbar-nav mx-auto bg-light rounded pe-4 py-3 py-lg-0">
                     <Link to="/" className="nav-item nav-link">Home</Link>
                     <Link to="" className="nav-item nav-link">About Us</Link>
-                    <Link to="" className="nav-item nav-link">Our Services</Link>
+                    <Link to="/insurances" className="nav-item nav-link">Our Services</Link>
                     <div className="nav-item dropdown">
                         <Link
                             to="#"

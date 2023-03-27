@@ -13,6 +13,7 @@ import RegisterVerify from "./Components/Account/Register/RegisterVerify";
 import ForgotPassword from "./Components/Account/ForgotPassword/ForgotPassword";
 import ChangePassword from "./Components/Account/ForgotPassword/ChangePassword";
 import Contact from "./Components/Contact/Contact";
+import Insurance from "./Components/Insurance/Insurance";
 
 function Public() {
     return (
@@ -32,6 +33,8 @@ function Public() {
                 <Route path='/account/:id' element={<Detail />} />
                 <Route path='/*' element={<Error404 />} />
                 <Route path='/profile' element={<Profile />} />
+                // Insurance
+                <Route path='/insurances' element={<Insurance />} />
                 //
                 <Route path='/contact' element={<Contact />} />
             </Routes>
