@@ -12,6 +12,7 @@ import List from './Components/AdminApp/User/List/List'
 import RegisterVerify from "./Components/Account/Register/RegisterVerify";
 import ForgotPassword from "./Components/Account/ForgotPassword/ForgotPassword";
 import ChangePassword from "./Components/Account/ForgotPassword/ChangePassword";
+import Contact from "./Components/Contact/Contact";
 
 function Public() {
     return (
@@ -31,6 +32,8 @@ function Public() {
                 <Route path='/account/:id' element={<Detail />} />
                 <Route path='/*' element={<Error404 />} />
                 <Route path='/profile' element={<Profile />} />
+                //
+                <Route path='/contact' element={<Contact />} />
             </Routes>
         </div>
     )

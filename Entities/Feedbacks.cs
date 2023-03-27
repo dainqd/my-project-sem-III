@@ -12,6 +12,6 @@ public class Feedbacks : BaseEntity
     public int id { get; set; }
     public string fullname { get; set; }
     public string message { get; set; }
-    public string thumbnail { get; set; }
+    public string email { get; set; }
     public Enums.FeedbackStatus status =  Enums.FeedbackStatus.PENDING;
 }
