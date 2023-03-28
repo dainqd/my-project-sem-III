@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import insuranceService from '../Service/InsuranceService';
 import Header from "../Shared/Client/Header/Header";
 import Navbar from "../Shared/Client/Navbar/Navbar";
@@ -35,6 +35,8 @@ function Insurance() {
     }, []);
 
     data.forEach((insure, index) => {
+        var link = null;
+        link = "/insurances/detail/" + insure.id;
         list.push(
             <div className="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s" key={index}>
                 <div className="service-item rounded h-100 p-5">
@@ -55,13 +57,13 @@ function Insurance() {
                     <p className="mb-4">
                         {insure.description}
                     </p>
-                    <Link className="btn btn-light px-3" to="/">Read More</Link>
+                    <Link className="btn btn-light px-3" to={link}>Read More</Link>
                 </div>
             </div>,
         );
     });
 
-    return data.map((insure, index) =>
+    return (
         <div style={{backgroundColor:"#fff"}}>
             <Header />
             <Navbar />
