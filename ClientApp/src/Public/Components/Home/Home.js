@@ -190,7 +190,7 @@ function Home() {
                                 >More Details</Link>
                             </div>
                         </div>
-                        <div className="col-lg-6 facts-counter wow fadeIn" data-wow-delay="0.5s">
+                        <div className="col-lg-6 facts-counter wow fadeIn" data-wow-delay="0.2s">
                             <div className="h-100 px-4 pe-lg-0">
                                 <div className="row g-5">
                                     <div className="col-sm-6">
