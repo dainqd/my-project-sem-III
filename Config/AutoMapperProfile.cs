@@ -3,6 +3,7 @@ using myProject.Dtos.Auth;
 using myProject.Dtos.Customer;
 using myProject.Dtos.Feedback;
 using myProject.Dtos.Insurances;
+using myProject.Dtos.Member;
 using myProject.Dtos.Order;
 using myProject.Dtos.Payment;
 using myProject.Dtos.Permission;
@@ -94,6 +95,14 @@ public class AutoMapperProfile : Profile
         CreateMap<UpdateTransactionRequest, Transactions>();
         // Transactions -> TransactionResponse
         CreateMap<Transactions, TransactionResponse>();
+        
+        // Members
+        // CreateMemberRequest -> Members
+        CreateMap<CreateMemberRequest, Members>();
+        // UpdateMemberRequest -> Members
+        CreateMap<UpdateMemberRequest, Members>();
+        // Members -> MemberResponse
+        CreateMap<Members, MemberResponse>();
         
     }
 }

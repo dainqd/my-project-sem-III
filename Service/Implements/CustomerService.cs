@@ -40,7 +40,7 @@ public class CustomerService : ICustomerService
 
     public CustomerResponse GetByIdAndStatus(int id)
     {
-        return getInsurancesByIdAndStatus(id);
+        return getCustomerByIdAndStatus(id);
     }
 
     public void Update(int id, UpdateCustomerRequest model)
@@ -92,7 +92,7 @@ public class CustomerService : ICustomerService
         return customer;
     }
     
-    private CustomerResponse getInsurancesByIdAndStatus(int id)
+    private CustomerResponse getCustomerByIdAndStatus(int id)
     {
         var customer = _context.Customers.Find(id);
         if (customer == null || customer.status != Enums.CustomerStatus.ACTIVE)

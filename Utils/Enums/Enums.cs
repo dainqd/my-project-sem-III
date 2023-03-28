@@ -76,4 +76,11 @@ public class Enums
         PAID,
         DELETED
     }
+    
+    public enum MemberStatus
+    {
+        ACTIVE,
+        INACTIVE,
+        DELETED
+    }
 }

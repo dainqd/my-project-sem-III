@@ -96,6 +96,38 @@ public class DbInitializer
                 fullName = "John AS.", user_id = 2, email = "customer@gmail.com", phoneNumber = "046409665", status = Enums.CustomerStatus.ACTIVE
             }
         );
+        modelBuilder.Entity<Members>().HasData(
+            new Members()
+            {
+                id = 1, avatar = "https://img.myloview.com/stickers/default-avatar-profile-icon-vector-social-media-user-photo-700-205577532.jpg",
+                fullName = "Hoang Minh Hieu", email = "hieuhm@gmail.com", phoneNumber = "0986868686", status = Enums.MemberStatus.ACTIVE,
+                position = "Position", introduce = "Introduce", description = "Description"
+            },
+            new Members()
+            {
+                id = 2, avatar = "https://img.myloview.com/stickers/default-avatar-profile-icon-vector-social-media-user-photo-700-205577532.jpg",
+                fullName = "Ngo Quang Dai", email = "dainq@gmail.com", phoneNumber = "0898898998", status = Enums.MemberStatus.ACTIVE,
+                position = "Position", introduce = "Introduce", description = "Description"
+            },
+            new Members()
+            {
+                id = 3, avatar = "https://img.myloview.com/stickers/default-avatar-profile-icon-vector-social-media-user-photo-700-205577532.jpg",
+                fullName = "Bui Tuan Anh", email = "anhbt@gmail.com", phoneNumber = "0986868686", status = Enums.MemberStatus.ACTIVE,
+                position = "Position", introduce = "Introduce", description = "Description"
+            },
+            new Members()
+            {
+                id = 4, avatar = "https://img.myloview.com/stickers/default-avatar-profile-icon-vector-social-media-user-photo-700-205577532.jpg",
+                fullName = "Nguyen Ngoc Hung", email = "hungnn@gmail.com", phoneNumber = "0898898998", status = Enums.MemberStatus.ACTIVE,
+                position = "Position", introduce = "Introduce", description = "Description"
+            },
+            new Members()
+            {
+                id = 5, avatar = "https://img.myloview.com/stickers/default-avatar-profile-icon-vector-social-media-user-photo-700-205577532.jpg",
+                fullName = "Duong Cong Ke", email = "kedc@gmail.com", phoneNumber = "046409665", status = Enums.MemberStatus.ACTIVE,
+                position = "Position", introduce = "Introduce", description = "Description"
+            }
+        );
         // test bank transfer
         modelBuilder.Entity<TestBankTransfer>().HasData(
             new TestBankTransfer()

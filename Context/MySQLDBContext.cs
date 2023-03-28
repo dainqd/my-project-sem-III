@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using myProject.Entities;
 using myProject.Entities.Location;
 using myProject.Entities.PaymentInfo;
+using myProject.Utils.Enums;
 
 namespace myProject.Context;
 
@@ -20,6 +21,7 @@ public class MySQLDBContext : DbContext
     public DbSet<Location> Locations { get; set; }
     public DbSet<Province> Provinces { get; set; }
     public DbSet<City> Cities { get; set; }
+    public DbSet<Members> Members { get; set; }
     
     //
     public DbSet<TestBankTransfer> TestBankTransfers { get; set; }
