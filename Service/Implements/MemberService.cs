@@ -98,6 +98,7 @@ public class MemberService : IMemberService
     private MemberResponse getMemberByIdAndStatus(int id)
     {
         var member = _context.Members.Find(id);
+        Console.WriteLine(member.status);
         if (member == null || member.status != Enums.MemberStatus.ACTIVE)
         {
             throw new KeyNotFoundException("Member not found");   

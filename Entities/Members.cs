@@ -23,5 +23,5 @@ public class Members : BaseEntity
     public string introduce { get; set; } 
     // Mo ta, tom tat
     public string description { get; set; } = "";
-    public Enums.MemberStatus status =  Enums.MemberStatus.INACTIVE;
+    public Enums.MemberStatus status { get; set; } =  Enums.MemberStatus.INACTIVE;
 }
