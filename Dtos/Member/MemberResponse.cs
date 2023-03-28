@@ -13,6 +13,6 @@ public class MemberResponse
     public string birthday { get; set; } 
     public string gender { get; set; }
     public string introduce { get; set; } 
-    public string description { get; set; } 
-    public Enums.MemberStatus status =  Enums.MemberStatus.INACTIVE;
+    public string description { get; set; }
+    public Enums.MemberStatus status ;
 }

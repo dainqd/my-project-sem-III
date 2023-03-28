@@ -13,5 +13,5 @@ public class CreateMemberRequest
     public string gender { get; set; }
     public string introduce { get; set; } 
     public string description { get; set; } 
-    public Enums.MemberStatus status =  Enums.MemberStatus.INACTIVE;
+    public Enums.MemberStatus status;
 }
