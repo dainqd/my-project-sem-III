@@ -68,7 +68,7 @@ function NavbarClient() {
             <div className="collapse navbar-collapse" id="navbarCollapse">
                 <div className="navbar-nav mx-auto bg-light rounded pe-4 py-3 py-lg-0">
                     <Link to="/" className="nav-item nav-link">Home</Link>
-                    <Link to="" className="nav-item nav-link">About Us</Link>
+                    <Link to="/about-us" className="nav-item nav-link">About Us</Link>
                     <Link to="/insurances" className="nav-item nav-link">Our Services</Link>
                     <div className="nav-item dropdown">
                         <Link

@@ -12,7 +12,7 @@ const API_ENDPOINT = {
     ADMIN_UPDATE_INSURANCE: "/admin/api/insurances/",
     ADMIN_DELETE_INSURANCE: "/admin/api/insurances/",
 }
-class InsuranceStatus {
+class InsuranceService {
     // USER
     listInsurance = () => {
         return axios.get(BASE_URL_SERVER + API_ENDPOINT.LIST_INSURANCE);
@@ -82,5 +82,5 @@ class InsuranceStatus {
         return axios.delete(BASE_URL_SERVER + API_ENDPOINT.ADMIN_DELETE_INSURANCE + id, config);
     }
 }
-const insuranceStatus = new InsuranceStatus();
-export default insuranceStatus;
+const insuranceService = new InsuranceService();
+export default insuranceService;
