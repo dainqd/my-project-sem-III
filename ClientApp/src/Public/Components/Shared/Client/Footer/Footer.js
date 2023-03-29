@@ -20,8 +20,9 @@ function Footer() {
                             />Insure
                         </h1>
                         <p>
-                            Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat
-                            ipsum et lorem et sit, sed stet lorem sit clita
+                            FiveSuperHero Financial Group is one of the world's
+                            leading corporations in providing financial services,
+                            operating with a mission to help clients "Make Decisions, Live Life"
                         </p>
                         <div className="d-flex pt-2">
                             <Link className="btn btn-square me-1" to=""
@@ -48,15 +49,15 @@ function Footer() {
                     </div>
                     <div className="col-lg-3 col-md-6">
                         <h5 className="text-light mb-4">Quick Links</h5>
-                        <Link className="btn btn-link" to="">About Us</Link>
-                        <Link className="btn btn-link" to="">Contact Us</Link>
-                        <Link className="btn btn-link" to="">Our Services</Link>
+                        <Link className="btn btn-link" to="/about-ú">About Us</Link>
+                        <Link className="btn btn-link" to="/contact">Contact Us</Link>
+                        <Link className="btn btn-link" to="/insurance">Our Services</Link>
                         <Link className="btn btn-link" to="">Terms & Condition</Link>
                         <Link className="btn btn-link" to="">Support</Link>
                     </div>
                     <div className="col-lg-3 col-md-6">
                         <h5 className="text-light mb-4">Newsletter</h5>
-                        <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
+                        <p>FiveSuperHero Insurance launches “Step To Happiness” campaign to raise awareness about insurance.</p>
                         <div className="position-relative mx-auto" style={{maxWidth: "400px"}}>
                             <input
                                 className="form-control bg-transparent w-100 py-3 ps-4 pe-5"

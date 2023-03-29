@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { Link } from 'react-router-dom';
 import Navbar from '../Shared/Client/Navbar/Navbar';
 import Header from '../Shared/Client/Header/Header';
@@ -12,18 +12,66 @@ import img_profile from '../images/client/profile.jpg'
 import img_icon_6_pri from '../images/client/icon/icon-06-primary.png'
 import img_icon_7_pri from '../images/client/icon/icon-07-primary.png'
 import img_feature from '../images/client/feature.jpg'
-import img_icon_10_li from '../images/client/icon/icon-10-light.png'
-import img_icon_1_li from '../images/client/icon/icon-01-light.png'
-import img_icon_5_li from '../images/client/icon/icon-05-light.png'
-import img_icon_6_li from '../images/client/icon/icon-07-light.png'
-import img_icon_7_li from '../images/client/icon/icon-07-light.png'
-import img_icon_8_li from '../images/client/icon/icon-08-light.png'
-// import img_testimonial_1 from '../images/client/testimonial-1.jpg'
-// import img_testimonial_2 from '../images/client/testimonial-2.jpg'
-// import img_testimonial_3 from '../images/client/testimonial-3.jpg'
+import insuranceService from "../Service/InsuranceService";
 
 
 function Home() {
+    // const navigate = useNavigate();
+    const [data, setData] = useState([]);
+    const list = [];
+
+    const getListInsurance = async () => {
+        await insuranceService.listInsurance()
+            .then((res) => {
+                if (res.status === 200){
+                    console.log("data", res.data)
+                    // list = res.data;
+                    // console.log(list[0].name)
+                    console.log(res.data[1])
+                    setData(res.data)
+                } else {
+                    alert('Error')
+                }
+            })
+            .catch((err) => {
+                console.log(err)
+                alert("Error, Please try again!")
+            })
+    };
+
+    useEffect(() => {
+        getListInsurance();
+    }, []);
+
+    data.forEach((insure, index) => {
+        var link = null;
+        link = "/insurances/detail/" + insure.id;
+        list.push(
+            <div className="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s" key={index}>
+                <div className="service-item rounded h-100 p-5">
+                    <div className="d-flex align-items-center ms-n5 mb-4">
+                        <div
+                            className="service-icon flex-shrink-0 bg-primary rounded-end me-4"
+                        >
+                            <img
+                                className="img-fluid"
+                                src={insure.thumbnail}
+                                alt=""
+                            />
+                        </div>
+                        <h4 className="mb-0">
+                            {insure.name}
+                        </h4>
+                    </div>
+                    <p className="mb-4">
+                        {insure.description}
+                    </p>
+                    <Link className="btn btn-light px-3" to={link}>Read More</Link>
+                </div>
+            </div>,
+        );
+    });
+
     return (
         <div style={{backgroundColor:"#fff"}}>
             <Header />
@@ -129,8 +177,10 @@ function Home() {
                                     We're Here To Assist You With Exploring Protection
                                 </h1>
                                 <p className="fs-5 text-primary mb-4">
-                                    Aliqu diam amet diam et eos. Clita erat ipsum et lorem sed stet
-                                    lorem sit clita duo justo erat amet
+                                    At FiveSuperHero, we accompany our clients in making decisions about protecting their health,
+                                    increasing their assets and planning for the future.
+                                    Our digital transformation journey with huge investment in technology to bring innovative hedging solutions
+                                    and services to people so that they enjoy better life every day
                                 </p>
                                 <div className="row g-4 mb-4">
                                     <div className="col-sm-6">
@@ -155,9 +205,12 @@ function Home() {
                                     </div>
                                 </div>
                                 <p className="mb-4">
-                                    Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit.
-                                    Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit,
-                                    sed stet lorem sit clita duo justo magna dolore erat amet
+                                    With more than 1.5 million customers,
+                                    a team of professional consultants and strategic partners in the distribution
+                                    of insurance products and a network of 8000 offices around the world,
+                                    FiveSuperHero is proud of its 23-year history as one of the leading
+                                    insurance companies world -
+                                    Life insurance companies are trusted by the whole world.
                                 </p>
                                 <div className="border-top mt-4 pt-4">
                                     <div className="d-flex align-items-center">
@@ -180,11 +233,15 @@ function Home() {
                     <div className="row g-0 mx-lg-0">
                         <div className="col-lg-6 facts-text wow fadeIn" data-wow-delay="0.1s">
                             <div className="h-100 px-4 ps-lg-0">
-                                <h1 className="text-white mb-4">For Individuals And Organisations</h1>
+                                <h1 className="text-white mb-4"> FiveSuperHero Financial Group</h1>
                                 <p className="text-light mb-5">
-                                    Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit.
-                                    Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit,
-                                    sed stet lorem sit clita duo justo magna dolore erat amet
+                                    FiveSuperHero Financial Group is one of the world's
+                                    leading corporations in providing financial services,
+                                    operating with a mission to help clients "Make Decisions, Live Life".
+                                    Together with our international headquarters in Toronto,
+                                    Canada, we provide insurance and financial advisory services,
+                                    operating under the Manulife brand in Canada,
+                                    Asia and Europe, and John Hancock in the United States.
                                 </p>
                                 <Link to="" className="align-self-start btn btn-secondary py-3 px-5"
                                 >More Details</Link>
@@ -194,19 +251,19 @@ function Home() {
                             <div className="h-100 px-4 pe-lg-0">
                                 <div className="row g-5">
                                     <div className="col-sm-6">
-                                        <h1 className="display-5" data-toggle="counter-up">1234</h1>
+                                        <h1 className="display-5" data-toggle="counter-up">6368</h1>
                                         <p className="fs-5 text-primary">Happy Clients</p>
                                     </div>
                                     <div className="col-sm-6">
-                                        <h1 className="display-5" data-toggle="counter-up">1234</h1>
+                                        <h1 className="display-5" data-toggle="counter-up">3636</h1>
                                         <p className="fs-5 text-primary">Projects Succeed</p>
                                     </div>
                                     <div className="col-sm-6">
-                                        <h1 className="display-5" data-toggle="counter-up">1234</h1>
+                                        <h1 className="display-5" data-toggle="counter-up">1002</h1>
                                         <p className="fs-5 text-primary">Awards Achieved</p>
                                     </div>
                                     <div className="col-sm-6">
-                                        <h1 className="display-5" data-toggle="counter-up">1234</h1>
+                                        <h1 className="display-5" data-toggle="counter-up">2010</h1>
                                         <p className="fs-5 text-primary">Team Members</p>
                                     </div>
                                 </div>
@@ -222,9 +279,10 @@ function Home() {
                         <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                             <h1 className="display-6 mb-5">Few Reasons Why People Choosing Us!</h1>
                             <p className="mb-4">
-                                Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu
-                                diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet
-                                lorem sit clita duo justo magna dolore erat amet
+                                One of FiveSuperHero's priorities in the recently introduced 'Spread Impact'
+                                program is to open inclusive economic opportunities for all,
+                                promoting the upward mobility of minorities.
+                                and make financial solutions more accessible.
                             </p>
                             <div className="row g-3">
                                 <div className="col-sm-6 wow fadeIn" data-wow-delay="0.1s">
@@ -310,132 +368,7 @@ function Home() {
                         </h1>
                     </div>
                     <div className="row g-4 justify-content-center">
-                        <div className="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                            <div className="service-item rounded h-100 p-5">
-                                <div className="d-flex align-items-center ms-n5 mb-4">
-                                    <div
-                                        className="service-icon flex-shrink-0 bg-primary rounded-end me-4"
-                                    >
-                                        <img
-                                            className="img-fluid"
-                                            src={img_icon_10_li}
-                                            alt=""
-                                        />
-                                    </div>
-                                    <h4 className="mb-0">Life Insurance</h4>
-                                </div>
-                                <p className="mb-4">
-                                    Aliqu diam amet eos erat ipsum et lorem et sit, sed stet lorem
-                                    sit clita duo justo erat amet
-                                </p>
-                                <Link className="btn btn-light px-3" to="">Read More</Link>
-                            </div>
-                        </div>
-                        <div className="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                            <div className="service-item rounded h-100 p-5">
-                                <div className="d-flex align-items-center ms-n5 mb-4">
-                                    <div
-                                        className="service-icon flex-shrink-0 bg-primary rounded-end me-4"
-                                    >
-                                        <img
-                                            className="img-fluid"
-                                            src={img_icon_1_li}
-                                            alt=""
-                                        />
-                                    </div>
-                                    <h4 className="mb-0">Health Insurance</h4>
-                                </div>
-                                <p className="mb-4">
-                                    Aliqu diam amet eos erat ipsum et lorem et sit, sed stet lorem
-                                    sit clita duo justo erat amet
-                                </p>
-                                <Link className="btn btn-light px-3" to="">Read More</Link>
-                            </div>
-                        </div>
-                        <div className="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                            <div className="service-item rounded h-100 p-5">
-                                <div className="d-flex align-items-center ms-n5 mb-4">
-                                    <div
-                                        className="service-icon flex-shrink-0 bg-primary rounded-end me-4"
-                                    >
-                                        <img
-                                            className="img-fluid"
-                                            src={img_icon_5_li}
-                                            alt=""
-                                        />
-                                    </div>
-                                    <h4 className="mb-0">Home Insurance</h4>
-                                </div>
-                                <p className="mb-4">
-                                    Aliqu diam amet eos erat ipsum et lorem et sit, sed stet lorem
-                                    sit clita duo justo erat amet
-                                </p>
-                                <Link className="btn btn-light px-3" to="">Read More</Link>
-                            </div>
-                        </div>
-                        <div className="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                            <div className="service-item rounded h-100 p-5">
-                                <div className="d-flex align-items-center ms-n5 mb-4">
-                                    <div
-                                        className="service-icon flex-shrink-0 bg-primary rounded-end me-4"
-                                    >
-                                        <img
-                                            className="img-fluid"
-                                            src={img_icon_8_li}
-                                            alt=""
-                                        />
-                                    </div>
-                                    <h4 className="mb-0">Vehicle Insurance</h4>
-                                </div>
-                                <p className="mb-4">
-                                    Aliqu diam amet eos erat ipsum et lorem et sit, sed stet lorem
-                                    sit clita duo justo erat amet
-                                </p>
-                                <Link className="btn btn-light px-3" to="">Read More</Link>
-                            </div>
-                        </div>
-                        <div className="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                            <div className="service-item rounded h-100 p-5">
-                                <div className="d-flex align-items-center ms-n5 mb-4">
-                                    <div
-                                        className="service-icon flex-shrink-0 bg-primary rounded-end me-4"
-                                    >
-                                        <img
-                                            className="img-fluid"
-                                            src={img_icon_7_li}
-                                            alt=""
-                                        />
-                                    </div>
-                                    <h4 className="mb-0">Business Insurance</h4>
-                                </div>
-                                <p className="mb-4">
-                                    Aliqu diam amet eos erat ipsum et lorem et sit, sed stet lorem
-                                    sit clita duo justo erat amet
-                                </p>
-                                <Link className="btn btn-light px-3" to="">Read More</Link>
-                            </div>
-                        </div>
-                        <div className="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                            <div className="service-item rounded h-100 p-5">
-                                <div className="d-flex align-items-center ms-n5 mb-4">
-                                    <div
-                                        className="service-icon flex-shrink-0 bg-primary rounded-end me-4"
-                                    >
-                                        <img
-                                            className="img-fluid"
-                                            src={img_icon_6_li}
-                                            alt=""
-                                        />
-                                    </div>
-                                    <h4 className="mb-0">Property Insurance</h4>
-                                </div>
-                                <p className="mb-4">
-                                    Aliqu diam amet eos erat ipsum et lorem et sit, sed stet lorem
-                                    sit clita duo justo erat amet
-                                </p>
-                                <Link className="btn btn-light px-3" to="">Read More</Link>
-                            </div>
-                        </div>
+                        {list}
                     </div>
                 </div>
             </div>
@@ -501,6 +434,7 @@ function Home() {
                                                     className="form-control"
                                                     id="cname"
                                                     placeholder="Child Name"
+                                                    style={{color:"#000"}}
                                                 />
                                                 <label for="cname">Your Mobile</label>
                                             </div>
@@ -539,218 +473,6 @@ function Home() {
                     </div>
                 </div>
             </div>
-            
-            {/*<div className="container-xxl py-5">*/}
-            {/*    <div className="container">*/}
-            {/*        <div className="text-center mx-auto" style={{maxWidth: "500px"}}>*/}
-            {/*            <h1 className="display-6 mb-5">Meet Our Professional Team Members</h1>*/}
-            {/*        </div>*/}
-            {/*        <div className="row g-4">*/}
-            {/*            <div className="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">*/}
-            {/*                <div className="team-item rounded">*/}
-            {/*                    <img className="img-fluid" src={img_team_1} alt="" />*/}
-            {/*                    <div className="text-center p-4">*/}
-            {/*                        <h5>Full Name</h5>*/}
-            {/*                        <span>Designation</span>*/}
-            {/*                    </div>*/}
-            {/*                    <div className="team-text text-center bg-white p-4">*/}
-            {/*                        <h5>Full Name</h5>*/}
-            {/*                        <p>Designation</p>*/}
-            {/*                        <div className="d-flex justify-content-center">*/}
-            {/*                            <Link className="btn btn-square btn-light m-1" to=""*/}
-            {/*                            ><i className="fab fa-twitter"></i*/}
-            {/*                            ></Link>*/}
-            {/*                            <Link className="btn btn-square btn-light m-1" to=""*/}
-            {/*                            ><i className="fab fa-facebook-f"></i*/}
-            {/*                            ></Link>*/}
-            {/*                            <Link className="btn btn-square btn-light m-1" to=""*/}
-            {/*                            ><i className="fab fa-youtube"></i*/}
-            {/*                            ></Link>*/}
-            {/*                            <Link className="btn btn-square btn-light m-1" to=""*/}
-            {/*                            ><i className="fab fa-linkedin-in"></i*/}
-            {/*                            ></Link>*/}
-            {/*                        </div>*/}
-            {/*                    </div>*/}
-            {/*                </div>*/}
-            {/*            </div>*/}
-            {/*            <div className="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">*/}
-            {/*                <div className="team-item rounded">*/}
-            {/*                    <img className="img-fluid" src="../images/client/team-2.jpg" alt="" />*/}
-            {/*                    <div className="text-center p-4">*/}
-            {/*                        <h5>Full Name</h5>*/}
-            {/*                        <span>Designation</span>*/}
-            {/*                    </div>*/}
-            {/*                    <div className="team-text text-center bg-white p-4">*/}
-            {/*                        <h5>Full Name</h5>*/}
-            {/*                        <p>Designation</p>*/}
-            {/*                        <div className="d-flex justify-content-center">*/}
-            {/*                            <Link className="btn btn-square btn-light m-1" to=""*/}
-            {/*                            ><i className="fab fa-twitter"></i*/}
-            {/*                            ></Link>*/}
-            {/*                            <Link className="btn btn-square btn-light m-1" to=""*/}
-            {/*                            ><i className="fab fa-facebook-f"></i*/}
-            {/*                            ></Link>*/}
-            {/*                            <Link className="btn btn-square btn-light m-1" to=""*/}
-            {/*                            ><i className="fab fa-youtube"></i*/}
-            {/*                            ></Link>*/}
-            {/*                            <Link className="btn btn-square btn-light m-1" to=""*/}
-            {/*                            ><i className="fab fa-linkedin-in"></i*/}
-            {/*                            ></Link>*/}
-            {/*                        </div>*/}
-            {/*                    </div>*/}
-            {/*                </div>*/}
-            {/*            </div>*/}
-            {/*            <div className="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">*/}
-            {/*                <div className="team-item rounded">*/}
-            {/*                    <img className="img-fluid" src="../images/client/team-3.jpg" alt="" />*/}
-            {/*                    <div className="text-center p-4">*/}
-            {/*                        <h5>Full Name</h5>*/}
-            {/*                        <span>Designation</span>*/}
-            {/*                    </div>*/}
-            {/*                    <div className="team-text text-center bg-white p-4">*/}
-            {/*                        <h5>Full Name</h5>*/}
-            {/*                        <p>Designation</p>*/}
-            {/*                        <div className="d-flex justify-content-center">*/}
-            {/*                            <Link className="btn btn-square btn-light m-1" to=""*/}
-            {/*                            ><i className="fab fa-twitter"></i*/}
-            {/*                            ></Link>*/}
-            {/*                            <Link className="btn btn-square btn-light m-1" to=""*/}
-            {/*                            ><i className="fab fa-facebook-f"></i*/}
-            {/*                            ></Link>*/}
-            {/*                            <Link className="btn btn-square btn-light m-1" to=""*/}
-            {/*                            ><i className="fab fa-youtube"></i*/}
-            {/*                            ></Link>*/}
-            {/*                            <Link className="btn btn-square btn-light m-1" to=""*/}
-            {/*                            ><i className="fab fa-linkedin-in"></i*/}
-            {/*                            ></Link>*/}
-            {/*                        </div>*/}
-            {/*                    </div>*/}
-            {/*                </div>*/}
-            {/*            </div>*/}
-            {/*            <div className="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">*/}
-            {/*                <div className="team-item rounded">*/}
-            {/*                    <img className="img-fluid" src="../images/client/team-4.jpg" alt="" />*/}
-            {/*                    <div className="text-center p-4">*/}
-            {/*                        <h5>Full Name</h5>*/}
-            {/*                        <span>Designation</span>*/}
-            {/*                    </div>*/}
-            {/*                    <div className="team-text text-center bg-white p-4">*/}
-            {/*                        <h5>Full Name</h5>*/}
-            {/*                        <p>Designation</p>*/}
-            {/*                        <div className="d-flex justify-content-center">*/}
-            {/*                            <Link className="btn btn-square btn-light m-1" to=""*/}
-            {/*                            ><i className="fab fa-twitter"></i*/}
-            {/*                            ></Link>*/}
-            {/*                            <Link className="btn btn-square btn-light m-1" to=""*/}
-            {/*                            ><i className="fab fa-facebook-f"></i*/}
-            {/*                            ></Link>*/}
-            {/*                            <Link className="btn btn-square btn-light m-1" to=""*/}
-            {/*                            ><i className="fab fa-youtube"></i*/}
-            {/*                            ></Link>*/}
-            {/*                            <Link className="btn btn-square btn-light m-1" to=""*/}
-            {/*                            ><i className="fab fa-linkedin-in"></i*/}
-            {/*                            ></Link>*/}
-            {/*                        </div>*/}
-            {/*                    </div>*/}
-            {/*                </div>*/}
-            {/*            </div>*/}
-            {/*        </div>*/}
-            {/*    </div>*/}
-            {/*</div>*/}
-            
-            {/*<div className="container-xxl py-5">*/}
-            {/*    <div className="container">*/}
-            {/*        <div className="text-center mx-auto" style={{maxWidth: "500px"}}>*/}
-            {/*            <h1 className="display-6 mb-5">What They Say About Our Insurance</h1>*/}
-            {/*        </div>*/}
-            {/*        <div className="row g-5">*/}
-            {/*            <div className="col-lg-3 d-none d-lg-block">*/}
-            {/*                <div className="testimonial-left h-100">*/}
-            {/*                    <img*/}
-            {/*                        className="img-fluid animated pulse infinite"*/}
-            {/*                        src={img_testimonial_1}*/}
-            {/*                        alt=""*/}
-            {/*                    />*/}
-            {/*                    <img*/}
-            {/*                        className="img-fluid animated pulse infinite"*/}
-            {/*                        src={img_testimonial_2}*/}
-            {/*                        alt=""*/}
-            {/*                    />*/}
-            {/*                    <img*/}
-            {/*                        className="img-fluid animated pulse infinite"*/}
-            {/*                        src={img_testimonial_3}*/}
-            {/*                        alt=""*/}
-            {/*                    />*/}
-            {/*                </div>*/}
-            {/*            </div>*/}
-            {/*            <div className="col-lg-6 wow fadeIn" data-wow-delay="0.5s">*/}
-            {/*                <div className="owl-carousel testimonial-carousel">*/}
-            {/*                    <div className="testimonial-item text-center">*/}
-            {/*                        <img*/}
-            {/*                            className="img-fluid rounded mx-auto mb-4"*/}
-            {/*                            src={img_testimonial_1}*/}
-            {/*                            alt=""*/}
-            {/*                        />*/}
-            {/*                        <p className="fs-5">*/}
-            {/*                            Dolores sed duo clita tempor justo dolor et stet lorem kasd*/}
-            {/*                            labore dolore lorem ipsum. At lorem lorem magna ut et, nonumy*/}
-            {/*                            et labore et tempor diam tempor erat.*/}
-            {/*                        </p>*/}
-            {/*                        <h5>Client Name</h5>*/}
-            {/*                        <span>Profession</span>*/}
-            {/*                    </div>*/}
-            {/*                    <div className="testimonial-item text-center">*/}
-            {/*                        <img*/}
-            {/*                            className="img-fluid rounded mx-auto mb-4"*/}
-            {/*                            src={img_testimonial_2}*/}
-            {/*                            alt=""*/}
-            {/*                        />*/}
-            {/*                        <p className="fs-5">*/}
-            {/*                            Dolores sed duo clita tempor justo dolor et stet lorem kasd*/}
-            {/*                            labore dolore lorem ipsum. At lorem lorem magna ut et, nonumy*/}
-            {/*                            et labore et tempor diam tempor erat.*/}
-            {/*                        </p>*/}
-            {/*                        <h5>Client Name</h5>*/}
-            {/*                        <span>Profession</span>*/}
-            {/*                    </div>*/}
-            {/*                    <div className="testimonial-item text-center">*/}
-            {/*                        <img*/}
-            {/*                            className="img-fluid rounded mx-auto mb-4"*/}
-            {/*                            src={img_testimonial_3}*/}
-            {/*                            alt=""*/}
-            {/*                        />*/}
-            {/*                        <p className="fs-5">*/}
-            {/*                            Dolores sed duo clita tempor justo dolor et stet lorem kasd*/}
-            {/*                            labore dolore lorem ipsum. At lorem lorem magna ut et, nonumy*/}
-            {/*                            et labore et tempor diam tempor erat.*/}
-            {/*                        </p>*/}
-            {/*                        <h5>Client Name</h5>*/}
-            {/*                        <span>Profession</span>*/}
-            {/*                    </div>*/}
-            {/*                </div>*/}
-            {/*            </div>*/}
-            {/*            <div className="col-lg-3 d-none d-lg-block">*/}
-            {/*                <div className="testimonial-right h-100">*/}
-            {/*                    <img*/}
-            {/*                        className="img-fluid animated pulse infinite"*/}
-            {/*                        src={img_testimonial_1}*/}
-            {/*                        alt=""*/}
-            {/*                    />*/}
-            {/*                    <img*/}
-            {/*                        className="img-fluid animated pulse infinite"*/}
-            {/*                        src={img_testimonial_2}*/}
-            {/*                        alt=""*/}
-            {/*                    />*/}
-            {/*                    <img*/}
-            {/*                        className="img-fluid animated pulse infinite"*/}
-            {/*                        src={img_testimonial_3}*/}
-            {/*                        alt=""*/}
-            {/*                    />*/}
-            {/*                </div>*/}
-            {/*            </div>*/}
-            {/*        </div>*/}
-            {/*    </div>*/}
-            {/*</div>*/}
             
             <Footer />
         </div>
