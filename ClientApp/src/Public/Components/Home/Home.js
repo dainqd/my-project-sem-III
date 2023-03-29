@@ -90,8 +90,9 @@ function Home() {
                                                 Insurance Creates Wealth For Everyone
                                             </h1>
                                             <p className="fs-5 text-body mb-5">
-                                                Clita erat ipsum et lorem et sit, sed stet lorem sit clita
-                                                duo justo magna dolore erat amet
+                                                FiveSuperHero life insurance company offers a variety of
+                                                financial protection solutions with practical benefits,
+                                                quick settlement of insurance benefits.
                                             </p>
                                             <Link to="" className="btn btn-primary py-3 px-5"
                                             >More Details</Link>
@@ -111,8 +112,9 @@ function Home() {
                                                 The Best Insurance Begins Here
                                             </h1>
                                             <p className="fs-5 text-body mb-5">
-                                                Clita erat ipsum et lorem et sit, sed stet lorem sit clita
-                                                duo justo magna dolore erat amet
+                                                FiveSuperHero life insurance company offers a variety of financial
+                                                protection solutions with practical benefits,
+                                                quick settlement of insurance benefits.
                                             </p>
                                             <Link to="" className="btn btn-primary py-3 px-5"
                                             >More Details</Link>
