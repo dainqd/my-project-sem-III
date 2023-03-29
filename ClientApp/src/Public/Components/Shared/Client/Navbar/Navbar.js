@@ -24,7 +24,7 @@ function NavbarClient() {
     const handlelogout = () => {
         sessionStorage.clear();
         message.success("Logout")
-        navigate("/login")
+        navigate("/")
     }
 
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -78,16 +78,28 @@ function NavbarClient() {
                         >Pages</Link
                         >
                         <div className="dropdown-menu bg-light border-0 m-0">
-                            <Link to="feature.html" className="dropdown-item">Features</Link>
-                            <Link to="appointment.html" className="dropdown-item">Appointment</Link>
-                            <Link to="team.html" className="dropdown-item">Team Members</Link>
-                            <Link to="testimonial.html" className="dropdown-item">Testimonial</Link>
+                            <Link to="/feature" className="dropdown-item">Features</Link>
+                            <Link to="/appointment" className="dropdown-item">Appointment</Link>
+                            <Link to="/team" className="dropdown-item">Team Members</Link>
+                            <Link to="/news" className="dropdown-item">News</Link>
                         </div>
                     </div>
                     <Link to="/contact" className="nav-item nav-link">Contact Us</Link>
                 </div>
             </div>
-            <Link to={isLogin ? '/profile' : '/Login'} className="btn btn-primary px-3 d-none d-lg-block">{isLogin ? AuthName : 'Login'}</Link>
+                {/*<Link id="link-or-auth" to={isLogin ? '/' : '/Login'} className="btn btn-primary px-3 d-none d-lg-block">{isLogin ? AuthName : 'Login'}</Link>*/}
+            <div className="nav-item dropdown">
+                <Link
+                    to={isLogin ? '#' : '/Login'}
+                    className="btn btn-primary px-3 d-none d-lg-block dropdown-toggle active"
+                    data-bs-toggle="dropdown"
+                >{isLogin ? AuthName : 'Login'}</Link>
+                <div className="dropdown-menu bg-light border-0 m-0">
+                    <Link to="/profile" className="dropdown-item">Profile</Link>
+                    <Link to="/setting" className="dropdown-item">Setting</Link>
+                    <Link to="/" onClick={handlelogout} className="dropdown-item">Logout</Link>
+                </div>
+            </div>
         </nav>
     )
 }
