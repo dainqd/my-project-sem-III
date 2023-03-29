@@ -15,6 +15,7 @@ import ChangePassword from "./Components/Account/ForgotPassword/ChangePassword";
 import Contact from "./Components/Contact/Contact";
 import Insurance from "./Components/Insurance/Insurance";
 import Member from "./Components/AboutUs/Member";
+import Feature from "./Components/Feature/Feature";
 
 function Public() {
     return (
@@ -40,6 +41,7 @@ function Public() {
                 <Route path='/contact' element={<Contact />} />
                 //
                 <Route path='/about-us' element={<Member />} />
+                <Route path='/features' element={<Feature />} />
             </Routes>
         </div>
     )
