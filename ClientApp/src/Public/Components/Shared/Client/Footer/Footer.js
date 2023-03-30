@@ -42,18 +42,19 @@ function Footer() {
                     <div className="col-lg-3 col-md-6">
                         <h5 className="text-light mb-4">Address</h5>
                         <p>
-                            <i className="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA
+                            <i className="fa fa-map-marker-alt me-3"></i>
+                            No. 8 Ton That Thuyet, My Dinh Ward, Tu Liem District, Hanoi
                         </p>
                         <p><i className="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                        <p><i className="fa fa-envelope me-3"></i>info@example.com</p>
+                        <p><i className="fa fa-envelope me-3"></i>support@gmail.com</p>
                     </div>
                     <div className="col-lg-3 col-md-6">
                         <h5 className="text-light mb-4">Quick Links</h5>
-                        <Link className="btn btn-link" to="/about-ú">About Us</Link>
+                        <Link className="btn btn-link" to="/about-us">About Us</Link>
                         <Link className="btn btn-link" to="/contact">Contact Us</Link>
-                        <Link className="btn btn-link" to="/insurance">Our Services</Link>
-                        <Link className="btn btn-link" to="">Terms & Condition</Link>
-                        <Link className="btn btn-link" to="">Support</Link>
+                        <Link className="btn btn-link" to="/insurances">Our Services</Link>
+                        <Link className="btn btn-link" to="/teams">Terms & Condition</Link>
+                        <Link className="btn btn-link" to="/appointment">Support</Link>
                     </div>
                     <div className="col-lg-3 col-md-6">
                         <h5 className="text-light mb-4">Newsletter</h5>

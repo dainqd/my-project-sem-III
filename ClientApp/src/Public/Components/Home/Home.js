@@ -13,12 +13,40 @@ import img_icon_6_pri from '../images/client/icon/icon-06-primary.png'
 import img_icon_7_pri from '../images/client/icon/icon-07-primary.png'
 import img_feature from '../images/client/feature.jpg'
 import insuranceService from "../Service/InsuranceService";
+import appointmentService from "../Service/AppointmentService";
+import {Form, message} from "antd";
 
 
 function Home() {
     // const navigate = useNavigate();
     const [data, setData] = useState([]);
     const list = [];
+    const insurance = [];
+
+    const onFinish = async (values) => {
+        var fullName = document.getElementById("fullname").value;
+        var email = document.getElementById("gmail").value;
+        var messages = document.getElementById("message").value;
+        var insuranceId = document.getElementById("insurance").value;
+        var phoneNumber = document.getElementById("phonenumber").value;
+
+        let data = {
+            fullname: fullName,
+            insurance_id: insuranceId,
+            email: email,
+            phone: phoneNumber,
+            message: messages
+        }
+        await appointmentService.createAppointment(data)
+            .then((res) => {
+                console.log("Appointment", res.data)
+                alert('Thank you for trusting us!')
+            })
+            .catch((err) => {
+                console.log(err)
+                message.error("Error, Please try again!")
+            })
+    };
 
     const getListInsurance = async () => {
         await insuranceService.listInsurance()
@@ -69,6 +97,12 @@ function Home() {
                     <Link className="btn btn-light px-3" to={link}>Read More</Link>
                 </div>
             </div>,
+        );
+    });
+
+    data.forEach((insure, index) => {
+        insurance.push(
+            <option value={insure.id} key={index}>{insure.name}</option>
         );
     });
 
@@ -374,7 +408,7 @@ function Home() {
                     </div>
                 </div>
             </div>
-            
+
             <div
                 className="container-fluid appointment my-5 py-5 wow fadeIn"
                 data-wow-delay="0.1s"
@@ -404,62 +438,63 @@ function Home() {
                         </div>
                         <div className="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
                             <div className="bg-white rounded p-5">
-                                <form>
+                                <Form onFinish={onFinish}>
                                     <div className="row g-3">
                                         <div className="col-sm-6">
-                                            <div className="form-floating">
+                                            <label htmlFor="gname">Your Name: </label>
+                                            <div className="">
                                                 <input
                                                     type="text"
                                                     className="form-control"
-                                                    id="gname"
-                                                    placeholder="Gurdian Name"
+                                                    id="fullname"
+                                                    placeholder="Your Name"
+                                                    required=""
                                                 />
-                                                <label for="gname">Your Name</label>
                                             </div>
                                         </div>
                                         <div className="col-sm-6">
-                                            <div className="form-floating">
+                                            <label htmlFor="gmail">Your Email: </label>
+                                            <div className="">
                                                 <input
                                                     type="email"
                                                     className="form-control"
                                                     id="gmail"
-                                                    placeholder="Gurdian Email"
+                                                    placeholder="Your Email"
+                                                    required=""
                                                 />
-                                                <label for="gmail">Your Email</label>
                                             </div>
                                         </div>
                                         <div className="col-sm-6">
-                                            <div className="form-floating">
+                                            <label htmlFor="cname">Your Mobile: </label>
+                                            <div className="">
                                                 <input
                                                     type="text"
                                                     className="form-control"
-                                                    id="cname"
-                                                    placeholder="Child Name"
-                                                    style={{color:"#000"}}
+                                                    id="phonenumber"
+                                                    placeholder="Your Name"
+                                                    style={{color: "#000"}}
+                                                    required=""
                                                 />
-                                                <label for="cname">Your Mobile</label>
                                             </div>
                                         </div>
                                         <div className="col-sm-6">
-                                            <div className="form-floating">
-                                                <input
-                                                    type="text"
-                                                    className="form-control"
-                                                    id="cage"
-                                                    placeholder="Child Age"
-                                                />
-                                                <label for="cage">Service Type</label>
+                                            <label htmlFor="cage">Service Type: </label>
+                                            <div className="">
+                                                <select id="insurance" className="form-control">
+                                                    {insurance}
+                                                </select>
                                             </div>
                                         </div>
                                         <div className="col-12">
-                                            <div className="form-floating">
+                                            <label htmlFor="message">Message: </label>
+                                            <div className="">
                       <textarea
                           className="form-control"
                           placeholder="Leave a message here"
                           id="message"
                           style={{height: "80px"}}
+                          required=""
                       ></textarea>
-                                                <label for="message">Message</label>
                                             </div>
                                         </div>
                                         <div className="col-12">
@@ -468,7 +503,7 @@ function Home() {
                                             </button>
                                         </div>
                                     </div>
-                                </form>
+                                </Form>
                             </div>
                         </div>
                     </div>
