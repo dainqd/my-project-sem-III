@@ -386,11 +386,10 @@ function Home() {
                                 We're Award Winning Insurance Company
                             </h1>
                             <p className="text-white mb-5">
-                                Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed
-                                stet lorem sit clita duo justo magna dolore erat amet. Tempor erat
-                                elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet
-                                diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit
-                                clita duo justo magna.
+                                The purpose of FiveSuperHero is to help people achieve the best in life.
+                                FiveSuperHero provides a comprehensive healthcare solution at a reasonable cost,
+                                helping to protect finances and increase assets,
+                                and help people plan energy savings for life goals.
                             </p>
                             <div className="bg-white rounded p-3">
                                 <div className="d-flex align-items-center bg-primary rounded p-3">
