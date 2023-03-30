@@ -74,6 +74,11 @@ public class AppointmentService : IAppointmentService
             throw new AppException("Name invalid!");
         }
         
+        if (model.insurance_id == null)
+        {
+            throw new AppException("Insurance invalid!");
+        }
+        
         if (model.email == null)
         {
             throw new AppException("Email invalid!");
@@ -82,6 +87,13 @@ public class AppointmentService : IAppointmentService
         if (model.phone == null)
         {
             throw new AppException("Phone invalid!");
+        }
+
+        var insurance = _context.Insurances.Find(model.insurance_id);
+        
+        if (insurance == null || insurance.status != Enums.InsuranceStatus.ACTIVE)
+        {
+            throw new AppException("Insurance not found!");
         }
         
         appointment.CreatedAt = DateTimeOffset.Now.AddHours(7);
