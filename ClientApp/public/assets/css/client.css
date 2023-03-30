@@ -7,11 +7,11 @@
 }
 
 input, select, textarea{
-    color: #6c757d !important;
+    color: #15233C !important;
 }
 
 textarea:focus, input:focus {
-    color: #6c757d !important;
+    color: #15233C !important;
 }
 
 .back-to-top {

@@ -14,5 +14,6 @@ public class Appointments : BaseEntity
     public int insurance_id { get; set; }
     public string email { get; set; }
     public string phone { get; set; }
+    public string message { get; set; } = "";
     public Enums.AppointmentStatus status { get; set; } =  Enums.AppointmentStatus.ACTIVE;
 }
