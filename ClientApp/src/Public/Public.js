@@ -18,6 +18,7 @@ import Member from "./Components/AboutUs/Member";
 import Features from "./Components/Feature/Features";
 import {Apartment} from "@mui/icons-material";
 import Appointment from "./Components/Appointment/Appointment";
+import Team from "./Components/Member/Member";
 
 function Public() {
     return (
@@ -47,6 +48,8 @@ function Public() {
                 <Route path='/features' element={<Features />} />
                 //
                 <Route path='/appointment' element={<Appointment />} />
+                //
+                <Route path='/teams' element={<Team />} />
             </Routes>
         </div>
     )
