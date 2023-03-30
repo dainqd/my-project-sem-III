@@ -1,4 +1,5 @@
 using AutoMapper;
+using myProject.Dtos.Appointment;
 using myProject.Dtos.Auth;
 using myProject.Dtos.Customer;
 using myProject.Dtos.Feedback;
@@ -104,5 +105,8 @@ public class AutoMapperProfile : Profile
         // Members -> MemberResponse
         CreateMap<Members, MemberResponse>();
         
+        // Appointments
+        // CreateAppointmentRequest -> Appointments
+        CreateMap<CreateAppointmentRequest, Appointments>();
     }
 }

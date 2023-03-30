@@ -84,6 +84,7 @@ services.AddScoped<IOrderService, OrderService>();
 services.AddScoped<IPaymentService, PaymentService>();
 services.AddScoped<ITransactionService, TransactionService>();
 services.AddScoped<IMemberService, MemberService>();
+services.AddScoped<IAppointmentService, AppointmentService>();
 
 builder.Services.AddTransient<IBufferedFileUploadService, BufferedFileUploadLocalService>();
 
