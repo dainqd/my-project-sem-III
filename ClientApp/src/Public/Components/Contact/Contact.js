@@ -61,10 +61,9 @@ function Contact() {
                                 If You Have Any Query, Please Contact Us
                             </h1>
                             <p className="mb-4">
-                                The contact form is currently inactive. Get a functional and
-                                working contact form with Ajax & PHP in a few minutes. Just copy
-                                and paste the files, add a little code and you're done.
-                                <Link to="">Download Now</Link>.
+                                If you have something to say to us,
+                                please leave your complete information in the form below,
+                                FiveSuperHero always listens and understands you like a family.
                             </p>
                             <Form onFinish={onFinish}>
                                 <div className="row g-3">

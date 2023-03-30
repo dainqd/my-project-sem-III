@@ -38,7 +38,7 @@ function Insurance() {
         var link = null;
         link = "/insurances/detail/" + insure.id;
         list.push(
-            <div className="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s" key={index}>
+            <div className="col-lg-5 col-md-6 wow fadeInUp" data-wow-delay="0.1s" key={index}>
                 <div className="service-item rounded h-100 p-5">
                     <div className="d-flex align-items-center ms-n5 mb-4">
                         <div
