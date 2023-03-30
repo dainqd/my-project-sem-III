@@ -78,7 +78,7 @@ function NavbarClient() {
                         >Pages</Link
                         >
                         <div className="dropdown-menu bg-light border-0 m-0">
-                            <Link to="/feature" className="dropdown-item">Features</Link>
+                            <Link to="/features" className="dropdown-item">Features</Link>
                             <Link to="/appointment" className="dropdown-item">Appointment</Link>
                             <Link to="/team" className="dropdown-item">Team Members</Link>
                             <Link to="/news" className="dropdown-item">News</Link>
