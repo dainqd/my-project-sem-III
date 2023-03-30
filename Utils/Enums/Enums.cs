@@ -83,4 +83,11 @@ public class Enums
         INACTIVE,
         DELETED
     }
+    
+    public enum AppointmentStatus
+    {
+        ACTIVE,
+        INACTIVE,
+        DELETED 
+    }
 }

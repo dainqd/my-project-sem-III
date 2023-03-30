@@ -22,6 +22,7 @@ public class MySQLDBContext : DbContext
     public DbSet<Province> Provinces { get; set; }
     public DbSet<City> Cities { get; set; }
     public DbSet<Members> Members { get; set; }
+    public DbSet<Appointments> Appointments { get; set; }
     
     //
     public DbSet<TestBankTransfer> TestBankTransfers { get; set; }
