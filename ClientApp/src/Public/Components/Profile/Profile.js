@@ -1,10 +1,22 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, {useEffect} from 'react'
+import {Link, useNavigate} from 'react-router-dom'
 import Header from '../Shared/Admin/Header/Header'
 import Sidebar from '../Shared/Admin/Sidebar/Sidebar'
 
 function Profile() {
+    const navigate = useNavigate();
     const AuthName = sessionStorage.getItem("username")
+    const Token = sessionStorage.getItem("accessToken")
+
+    const checkLogin = async () => {
+        if (AuthName == null || Token == null){
+            navigate('/login')
+        }
+    };
+
+    useEffect(() => {
+        checkLogin();
+    }, []);
 
     return (
         <>
@@ -248,7 +260,7 @@ function Profile() {
                         </div>
                     </div>
                 </section>
-            </main>{/* End #main */}
+            </main>
         </>
 
     )
