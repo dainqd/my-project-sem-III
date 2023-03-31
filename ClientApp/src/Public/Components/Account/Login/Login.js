@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Form, Input, message } from 'antd';
 import authService from '../../Service/AuthService';
+import '../css/auth.scss'
 import Background from '../images/bg.jpg';
 
 function Login() {
@@ -28,7 +29,7 @@ function Login() {
     };
 
     return (
-            <body className="img-full-screen" style={{backgroundImage: `url(${Background})`}} >
+            <body className="img-full-screen img" style={{backgroundImage: `url(${Background})`}} >
             <div id='login-form'>
             <section className="ftco-section">
                 <div className="container">
@@ -75,12 +76,12 @@ function Login() {
                                                 className="form-control btn btn-primary submit px-3">Login
                                         </button>
                                     </div>
-                                    <div className="form-group d-md-flex">
-                                        <div className="w-50 text-md-left ml-2">
-                                            <Link to="/forgot-password" style={{color:"#fff"}}>Forgot Password</Link>
+                                    <div className="form-group d-flex mt-5 justify-content-between align-items-center">
+                                        <div className="">
+                                            <Link className="" to="/forgot-password" style={{color:"#fff", textDecoration:"none"}}>Forgot Password</Link>
                                         </div>
-                                        <div className="w-50 text-md-right mr-2">
-                                            <Link to="/register" style={{color:"#fff"}}>Register</Link>
+                                        <div className="text-white">
+                                            <Link to="/register" style={{color:"#fff", textDecoration:"none", marginRight:"0px"}}>Register</Link>
                                         </div>
                                     </div>
                                 </Form>

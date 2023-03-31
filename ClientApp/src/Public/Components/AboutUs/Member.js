@@ -8,6 +8,7 @@ import img_about from '../images/client/about.jpg'
 import image1 from '../images/client/icon/icon-04-primary.png';
 import image2 from '../images/client/icon/icon-03-primary.png';
 import image3 from '../images/client/profile.jpg';
+import Background from "../images/client/carousel-1.jpg";
 
 function Member() {
     // const navigate = useNavigate();
@@ -73,6 +74,22 @@ function Member() {
         <div style={{backgroundColor:"#fff"}}>
             <Header />
             <Navbar />
+            <div
+                className="container-fluid page-header py-5 mb-5 wow fadeIn" style={{backgroundImage: `url(${Background})`}}
+                data-wow-delay="0.1s">
+                <div className="container py-5">
+                    <h1 className="display-4 animated slideInDown mb-4">About Us</h1>
+                    <nav aria-label="breadcrumb animated slideInDown">
+                        <ol className="breadcrumb mb-0">
+                            <li className="breadcrumb-item"><Link to="/">Home</Link></li>
+                            <li className="breadcrumb-item"><Link to="#">Pages</Link></li>
+                            <li className="breadcrumb-item active" aria-current="page">
+                                About Us
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
             <div className="container-xxl py-5">
                 <div className="container">
                     <div className="row g-5">
