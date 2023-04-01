@@ -79,11 +79,6 @@ public class UserService : IUserService
     public void UpdateInfo(int id, UpdateRequest model)
     {
         var user = getUser(id);
-        
-        if(model.username == null)
-            throw new AppException("Username invalid!");
-        if(_context.User.Any(x => x.username == model.username))
-            throw new AppException("User with the username '" + model.username + "' already exists");
         user.UpdatedAt = DateTimeOffset.Now.AddHours(7);
         user.UpdatedBy = id;
         // copy model to user and save

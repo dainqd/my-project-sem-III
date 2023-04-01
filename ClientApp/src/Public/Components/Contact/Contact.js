@@ -10,17 +10,21 @@ import Background from '../images/client/carousel-1.jpg';
 function Contact() {
     const navigate = useNavigate();
 
-    const onFinish = async (values) => {
+    const onFinish = async () => {
         var name = document.getElementById("fullname").value;
         var email = document.getElementById("email").value;
         var messages = document.getElementById("message").value;
+
+        if (name == null || email == null){
+            message.error("Error, Please try again!")
+        }
 
         let data = {
             fullname: name,
             email: email,
             message: messages
         }
-        console.log(data)
+
         await contactService.sendFeedback(data)
             .then((res) => {
                 console.log("send feedback", res.data)
