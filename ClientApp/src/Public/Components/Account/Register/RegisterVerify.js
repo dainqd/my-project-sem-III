@@ -1,12 +1,24 @@
 import { Form, Input, message } from 'antd';
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import authService from '../../Service/AuthService';
 import Background from "../images/bg.jpg";
 
 function RegisterVerify() {
-
     const navigate = useNavigate();
+
+    let AuthName = localStorage.getItem("username")
+
+    const checkLogin = async () => {
+        if (AuthName == null){
+            navigate('/register')
+        }
+    };
+
+    useEffect(() => {
+        checkLogin();
+    }, []);
+
     const onFinish = async (values) => {
         let data = {
             username: localStorage.getItem("username"),

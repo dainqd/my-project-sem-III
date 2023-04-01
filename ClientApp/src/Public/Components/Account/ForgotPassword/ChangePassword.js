@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Form, Input, message } from 'antd';
 import authService from '../../Service/AuthService';
@@ -6,6 +6,18 @@ import Background from '../images/bg.jpg';
 
 function ChangePassword() {
     const navigate = useNavigate();
+
+    let email = localStorage.getItem("email")
+
+    const checkLogin = async () => {
+        if (email == null){
+            navigate('/forgot-password')
+        }
+    };
+
+    useEffect(() => {
+        checkLogin();
+    }, []);
 
     const onFinish = async (values) => {
         let data = {
