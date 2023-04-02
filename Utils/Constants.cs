@@ -30,6 +30,7 @@ public static class Constants
     public const string MAXNUMBER = "999999";
     //
     public const string EMAIL_VERIFY = "Verify Account";
+    public const string EMAIL_CHANGE = "Change Email";
     public const string EMAIL_FORGOT = "Forgot Password";
     // Message
     public const string id_not_found = "id not found";

@@ -19,6 +19,9 @@ import Features from "./Components/Feature/Features";
 import {Apartment} from "@mui/icons-material";
 import Appointment from "./Components/Appointment/Appointment";
 import Team from "./Components/Member/Member";
+import ManageAccount from "./Components/Profile/Settings/ManageAccount";
+import ChangeEmail from "./Components/Profile/Settings/ChangeEmail";
+import ChangeUsername from "./Components/Profile/Settings/ManageAccount";
 
 function Public() {
     return (
@@ -50,6 +53,10 @@ function Public() {
                 <Route path='/appointment' element={<Appointment />} />
                 //
                 <Route path='/teams' element={<Team />} />
+                //Setting
+                <Route path='/manage-account' element={<ManageAccount />} />
+                <Route path='/change-email' element={<ChangeEmail />} />
+                <Route path='/change-username' element={<ChangeUsername />} />
             </Routes>
         </div>
     )

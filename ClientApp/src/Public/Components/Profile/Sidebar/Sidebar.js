@@ -7,7 +7,7 @@ function Sidebar() {
             <aside id="sidebar" className="sidebar">
                 <ul className="sidebar-nav" id="sidebar-nav">
                     <li className="nav-item">
-                        <Link className="nav-link " to="/">
+                        <Link className="nav-link " to="/profile">
                             <i className="bi bi-grid" />
                             <span>Homepage</span>
                         </Link>
@@ -58,22 +58,22 @@ function Sidebar() {
                     </li>
                     <li className="nav-item">
                         <Link className="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" to="#">
-                            <i className="bi bi-bar-chart" /><span>Charts</span><i className="bi bi-chevron-down ms-auto" />
+                            <i className="bi bi-bar-chart" /><span>Setting</span><i className="bi bi-chevron-down ms-auto" />
                         </Link>
                         <ul id="charts-nav" className="nav-content collapse " data-bs-parent="#sidebar-nav">
                             <li>
-                                <Link to="#">
-                                    <i className="bi bi-circle" /><span>Chart.js</span>
+                                <Link to="/change-username">
+                                    <i className="bi bi-circle" /><span>Change Username</span>
                                 </Link>
                             </li>
                             <li>
-                                <Link to="#">
-                                    <i className="bi bi-circle" /><span>ApexCharts</span>
+                                <Link to="/change-email">
+                                    <i className="bi bi-circle" /><span>Change Email</span>
                                 </Link>
                             </li>
                             <li>
-                                <Link to="#">
-                                    <i className="bi bi-circle" /><span>ECharts</span>
+                                <Link to="/manage-account">
+                                    <i className="bi bi-circle" /><span>Manage Account</span>
                                 </Link>
                             </li>
                         </ul>
