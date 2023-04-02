@@ -22,6 +22,7 @@ import Team from "./Components/Member/Member";
 import ManageAccount from "./Components/Profile/Settings/ManageAccount";
 import ChangeEmail from "./Components/Profile/Settings/ChangeEmail";
 import ChangeUsername from "./Components/Profile/Settings/ManageAccount";
+import ChangeUser from "./Components/Profile/Settings/ChangeUsername";
 
 function Public() {
     return (
@@ -56,7 +57,7 @@ function Public() {
                 //Setting
                 <Route path='/manage-account' element={<ManageAccount />} />
                 <Route path='/change-email' element={<ChangeEmail />} />
-                <Route path='/change-username' element={<ChangeUsername />} />
+                <Route path='/change-username' element={<ChangeUser />} />
             </Routes>
         </div>
     )

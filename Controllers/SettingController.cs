@@ -1,4 +1,5 @@
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using myProject.Service.Interfaces;
 using myProject.Utils.Enums;
@@ -6,6 +7,7 @@ using myProject.Utils.Enums;
 namespace myProject.Controllers;
 
 [ApiController]
+[Authorize]
 [Route("api/settings")]
 public class SettingController : ControllerBase
 {

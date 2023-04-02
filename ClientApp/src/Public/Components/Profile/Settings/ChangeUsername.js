@@ -5,7 +5,7 @@ import Sidebar from '../Sidebar/Sidebar'
 import accountService from "../../Service/AccountService";
 import {Form, message} from "antd";
 
-function ChangeUsername() {
+function ChangeUser() {
     const navigate = useNavigate();
     const AuthName = sessionStorage.getItem("username")
     const Token = sessionStorage.getItem("accessToken")
@@ -31,23 +31,18 @@ function ChangeUsername() {
     const changeUsername = async (values) => {
         let id = sessionStorage.getItem('id');
 
-        var oldPassword = document.getElementById("currentPassword").value;
-        var password = document.getElementById("newPassword").value;
-        var confirmPassword = document.getElementById("renewPassword").value;
+        var username = document.getElementById("username").value;
 
-        let data = {
-            oldPassword: oldPassword,
-            password: password,
-            confirmPassword: confirmPassword
-        }
-        await accountService.changePassAccount(id, data)
+        await accountService.changeUsername(id, username)
             .then((res) => {
-                console.log("changepass", res.data)
-                alert("Change password success!")
+                console.log("change username", res.data)
+                alert("Change username success!")
+                sessionStorage.clear();
+                navigate('/');
             })
             .catch((err) => {
                 console.log(err)
-                message.error("Change password error! Please try again")
+                message.error("Change username error! Please try again")
             })
     };
 
@@ -60,8 +55,20 @@ function ChangeUsername() {
         <>
             <Header />
             <Sidebar />
-            <Form className="row g-3">
-                <div className="col-md-12">
+            <main id="main" className="main">
+            <div className="pagetitle">
+                <h1>Profile</h1>
+                <nav>
+                    <ol className="breadcrumb">
+                        <li className="breadcrumb-item"><Link to="/">Home</Link></li>
+                        <li className="breadcrumb-item">Users</li>
+                        <li className="breadcrumb-item active">Profile</li>
+                    </ol>
+                </nav>
+            </div>{/* End Page Title */}
+
+            <Form className="row g-3" onFinish={changeUsername}>
+                <div className="col-md-4">
                     <div className="form-floating">
                         <input type="text" className="form-control" id="username" placeholder="Your Username"/>
                         <label htmlFor="floatingName">Your Username</label>
@@ -71,9 +78,10 @@ function ChangeUsername() {
                     <button type="submit" className="btn btn-primary">Submit</button>
                 </div>
             </Form>
+            </main>
         </>
 
     )
 }
 
-export default ChangeUsername
+export default ChangeUser
