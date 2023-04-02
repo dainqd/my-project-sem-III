@@ -5,7 +5,7 @@ import Sidebar from '../Sidebar/Sidebar'
 import accountService from "../../Service/AccountService";
 import {Form, message} from "antd";
 
-function ChangeUsername() {
+function ChangeStatus() {
     const navigate = useNavigate();
     const AuthName = sessionStorage.getItem("username")
     const Token = sessionStorage.getItem("accessToken")
@@ -117,4 +117,4 @@ function ChangeUsername() {
     )
 }
 
-export default ChangeUsername
+export default ChangeStatus

@@ -56,7 +56,7 @@ class AccountService {
             }
         };
         console.log(config)
-        return axios.post(BASE_URL_SERVER + API_ENDPOINT.CHANGE_USERNAME + id, data, config);
+        return axios.post(BASE_URL_SERVER + API_ENDPOINT.CHANGE_USERNAME + id + "?username="+ data, config);
     }
 
     changeStatus = (id, data) => {
