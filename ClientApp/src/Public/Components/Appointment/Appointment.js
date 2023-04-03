@@ -47,6 +47,10 @@ function Appointment() {
         var insuranceId = document.getElementById("insurance").value;
         var phoneNumber = document.getElementById("phonenumber").value;
 
+        if (fullName == null || email == null || phoneNumber == null || insuranceId == null){
+            message.error("Error, Please try again!")
+        }
+
         let data = {
             fullname: fullName,
             insurance_id: insuranceId,
