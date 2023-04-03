@@ -1,16 +1,14 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect} from 'react'
 import {Link, useNavigate} from 'react-router-dom'
 import Header from '../Header/Header'
 import Sidebar from '../Sidebar/Sidebar'
 import accountService from "../../Service/AccountService";
 import {Form, message} from "antd";
 
-function ChangeEmail() {
+function ChangeEmailVerify() {
     const navigate = useNavigate();
     const AuthName = sessionStorage.getItem("username")
     const Token = sessionStorage.getItem("accessToken")
-
-    const [data, setData] = useState([]);
 
     const checkLogin = async () => {
         if (AuthName == null || Token == null){
@@ -18,27 +16,18 @@ function ChangeEmail() {
         }
     };
 
-    const isUser = async () => {
-        await accountService.findUserByUsername(AuthName)
-            .then((res) => {
-                if (res.status === 200){
-                    console.log("find user" + AuthName, res.data)
-                    setData(res.data);
-                }
-            })
-    };
-
-    const changeEmail = async () => {
+    const changeEmailVerify = async () => {
         let id = sessionStorage.getItem('id');
 
-        var email = document.getElementById("email").value;
+        let email = localStorage.getItem('email');
+        let code = document.getElementById("code").value;
 
-        await accountService.changeEmail(id, email)
+        await accountService.changeEmailVerify(id, email, code)
             .then((res) => {
-                console.log("change email", email)
-                message.success("Please enter your code!")
-                localStorage.setItem('email', email);
-                navigate('/change-email-verify')
+                console.log("code", code)
+                localStorage.removeItem('email')
+                alert("Change email success!")
+                navigate('/profile')
             })
             .catch((err) => {
                 console.log(err)
@@ -48,7 +37,6 @@ function ChangeEmail() {
 
     useEffect(() => {
         checkLogin();
-        isUser();
     }, []);
 
     return (
@@ -66,22 +54,22 @@ function ChangeEmail() {
                         </ol>
                     </nav>
                 </div>{/* End Page Title */}
-                <div className="mb-2">Please enter your new email!</div>
-            <Form className="row g-3" onFinish={changeEmail}>
-                <div className="col-md-4">
-                    <div className="form-floating">
-                        <input type="email" className="form-control" id="email" placeholder="Your Email"/>
-                        <label htmlFor="floatingName">Your Email</label>
+                <div className="mb-2">Please enter your code!</div>
+                <Form className="row g-3" onFinish={changeEmailVerify}>
+                    <div className="col-md-4">
+                        <div className="form-floating">
+                            <input type="text" className="form-control" id="code" placeholder="Your Code"/>
+                            <label htmlFor="floatingName">Your Code</label>
+                        </div>
                     </div>
-                </div>
-                <div className="text-center">
-                    <button type="submit" className="btn btn-primary" >Submit</button>
-                </div>
-            </Form>
+                    <div className="text-center">
+                        <button type="submit" className="btn btn-primary" >Submit</button>
+                    </div>
+                </Form>
             </main>
         </>
 
     )
 }
 
-export default ChangeEmail
+export default ChangeEmailVerify

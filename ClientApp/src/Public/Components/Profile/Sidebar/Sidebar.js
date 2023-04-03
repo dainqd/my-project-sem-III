@@ -14,44 +14,39 @@ function Sidebar() {
                     </li>
                     <li className="nav-item">
                         <Link className="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" to="#">
-                            <i className="bi bi-journal-text" /><span>Account</span><i className="bi bi-chevron-down ms-auto" />
+                            <i className="bi bi-journal-text" /><span>My Account</span><i className="bi bi-chevron-down ms-auto" />
                         </Link>
                         <ul id="forms-nav" className="nav-content collapse " data-bs-parent="#sidebar-nav">
                             <li>
                                 <Link to="#">
-                                    <i className="bi bi-circle" /><span>List Account</span>
+                                    <i className="bi bi-circle" /><span>Upgrade Account</span>
                                 </Link>
                             </li>
                             <li>
                                 <Link to="#">
-                                    <i className="bi bi-circle" /><span>Create Account</span>
+                                    <i className="bi bi-circle" /><span>Account History</span>
                                 </Link>
                             </li>
                             <li>
                                 <Link to="#">
-                                    <i className="bi bi-circle" /><span>Form Editors</span>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to="#">
-                                    <i className="bi bi-circle" /><span>Form Validation</span>
+                                    <i className="bi bi-circle" /><span>Account Widget</span>
                                 </Link>
                             </li>
                         </ul>
                     </li>
                     <li className="nav-item">
                         <Link className="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" to="#">
-                            <i className="bi bi-layout-text-window-reverse" /><span>Tables</span><i className="bi bi-chevron-down ms-auto" />
+                            <i className="bi bi-layout-text-window-reverse" /><span>My Purchase</span><i className="bi bi-chevron-down ms-auto" />
                         </Link>
                         <ul id="tables-nav" className="nav-content collapse " data-bs-parent="#sidebar-nav">
                             <li>
                                 <Link to="#">
-                                    <i className="bi bi-circle" /><span>General Tables</span>
+                                    <i className="bi bi-circle" /><span>Purchase Available</span>
                                 </Link>
                             </li>
                             <li>
                                 <Link to="#">
-                                    <i className="bi bi-circle" /><span>Data Tables</span>
+                                    <i className="bi bi-circle" /><span>Purchase History</span>
                                 </Link>
                             </li>
                         </ul>

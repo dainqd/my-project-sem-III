@@ -29,23 +29,21 @@ class AccountService {
     changeEmail = (id, data) => {
         const config = {
             headers: {
-                'content-type': 'application/json',
                 'Authorization': `Bearer ${sessionStorage.getItem("accessToken")}`
             }
         };
         console.log(config)
-        return axios.post(BASE_URL_SERVER + API_ENDPOINT.CHANGE_EMAIL + id, data, config);
+        return axios.post(BASE_URL_SERVER + API_ENDPOINT.CHANGE_EMAIL + id + "?email="+ data ,"", config);
     }
 
-    changeEmailVerify = (id, data) => {
+    changeEmailVerify = (id, email, code) => {
         const config = {
             headers: {
                 'content-type': 'application/json',
                 'Authorization': `Bearer ${sessionStorage.getItem("accessToken")}`
             }
         };
-        console.log(BASE_URL_SERVER + API_ENDPOINT.CHANGE_EMAIL_VERIFY + id, data)
-        return axios.post(BASE_URL_SERVER + API_ENDPOINT.CHANGE_EMAIL_VERIFY + id, data, config);
+        return axios.post(BASE_URL_SERVER + API_ENDPOINT.CHANGE_EMAIL_VERIFY + id + "?email="+ email + "&code="+ code,"", config);
     }
 
     changeUsername = (id, data) => {
@@ -55,8 +53,7 @@ class AccountService {
                 'Authorization': `Bearer ${sessionStorage.getItem("accessToken")}`
             }
         };
-        console.log(config)
-        return axios.post(BASE_URL_SERVER + API_ENDPOINT.CHANGE_USERNAME + id + "?username="+ data, config);
+        return axios.post(BASE_URL_SERVER + API_ENDPOINT.CHANGE_USERNAME + id + "?username="+ data,"", config);
     }
 
     changeStatus = (id, data) => {
@@ -66,8 +63,7 @@ class AccountService {
                 'Authorization': `Bearer ${sessionStorage.getItem("accessToken")}`
             }
         };
-        console.log(config)
-        return axios.post(BASE_URL_SERVER + API_ENDPOINT.CHANGE_STATUS + id + "?status="+ data, config);
+        return axios.post(BASE_URL_SERVER + API_ENDPOINT.CHANGE_STATUS + id + "?status="+ data,"", config);
     }
     //
     listAccount = () => {
@@ -87,7 +83,6 @@ class AccountService {
                 'Authorization': `Bearer ${sessionStorage.getItem("accessToken")}`
             }
         };
-        console.log(config)
         return axios.put(BASE_URL_SERVER + API_ENDPOINT.UPDATE_ACCOUNT + id, data, config);
     }
 
@@ -98,7 +93,6 @@ class AccountService {
                 'Authorization': `Bearer ${sessionStorage.getItem("accessToken")}`
             }
         };
-        console.log(config)
         return axios.put(BASE_URL_SERVER + API_ENDPOINT.CHANGE_PASSWORD_ACCOUNT + id, data, config);
     }
 

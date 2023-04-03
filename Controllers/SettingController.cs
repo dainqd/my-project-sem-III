@@ -1,6 +1,8 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
+using myProject.Config;
 using myProject.Service.Interfaces;
 using myProject.Utils.Enums;
 
@@ -13,10 +15,12 @@ public class SettingController : ControllerBase
 {
     private ISettingService _settingService;
     private IMapper _mapper;
+    private readonly AppSettings _appSettings;
 
     public SettingController(
         ISettingService settingService,
-        IMapper mapper)
+        IMapper mapper,
+        IOptions<AppSettings> appSettings)
     {
         _settingService = settingService;
         _mapper = mapper;

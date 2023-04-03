@@ -137,7 +137,7 @@ function Header() {
                                     <hr className="dropdown-divider" />
                                 </li>
                                 <li>
-                                    <Link className="dropdown-item d-flex align-items-center" to="#">
+                                    <Link className="dropdown-item d-flex align-items-center" to="/manage-account">
                                         <i className="bi bi-gear" />
                                         <span>Settings</span>
                                     </Link>

@@ -23,6 +23,7 @@ import ManageAccount from "./Components/Profile/Settings/ManageAccount";
 import ChangeEmail from "./Components/Profile/Settings/ChangeEmail";
 import ChangeUsername from "./Components/Profile/Settings/ManageAccount";
 import ChangeUser from "./Components/Profile/Settings/ChangeUsername";
+import ChangeEmailVerify from "./Components/Profile/Settings/ChangeEmailVerify";
 
 function Public() {
     return (
@@ -58,6 +59,7 @@ function Public() {
                 <Route path='/manage-account' element={<ManageAccount />} />
                 <Route path='/change-email' element={<ChangeEmail />} />
                 <Route path='/change-username' element={<ChangeUser />} />
+                <Route path='/change-email-verify' element={<ChangeEmailVerify/>}/>
             </Routes>
         </div>
     )

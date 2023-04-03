@@ -59,7 +59,7 @@ function ChangeStatus() {
             <Header />
             <Sidebar />
 
-            <main id="main" className="main">
+            <main id="main" className="main" style={{backgroundColor:"#f6f9ff"}}>
                 <div className="pagetitle">
                     <h1>Profile</h1>
                     <nav>
@@ -72,7 +72,7 @@ function ChangeStatus() {
                 </div>{/* End Page Title */}
                 <Form className="row g-3">
                     <div className="col-md-4">
-                        <label className="text-white">Choose status for your account!</label>
+                        <label className="">Choose status for your account!</label>
                         <div className="text-danger">If you choose to make a change,
                             you won't be able to undo it</div>
                         <div className="text-warning mb-3">Please think carefully before doing this...</div>
