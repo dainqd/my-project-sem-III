@@ -9,6 +9,7 @@ function Header() {
     const navigate = useNavigate();
 
     const handleLogout = () => {
+        localStorage.clear();
         sessionStorage.clear();
         message.success("Logout")
         navigate("/login")

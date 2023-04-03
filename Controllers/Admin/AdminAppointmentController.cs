@@ -8,7 +8,7 @@ using myProject.Utils.Enums;
 
 namespace myProject.Controllers.Admin;
 
-[Route("api/appointments")]
+[Route("admin/api/appointments")]
 [Authorize]
 [ApiController]
 public class AdminAppointmentController : ControllerBase

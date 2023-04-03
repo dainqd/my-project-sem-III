@@ -94,6 +94,7 @@ function NavbarClient() {
 
     const navigate = useNavigate();
     const handlelogout = () => {
+        localStorage.clear();
         sessionStorage.clear();
         message.success("Logout")
         navigate("/")

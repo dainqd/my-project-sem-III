@@ -18,7 +18,7 @@ function Sidebar() {
                         </Link>
                         <ul id="forms-nav" className="nav-content collapse " data-bs-parent="#sidebar-nav">
                             <li>
-                                <Link to="#">
+                                <Link to="/upgrade-account">
                                     <i className="bi bi-circle" /><span>Upgrade Account</span>
                                 </Link>
                             </li>

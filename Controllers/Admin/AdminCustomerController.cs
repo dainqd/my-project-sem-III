@@ -9,7 +9,7 @@ using myProject.Utils.Enums;
 
 namespace myProject.Controllers;
 
-[Route("api/admin/customers")]
+[Route("admin/api/customers")]
 [Authorize]
 [ApiController]
 public class AdminCustomerController : ControllerBase

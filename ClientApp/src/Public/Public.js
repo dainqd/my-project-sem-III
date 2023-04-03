@@ -24,6 +24,7 @@ import ChangeEmail from "./Components/Profile/Settings/ChangeEmail";
 import ChangeUsername from "./Components/Profile/Settings/ManageAccount";
 import ChangeUser from "./Components/Profile/Settings/ChangeUsername";
 import ChangeEmailVerify from "./Components/Profile/Settings/ChangeEmailVerify";
+import UpgradeAccount from "./Components/Profile/MyAccount/UpgradeAccount";
 
 function Public() {
     return (
@@ -60,6 +61,10 @@ function Public() {
                 <Route path='/change-email' element={<ChangeEmail />} />
                 <Route path='/change-username' element={<ChangeUser />} />
                 <Route path='/change-email-verify' element={<ChangeEmailVerify/>}/>
+                //MyAccount
+                <Route path='/upgrade-account' element={<UpgradeAccount />} />
+                {/*<Route path='/change-email' element={<ChangeEmail />} />*/}
+                {/*<Route path='/change-username' element={<ChangeUser />} />*/}
             </Routes>
         </div>
     )
