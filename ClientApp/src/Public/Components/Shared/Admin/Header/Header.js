@@ -1,29 +1,71 @@
 import { message } from 'antd';
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import accountService from "../../../Service/AccountService";
+import logo from "../../../images/client/bannerAsset 1.png";
+
+function IsAdmin(){
+    return (
+        <Link className="dropdown-item d-flex align-items-center" to="/dashboard">
+            <i className="bi bi-0-circle" />
+            <span>Admin</span>
+        </Link>
+    )
+}
 
 function Header() {
     const AuthName = sessionStorage.getItem("username");
     const navigate = useNavigate();
 
+    let isAdmin = true;
+
     const handleLogout = () => {
+        localStorage.clear();
         sessionStorage.clear();
         message.success("Logout")
         navigate("/login")
     }
 
+    const [data, setData] = useState([]);
+
+    const isUser = async () => {
+        await accountService.findUserByUsername(AuthName)
+            .then((res) => {
+                if (res.status === 200){
+                    console.log("find" + AuthName, res.data)
+                    setData(res.data);
+                    console.log("role" + res.data.role)
+                    if (res.data.role === "ADMIN"){
+                        localStorage.setItem('isAdmin', 1);
+                    } else {
+                        navigate('/profile')
+                    }
+                }
+            })
+    };
+
+    let admin = localStorage.getItem('isAdmin')
+
+    if (admin == null){
+        isAdmin = false;
+    }
+
+    useEffect(() => {
+        isUser();
+    }, []);
+
     return (
         <div>
             <header id="header" className="header fixed-top d-flex align-items-center">
                 <div className="d-flex align-items-center justify-content-between">
-                    <Link to="/dashboard" className="logo d-flex align-items-center">
-                        {/*<img src="assets/img/logo.png" alt />*/}
-                        <span className="d-none d-lg-block">NiceAdmin</span>
+                    <Link to="/" className="logo d-flex align-items-center">
+                        <img src={logo} alt />
+                        <span className="d-none d-lg-block">Insure</span>
                     </Link>
                     <i className="bi bi-list toggle-sidebar-btn" />
                 </div>
                 <div className="search-bar">
-                    <form className="search-form d-flex align-items-center" method="POST" action="#">
+                    <form className="search-form d-flex align-items-center" action="#">
                         <input type="text" name="query" placeholder="Search" title="Enter search keyword" />
                         <button type="submit" title="Search"><i className="bi bi-search" /></button>
                     </form>
@@ -39,7 +81,7 @@ function Header() {
                             <Link className="nav-link nav-icon" to="#" data-bs-toggle="dropdown">
                                 <i className="bi bi-bell" />
                                 <span className="badge bg-primary badge-number">4</span>
-                            </Link>{/* End Notification Icon */}
+                            </Link>
                             <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
                                 <li className="dropdown-header">
                                     You have 4 new notifications
@@ -97,72 +139,14 @@ function Header() {
                                 </li>
                             </ul>
                         </li>
-                        <li className="nav-item dropdown">
-                            <Link className="nav-link nav-icon" to="#" data-bs-toggle="dropdown">
-                                <i className="bi bi-chat-left-text" />
-                                <span className="badge bg-success badge-number">3</span>
-                            </Link>
-                            <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
-                                <li className="dropdown-header">
-                                    You have 3 new messages
-                                    <Link to="#"><span className="badge rounded-pill bg-primary p-2 ms-2">View all</span></Link>
-                                </li>
-                                <li>
-                                    <hr className="dropdown-divider" />
-                                </li>
-                                <li className="message-item">
-                                    <Link to="#">
-                                        {/*<img src="assets/img/messages-1.jpg" alt className="rounded-circle" />*/}
-                                        <div>
-                                            <h4>Maria Hudson</h4>
-                                            <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
-                                            <p>4 hrs. ago</p>
-                                        </div>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <hr className="dropdown-divider" />
-                                </li>
-                                <li className="message-item">
-                                    <Link to="#">
-                                        {/*<img src="assets/img/messages-2.jpg" alt className="rounded-circle" />*/}
-                                        <div>
-                                            <h4>Anna Nelson</h4>
-                                            <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
-                                            <p>6 hrs. ago</p>
-                                        </div>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <hr className="dropdown-divider" />
-                                </li>
-                                <li className="message-item">
-                                    <Link to="#">
-                                        {/*<img src="assets/img/messages-3.jpg" alt className="rounded-circle" />*/}
-                                        <div>
-                                            <h4>David Muldon</h4>
-                                            <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
-                                            <p>8 hrs. ago</p>
-                                        </div>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <hr className="dropdown-divider" />
-                                </li>
-                                <li className="dropdown-footer">
-                                    <Link to="#">Show all messages</Link>
-                                </li>
-                            </ul>
-                        </li>
                         <li className="nav-item dropdown pe-3">
                             <Link className="nav-link nav-profile d-flex align-items-center pe-0" to="#" data-bs-toggle="dropdown">
-                                {/*<img src="assets/img/profile-img.jpg" alt="Profile" className="rounded-circle" />*/}
+                                <img src={data.avatar} alt="Profile" className="rounded-circle" />
                                 <span className="d-none d-md-block dropdown-toggle ps-2">{AuthName}</span>
                             </Link>
                             <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                                 <li className="dropdown-header">
                                     <h6>{AuthName}</h6>
-                                    <span>Web Designer</span>
                                 </li>
                                 <li>
                                     <hr className="dropdown-divider" />
@@ -177,23 +161,21 @@ function Header() {
                                     <hr className="dropdown-divider" />
                                 </li>
                                 <li>
-                                    <Link className="dropdown-item d-flex align-items-center" to="#">
+                                    <Link className="dropdown-item d-flex align-items-center" to="/manage-account">
                                         <i className="bi bi-gear" />
-                                        <span>Account Settings</span>
+                                        <span>Settings</span>
                                     </Link>
                                 </li>
                                 <li>
                                     <hr className="dropdown-divider" />
                                 </li>
                                 <li>
-                                    <Link className="dropdown-item d-flex align-items-center" to="#">
-                                        <i className="bi bi-question-circle" />
-                                        <span>Need Help?</span>
-                                    </Link>
+                                    {isAdmin ? <IsAdmin /> : ""}
                                 </li>
                                 <li>
                                     <hr className="dropdown-divider" />
                                 </li>
+
                                 <li>
                                     <div className="dropdown-item d-flex align-items-center" style={{ cursor: "pointer" }} onClick={handleLogout}>
                                         <i className="bi bi-box-arrow-right" />

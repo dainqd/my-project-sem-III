@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import Logout from '@mui/icons-material/Logout';
 import { message } from 'antd';
 
 import logo from '../../../images/client/bannerAsset 1.png'

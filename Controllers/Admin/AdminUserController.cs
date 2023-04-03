@@ -54,14 +54,7 @@ public class AdminUserController : ControllerBase
         _userService.Create(model);
         return Ok(new { message = "User created" });
     }
-    
-    [HttpPut("change-pass/{id}")]
-    public IActionResult ChangPass(int id, ChangePasswordRequest model)
-    {
-        _userService.ChangPass(id, model);
-        return Ok(new { message = "Change Password Success!" });
-    }
-    
+
     [HttpPut("update-info/{id}")]
     public IActionResult Update(int id, UpdateRequest model)
     {
