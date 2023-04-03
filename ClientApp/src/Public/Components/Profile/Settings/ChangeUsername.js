@@ -55,7 +55,7 @@ function ChangeUser() {
         <>
             <Header />
             <Sidebar />
-            <main id="main" className="main">
+            <main id="main" className="main" style={{backgroundColor:"#f6f9ff"}}>
             <div className="pagetitle">
                 <h1>Profile</h1>
                 <nav>
@@ -66,7 +66,7 @@ function ChangeUser() {
                     </ol>
                 </nav>
             </div>{/* End Page Title */}
-
+                <div className="mb-2">Please enter your username!</div>
             <Form className="row g-3" onFinish={changeUsername}>
                 <div className="col-md-4">
                     <div className="form-floating">
