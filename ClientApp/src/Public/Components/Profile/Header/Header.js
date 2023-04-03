@@ -4,9 +4,20 @@ import { Link, useNavigate } from 'react-router-dom'
 import accountService from "../../Service/AccountService";
 import logo from '../../images/client/bannerAsset 1.png'
 
+function IsAdmin(){
+    return (
+            <Link className="dropdown-item d-flex align-items-center" to="/dashboard">
+                <i className="bi bi-0-circle" />
+                <span>Admin</span>
+            </Link>
+    )
+}
+
 function Header() {
     const AuthName = sessionStorage.getItem("username");
     const navigate = useNavigate();
+
+    let isAdmin = true;
 
     const handleLogout = () => {
         localStorage.clear();
@@ -23,9 +34,18 @@ function Header() {
                 if (res.status === 200){
                     console.log("find user" + AuthName, res.data)
                     setData(res.data);
+                    if (res.data.role === "ADMIN"){
+                        localStorage.setItem('isAdmin', 1);
+                    }
                 }
             })
     };
+
+    let admin = localStorage.getItem('isAdmin')
+
+    if (admin == null){
+        isAdmin = false;
+    }
 
     useEffect(() => {
         isUser();
@@ -145,6 +165,9 @@ function Header() {
                                 </li>
                                 <li>
                                     <hr className="dropdown-divider" />
+                                </li>
+                                <li>
+                                    {isAdmin ? <IsAdmin /> : ""}
                                 </li>
                                 <li>
                                     <hr className="dropdown-divider" />
