@@ -88,7 +88,7 @@ function Detail() {
             <h1>Detail Account</h1>
             <nav>
               <ol className="breadcrumb">
-                <li className="breadcrumb-item"><Link to="/">Dashboard</Link></li>
+                <li className="breadcrumb-item"><Link to="/dashboard">Dashboard</Link></li>
                 <li className="breadcrumb-item">Account</li>
                 <li className="breadcrumb-item active">Detail Account</li>
               </ol>

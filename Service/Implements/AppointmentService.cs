@@ -1,4 +1,7 @@
 using AutoMapper;
+using myProject._mail_config;
+using myProject._mail_config.Interface;
+using myProject._mail_config.Template;
 using myProject.Config;
 using myProject.Context;
 using myProject.Dtos.Appointment;
@@ -12,18 +15,21 @@ public class AppointmentService : IAppointmentService
 {
     private MySQLDBContext _context;
     private readonly IMapper _mapper;
+    private IEmailSender _emailSender;
     
     public AppointmentService(
         MySQLDBContext context,
+        IEmailSender emailSender,
         IMapper mapper)
     {
         _context = context;
+        _emailSender = emailSender;
         _mapper = mapper;
     }
     
     public IEnumerable<Appointments> GetAll()
     {
-        return _context.Appointments;
+        return _context.Appointments.Where(v => v.status != Enums.AppointmentStatus.DELETED).ToList();
     }
 
     public IEnumerable<Appointments> GetAllByStatus(Enums.AppointmentStatus status)
@@ -95,6 +101,17 @@ public class AppointmentService : IAppointmentService
         {
             throw new AppException("Insurance not found!");
         }
+        
+        var content = AppointmentMail.body;
+        content = content.Replace("my_email_replace", model.email);
+        var message = new Message(new string[] { model.email }, "Thanks you", content);
+        _emailSender.SendEmail(message);
+
+        var confirm = ConfirmAppointmentMail.body;
+        confirm = confirm.Replace("my_email_replace", "dainqth2109019@fpt.edu.vn");
+        confirm = confirm.Replace("my_insurance_replace", insurance.name);
+        var mail = new Message(new string[] { "dainqth2109019@fpt.edu.vn" }, "New register", confirm);
+        _emailSender.SendEmail(mail);
         
         appointment.CreatedAt = DateTimeOffset.Now.AddHours(7);
 

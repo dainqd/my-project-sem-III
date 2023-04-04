@@ -25,6 +25,8 @@ import ChangeUsername from "./Components/Profile/Settings/ManageAccount";
 import ChangeUser from "./Components/Profile/Settings/ChangeUsername";
 import ChangeEmailVerify from "./Components/Profile/Settings/ChangeEmailVerify";
 import UpgradeAccount from "./Components/Profile/MyAccount/UpgradeAccount";
+import ListAppointment from "./Components/AdminApp/Appointment/List/ListAppointment";
+import DetailAppointment from "./Components/AdminApp/Appointment/Detail/DetailAppointment";
 
 function Public() {
     return (
@@ -65,6 +67,9 @@ function Public() {
                 <Route path='/upgrade-account' element={<UpgradeAccount />} />
                 {/*<Route path='/change-email' element={<ChangeEmail />} />*/}
                 {/*<Route path='/change-username' element={<ChangeUser />} />*/}
+                //Admin
+                <Route path='/appointment/list' element={<ListAppointment />} />
+                <Route path='/appointment/:id' element={<DetailAppointment />} />
             </Routes>
         </div>
     )

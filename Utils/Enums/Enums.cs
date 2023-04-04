@@ -87,7 +87,7 @@ public class Enums
     public enum AppointmentStatus
     {
         ACTIVE,
-        INACTIVE,
+        SUCCESS,
         DELETED 
     }
 }
