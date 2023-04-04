@@ -15,6 +15,13 @@ const API_ENDPOINT = {
     DETAIL_ACCOUNT: "/api/user/detail/",
     UPDATE_ACCOUNT: "/api/user/update-info/",
     CHANGE_PASSWORD_ACCOUNT: "/api/user/change-pass/",
+    //
+    ADMIN_LIST_ACCOUNT: "/admin/api/user/list",
+    ADMIN_LIST_STATUS_ACCOUNT: "/admin/api/user/list/",
+    ADMIN_DETAIL_ACCOUNT: "/admin/api/user/detail/",
+    ADMIN_CREATE_ACCOUNT: "/admin/api/user",
+    ADMIN_UPDATE_ACCOUNT: "/admin/api/user/update-info/",
+    ADMIN_DELETE_ACCOUNT: "/admin/api/user/",
 }
 class AccountService {
     // Find
@@ -105,6 +112,67 @@ class AccountService {
         };
         return axios.get(BASE_URL_SERVER + API_ENDPOINT.DETAIL_ACCOUNT + id, config)
     }
+    // ADMIN
+    adminListAccount = () => {
+        const config = {
+            headers: {
+                'content-type': 'application/json',
+                'Authorization': `Bearer ${sessionStorage.getItem("accessToken")}`
+            }
+        };
+        return axios.get(BASE_URL_SERVER + API_ENDPOINT.ADMIN_LIST_ACCOUNT, config);
+    }
+
+    adminListStatusAccount = (data) => {
+        const config = {
+            headers: {
+                'content-type': 'application/json',
+                'Authorization': `Bearer ${sessionStorage.getItem("accessToken")}`
+            }
+        };
+        return axios.get(BASE_URL_SERVER + API_ENDPOINT.ADMIN_LIST_STATUS_ACCOUNT + data, config);
+    }
+
+    adminDetailAccount = (id) => {
+        const config = {
+            headers: {
+                'content-type': 'application/json',
+                'Authorization': `Bearer ${sessionStorage.getItem("accessToken")}`
+            }
+        };
+        return axios.get(BASE_URL_SERVER + API_ENDPOINT.ADMIN_DETAIL_ACCOUNT + id, config)
+    }
+
+    adminCreateAccount = (data) => {
+        const config = {
+            headers: {
+                'content-type': 'application/json',
+                'Authorization': `Bearer ${sessionStorage.getItem("accessToken")}`
+            }
+        };
+        return axios.post(BASE_URL_SERVER + API_ENDPOINT.ADMIN_CREATE_ACCOUNT ,data, config);
+    }
+
+    adminUpdateAccount = (id, data) => {
+        const config = {
+            headers: {
+                'content-type': 'application/json',
+                'Authorization': `Bearer ${sessionStorage.getItem("accessToken")}`
+            }
+        };
+        return axios.put(BASE_URL_SERVER + API_ENDPOINT.ADMIN_UPDATE_ACCOUNT + id, data, config);
+    }
+
+    adminDeleteAccount = (id) => {
+        const config = {
+            headers: {
+                'content-type': 'application/json',
+                'Authorization': `Bearer ${sessionStorage.getItem("accessToken")}`
+            }
+        };
+        return axios.delete(BASE_URL_SERVER + API_ENDPOINT.ADMIN_DELETE_ACCOUNT + id, config)
+    }
+
 }
 const accountService = new AccountService();
 export default accountService;

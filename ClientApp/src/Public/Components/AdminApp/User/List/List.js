@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Header from '../../../Shared/Admin/Header/Header'
 import Sidebar from '../../../Shared/Admin/Sidebar/Sidebar'
-import { Button, message, Table } from 'antd';
+import {Button, Form, message, Table} from 'antd';
 import accountService from '../../../Service/AccountService';
 import { Link } from 'react-router-dom';
 
@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 
 function List() {
     const handleDelete = async (id) => {
-        await accountService.deleteAccount(id)
+        await accountService.adminDeleteAccount(id)
             .then((res) => {
                 console.log("delete", res.data)
                 message.success(`Delete account: ${id}`)
@@ -27,9 +27,19 @@ function List() {
             width: '10%',
         },
         {
+            title: 'FirstName',
+            dataIndex: 'firstName',
+            width: '10%',
+        },
+        {
+            title: 'LastName',
+            dataIndex: 'lastName',
+            width: '10%',
+        },
+        {
             title: 'Username',
             dataIndex: 'username',
-            width: '20%',
+            width: '10%',
         },
         {
             title: 'Email',
@@ -61,7 +71,8 @@ function List() {
             key: 'x',
             render: (id) =>
                 <>
-                    <Button onClick={() => handleDelete(id)}>
+                    {/*<Button onClick={() => handleDelete(id)}>*/}
+                    <Button className="" data-toggle="modal" data-target="#deleteAccount">
                         Delete
                     </Button>
                     <Button >
@@ -83,7 +94,7 @@ function List() {
     });
 
     const getListAccount = async () => {
-        await accountService.listAccount()
+            await accountService.adminListAccount()
             .then((res) =>{
                 if (res.status === 200){
                     console.log("data", res.data)
@@ -112,19 +123,55 @@ function List() {
         });
     };
 
-
     return (
         <div>
             <Header />
             <Sidebar />
+
+            <main id="main" className="main" style={{backgroundColor:"#f6f9ff"}}>
+                <div className="pagetitle">
+                    <h1>List Account</h1>
+                    <nav>
+                        <ol className="breadcrumb">
+                            <li className="breadcrumb-item"><Link to="/">Dashboard</Link></li>
+                            <li className="breadcrumb-item">Account</li>
+                            <li className="breadcrumb-item active">List Account</li>
+                        </ol>
+                    </nav>
+                </div>{/* End Page Title */}
             <Table
-                style={{ width: "75%", marginLeft: "20%", marginTop: "100px" }}
+                style={{margin:"auto" }}
                 columns={columns}
                 dataSource={data}
                 pagination={tableParams.pagination}
                 loading={loading}
                 onChange={handleTableChange}
             />
+
+                <div className="modal fade" id="deleteAccount" tabIndex="-1" role="dialog"
+                     aria-labelledby="editModalLabel" aria-hidden="true">
+                    <div className="modal-dialog modal-dialog-centered" role="document">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title" id="exampleModalLabel">Delete Account</h5>
+                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div className="modal-body">
+                                <h5 className="text-center">Are you sure you want to delete this account?</h5>
+                                <Form id="delete-account-form" >
+                                    <div className="d-flex justify-content-around">
+                                        <button type="submit" className="btn w-25 btn-danger">Delete</button>
+                                        <button type="button" className="btn w-25 btn-secondary" data-dismiss="modal">Back
+                                        </button>
+                                    </div>
+                                </Form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
         </div>
     )
 }

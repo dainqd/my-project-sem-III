@@ -3,28 +3,40 @@ import Header from '../../../Shared/Admin/Header/Header'
 import Sidebar from '../../../Shared/Admin/Sidebar/Sidebar'
 import { Button, Form, Input, message } from 'antd'
 import { DatePicker, Space } from 'antd';
-import { useNavigate } from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import accountService from '../../../Service/AccountService';
 
 function Create() {
-
-
   const navigate = useNavigate();
 
   const onFinish = async (values) => {
+    var birthday = document.getElementById("birthday").value;
+    var gender = document.getElementById("gender").value;
+    var role = document.getElementById("role").value;
+    var status = document.getElementById("status").value;
+
     let data = {
+      avatar:"",
+      firstName: values.firstName,
+      lastName: values.lastName,
       username: values.username,
       email: values.email,
       phoneNumber: values.phoneNumber,
-      gender: values.gender,
-      birthDay: values.birthDay,
-      password: values.password
+      birthday: birthday,
+      gender: gender,
+      address: values.address,
+      status: status,
+      role: role,
+      password: values.password,
+      confirmPassword: values.confirmPassword
     }
-    await accountService.registerAccount(data)
+
+    console.log(data)
+    await accountService.adminCreateAccount(data)
       .then((res) => {
         console.log("create account", res.data)
         message.success("Create account success")
-        navigate("/admin/account/list")
+        navigate("/account/list")
       })
       .catch((err) => {
         console.log(err)
@@ -33,27 +45,38 @@ function Create() {
 
   const Gender = [
     {
-      id: 1,
+      id: "MALE",
       gender: "MALE"
     },
     {
-      id: 2,
+      id: "FEMALE",
       gender: "FEMALE"
     },
     {
-      id: 3,
-      gender: "ORTHER"
+      id: "OTHER",
+      gender: "OTHER"
     },
   ]
 
   const RoleAccount = [
     {
-      id: 1,
+      id:  "ADMIN",
       type: "ADMIN"
     },
     {
-      id: 2,
+      id: "USER",
       type: "USER"
+    }
+  ]
+
+  const StatusAccount = [
+    {
+      id:  "ACTIVE",
+      type: "ACTIVE"
+    },
+    {
+      id: "INACTIVE",
+      type: "INACTIVE"
     }
   ]
 
@@ -66,9 +89,16 @@ function Create() {
     <>
       <Header />
       <Sidebar />
-      <main id="main" className="main">
+      <main id="main" className="main" style={{backgroundColor:"#f6f9ff"}}>
         <div className="pagetitle">
           <h1>Create Account</h1>
+          <nav>
+            <ol className="breadcrumb">
+              <li className="breadcrumb-item"><Link to="/">Dashboard</Link></li>
+              <li className="breadcrumb-item">Account</li>
+              <li className="breadcrumb-item active">Create Account</li>
+            </ol>
+          </nav>
         </div>
         <section className="section">
           <div className="row">
@@ -76,7 +106,6 @@ function Create() {
               <div className="card">
                 <div className="card-body">
                   <h5 className="card-title">Create Account</h5>
-                  <p>Browser default validation with using the <code>required</code> keyword. Try submitting the form below. Depending on your browser and OS, you’ll see a slightly different style of feedback.</p>
                   <Form
                     name="basic"
                     labelCol={{
@@ -91,14 +120,15 @@ function Create() {
                     onFinish={onFinish}
                     autoComplete="off"
                     className="row">
+
                     <div className="col-md-4">
-                      <label htmlFor="validationDefault01" className="form-label">username</label>
+                      <label htmlFor="validationDefault01" className="form-label">FirstName</label>
                       <Form.Item
-                        name="username"
+                        name="firstName"
                         rules={[
                           {
                             required: true,
-                            message: 'Please input your username!',
+                            message: 'Please input your name!',
                           },
                         ]}
                         hasFeedback
@@ -106,9 +136,41 @@ function Create() {
                         <Input allowClear style={{ width: "140%", height: "40px" }} />
                       </Form.Item>
                     </div>
+
                     <div className="col-md-4">
-                      <label htmlFor="validationDefaultUsername" className="form-label">Email</label>
-                      <div className="input-group">
+                      <label htmlFor="validationDefault01" className="form-label">LastName</label>
+                      <Form.Item
+                          name="lastName"
+                          rules={[
+                            {
+                              required: true,
+                              message: 'Please input your name!',
+                            },
+                          ]}
+                          hasFeedback
+                      >
+                        <Input allowClear style={{ width: "140%", height: "40px" }} />
+                      </Form.Item>
+                    </div>
+
+                    <div className="col-md-4">
+                      <label htmlFor="validationDefault01" className="form-label">Username</label>
+                      <Form.Item
+                          name="username"
+                          rules={[
+                            {
+                              required: true,
+                              message: 'Please input your username!',
+                            },
+                          ]}
+                          hasFeedback
+                      >
+                        <Input allowClear style={{ width: "140%", height: "40px" }} />
+                      </Form.Item>
+                    </div>
+
+                    <div className="col-md-4">
+                      <label htmlFor="validationDefault01" className="form-label">Email</label>
                         <Form.Item
                           name="email"
                           rules={[
@@ -123,18 +185,18 @@ function Create() {
                           ]}
                           hasFeedback
                         >
-                          <Input allowClear style={{ width: "300%", height: "40px" }} />
+                          <Input allowClear style={{ width: "140%", height: "40px" }} />
                         </Form.Item>
-                      </div>
                     </div>
+
                     <div className="col-md-4">
-                      <label htmlFor="validationDefault01" className="form-label">Phone Number</label>
+                      <label htmlFor="validationDefault01" className="form-label">PhoneNumber</label>
                       <Form.Item
                         name="phoneNumber"
                         rules={[
                           {
                             required: true,
-                            message: 'Please input your Phone Number!',
+                            message: 'Please input your phone number!',
                           },
                         ]}
                         hasFeedback
@@ -142,7 +204,70 @@ function Create() {
                         <Input allowClear type='number' style={{ width: "140%", height: "40px" }} />
                       </Form.Item>
                     </div>
-                    <div className="col-md-3">
+
+                    <div className="col-md-4">
+                      <label htmlFor="validationDefault04" className="form-label">BirthDay</label>
+                      <div>
+                        <Space direction="vertical">
+                          <DatePicker id="birthday" name='birthday' onChange={onChange} style={{ width: "230%", height: "40px" }} />
+                        </Space>
+                      </div>
+                    </div>
+
+                    <div className="col-md-4">
+                      <label htmlFor="validationDefault04" className="form-label">GENDER</label>
+                      <select className="form-select" id="gender">
+                        {Gender.map((item, index) => (
+                            <option key={index}>
+                              {item.gender}
+                            </option>
+                        ))}
+                      </select>
+                    </div>
+
+                    <div className="col-md-4">
+                      <label htmlFor="validationDefault01" className="form-label">Address</label>
+                      <Form.Item
+                          name="address"
+                          rules={[
+                            {
+                              required: true,
+                              message: 'Please input your address!',
+                            },
+                          ]}
+                          hasFeedback
+                      >
+                        <Input allowClear style={{ width: "140%", height: "40px" }} />
+                      </Form.Item>
+                    </div>
+
+                    <div className="col-md-4">
+                      <label htmlFor="validationDefault04" className="form-label">Status</label>
+                      <select className="form-select" id="status">
+                        {
+                          StatusAccount.map((status, index) => (
+                              <option key={index}>
+                                {status.type}
+                              </option>
+                          ))
+                        }
+                      </select>
+                    </div>
+
+                    <div className="col-md-4">
+                      <label htmlFor="validationDefault04" className="form-label">Role</label>
+                      <select className="form-select" id="role">
+                        {
+                          RoleAccount.map((role, index) => (
+                              <option key={index}>
+                                {role.type}
+                              </option>
+                          ))
+                        }
+                      </select>
+                    </div>
+
+                    <div className="col-md-4">
                       <label htmlFor="validationDefault03" className="form-label">Password</label>
                       <Form.Item
                         name="password"
@@ -157,36 +282,23 @@ function Create() {
                         <Input.Password allowClear style={{ width: "140%", height: "40px" }} />
                       </Form.Item>
                     </div>
-                    <div className="col-md-3">
-                      <label htmlFor="validationDefault04" className="form-label">BirthDay</label>
-                      <div>
-                        <Space direction="vertical">
-                          <DatePicker name='birthDay' onChange={onChange} style={{ width: "230%", height: "40px" }} />
-                        </Space>
-                      </div>
+
+                    <div className="col-md-4">
+                      <label htmlFor="validationDefault03" className="form-label">Password Confirm</label>
+                      <Form.Item
+                          name="confirmPassword"
+                          rules={[
+                            {
+                              required: true,
+                              message: 'Please input your password confirm!',
+                            }
+                          ]}
+                          hasFeedback
+                      >
+                        <Input.Password allowClear style={{ width: "140%", height: "40px" }} />
+                      </Form.Item>
                     </div>
-                    <div className="col-md-3">
-                      <label htmlFor="validationDefault04" className="form-label">Role</label>
-                      <select className="form-select" id="validationDefault04">
-                        {
-                          RoleAccount.map((role, index) => (
-                            <option key={index}>
-                              {role.type}
-                            </option>
-                          ))
-                        }
-                      </select>
-                    </div>
-                    <div className="col-md-3">
-                      <label htmlFor="validationDefault04" className="form-label">GENDER</label>
-                      <select className="form-select" id="validationDefault05" >
-                        {Gender.map((item, index) => (
-                          <option key={index}>
-                            {item.gender}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
+
                     <div className="col-12">
                       <Form.Item>
                         <Button htmlType="submit" type="primary">Submit form</Button>
