@@ -1,6 +1,6 @@
 import { Button, Form, Input, message } from 'antd';
 import React, { useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import {Link, useNavigate, useParams} from 'react-router-dom'
 import accountService from '../../../Service/AccountService';
 import Header from '../../../Shared/Admin/Header/Header';
 import Sidebar from '../../../Shared/Admin/Sidebar/Sidebar';
@@ -14,14 +14,19 @@ function Detail() {
 
   useEffect(() => {
     const detailsAccount = async () => {
-      await accountService.detailAccount(id)
+      await accountService.adminDetailAccount(id)
         .then((res) => {
           console.log("details account", res.data);
-          form.setFieldsValue({ id: res.data.id });
+          form.setFieldsValue({ id: res.data.id })
           form.setFieldsValue({ username: res.data.username })
+          form.setFieldsValue({ firstName: res.data.firstName });
+          form.setFieldsValue({ lastName: res.data.lastName })
           form.setFieldsValue({ email: res.data.email });
           form.setFieldsValue({ phoneNumber: res.data.phoneNumber });
+          form.setFieldsValue({ birthday: res.data.birthday });
           form.setFieldsValue({ gender: res.data.gender });
+          form.setFieldsValue({ status: res.data.status });
+          form.setFieldsValue({ role: res.data.role });
         })
         .catch((err) => {
           console.log(err)
@@ -33,13 +38,15 @@ function Detail() {
 
   const onFinish = async (values) => {
     let updateData = {
-      id: values.id,
-      username: values.username,
-      email: values.email,
+      avatar: "",
+      firstName: values.firstName,
+      lastName:  values.lastName,
+      birthday: values.birthday,
+      address: values.address,
       phoneNumber: values.phoneNumber,
       gender: values.gender
     }
-    await accountService.updateAccount(values.id, updateData)
+    await accountService.adminUpdateAccount(values.id, updateData)
       .then((res) => {
         console.log("data", res.data)
         message.success("Update success")
@@ -53,11 +60,11 @@ function Detail() {
 
   const gender = [
     {
-      id: 1,
+      id: "MALE",
       "type": "MALE"
     },
     {
-      id: 2,
+      id: "FEMALE",
       "type": "FEMALE"
     },
 
@@ -76,17 +83,23 @@ function Detail() {
     <>
       <Header />
       <Sidebar />
-      <main id="main" className="main">
-        <div className="pagetitle">
-          <h1>Detail Account</h1>
-        </div>
+      <main id="main" className="main" style={{backgroundColor:"#f6f9ff"}}>
+          <div className="pagetitle">
+            <h1>Detail Account</h1>
+            <nav>
+              <ol className="breadcrumb">
+                <li className="breadcrumb-item"><Link to="/">Dashboard</Link></li>
+                <li className="breadcrumb-item">Account</li>
+                <li className="breadcrumb-item active">Detail Account</li>
+              </ol>
+            </nav>
+          </div>{/* End Page Title */}
         <section className="section">
           <div className="row">
             <div className="col-lg-12">
               <div className="card">
                 <div className="card-body">
                   <h5 className="card-title">Detail Account</h5>
-                  <p>Browser default validation with using the <code>required</code> keyword. Try submitting the form below. Depending on your browser and OS, you’ll see a slightly different style of feedback.</p>
                   <Form className="row"
                     form={form}
                     labelCol={{
@@ -101,60 +114,101 @@ function Detail() {
                     onFinish={onFinish}
                     autoComplete="off"
                   >
-                    <div className="col-md-4">
+                    <div className="col-md-2">
                       <label>
                         ID
                       </label>
                       <Form.Item
-                        name="id">
+                          name="id">
                         <Input disabled />
                       </Form.Item>
                     </div>
-                    <div className="col-md-4">
+
+                    <div className="col-md-3">
                       <label>
                         USERNAME
                       </label>
                       <Form.Item
-                        name="username"
+                        name="username">
+                        <Input disabled />
+                      </Form.Item>
+                    </div>
+
+                    <div className="col-md-3">
+                      <label>
+                        FIRSTNAME
+                      </label>
+                      <Form.Item
+                        name="firstName"
                         rules={[
                           {
                             required: true,
-                            message: 'Please input your username!',
+                            message: 'Please input your name!',
                           },
                         ]}
                       >
                         <Input />
                       </Form.Item>
                     </div>
+
                     <div className="col-md-4">
                       <label>
-                        Email
+                        LASTNAME
                       </label>
                       <Form.Item
-                        name="email"
+                        name="lastName"
                         rules={[
                           {
                             required: true,
-                            message: 'Please input your Email!',
+                            message: 'Please input your name!',
                           },
                         ]}>
                         <Input />
                       </Form.Item>
                     </div>
+
                     <div className="col-md-4">
                       <label>
-                        Phone Number
+                       EMAIL
+                      </label>
+                      <Form.Item name="email">
+                        <Input disabled/>
+                      </Form.Item>
+                    </div>
+
+                    <div className="col-md-4">
+                      <label>
+                        PHONENUMBER
                       </label>
                       <Form.Item
-                        name="phoneNumber" rules={[
-                          {
-                            required: true,
-                            message: 'Please input your Phone Number!',
-                          },
-                        ]}>
+                          name="phoneNumber"
+                          rules={[
+                            {
+                              required: true,
+                              message: 'Please input your phone!',
+                            },
+                          ]}
+                      >
                         <Input />
                       </Form.Item>
                     </div>
+
+                    <div className="col-md-4">
+                      <label>
+                        BIRTHDAY
+                      </label>
+                      <Form.Item
+                          name="birthday"
+                          rules={[
+                            {
+                              required: true,
+                              message: 'Please input your name!',
+                            },
+                          ]}>
+                        <Input type='data'/>
+                      </Form.Item>
+                    </div>
+
                     <div className="col-md-4">
                       <label>
                         Gender
@@ -180,6 +234,24 @@ function Detail() {
                                                 ]}>
                                                 <Input />
                                             </Form.Item> */}
+                    </div>
+                    <div className="col-md-4">
+                      <label>
+                        ROLE
+                      </label>
+                      <Form.Item
+                          name="role">
+                        <Input disabled />
+                      </Form.Item>
+                    </div>
+                    <div className="col-md-4">
+                      <label>
+                        STATUS
+                      </label>
+                      <Form.Item
+                          name="status">
+                        <Input disabled />
+                      </Form.Item>
                     </div>
                     <Form.Item
                       wrapperCol={{

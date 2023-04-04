@@ -8,7 +8,7 @@ function Dashboard() {
         <>
             <Header />
             <Sidebar />
-            <main id="main" className="main">
+            <main id="main" className="main" style={{backgroundColor:"#f6f9ff"}}>
                 <div className="pagetitle">
                     <h1>Dashboard</h1>
                 </div>

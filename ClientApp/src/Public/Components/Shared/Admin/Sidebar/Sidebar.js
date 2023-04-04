@@ -51,76 +51,115 @@ function Sidebar() {
                                     <i className="bi bi-circle" /><span>Create Account</span>
                                 </Link>
                             </li>
-                            <li>
-                                <a href="forms-editors.html">
-                                    <i className="bi bi-circle" /><span>Form Editors</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="forms-validation.html">
-                                    <i className="bi bi-circle" /><span>Form Validation</span>
-                                </a>
-                            </li>
                         </ul>
                     </li>
                     <li className="nav-item">
                         <Link className="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" to="#">
-                            <i className="bi bi-layout-text-window-reverse" /><span>Tables</span><i className="bi bi-chevron-down ms-auto" />
+                            <i className="bi bi-layout-text-window-reverse" /><span>Insurance</span><i className="bi bi-chevron-down ms-auto" />
                         </Link>
                         <ul id="tables-nav" className="nav-content collapse " data-bs-parent="#sidebar-nav">
                             <li>
-                                <a href="tables-general.html">
-                                    <i className="bi bi-circle" /><span>General Tables</span>
-                                </a>
+                                <Link to="#">
+                                    <i className="bi bi-circle" /><span>List Insurance</span>
+                                </Link>
                             </li>
                             <li>
-                                <a href="tables-data.html">
-                                    <i className="bi bi-circle" /><span>Data Tables</span>
-                                </a>
+                                <Link to="#">
+                                    <i className="bi bi-circle" /><span>Create Insurance</span>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to="#">
+                                    <i className="bi bi-circle" /><span>Manage Insurance</span>
+                                </Link>
                             </li>
                         </ul>
                     </li>
                     <li className="nav-item">
                         <Link className="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" to="#">
-                            <i className="bi bi-bar-chart" /><span>Charts</span><i className="bi bi-chevron-down ms-auto" />
+                            <i className="bi bi-bar-chart" /><span>Customer</span><i className="bi bi-chevron-down ms-auto" />
                         </Link>
                         <ul id="charts-nav" className="nav-content collapse " data-bs-parent="#sidebar-nav">
                             <li>
-                                <a href="charts-chartjs.html">
-                                    <i className="bi bi-circle" /><span>Chart.js</span>
-                                </a>
+                                <Link to="#">
+                                    <i className="bi bi-circle" /><span>List Customer</span>
+                                </Link>
                             </li>
                             <li>
-                                <a href="charts-apexcharts.html">
-                                    <i className="bi bi-circle" /><span>ApexCharts</span>
-                                </a>
+                                <Link to="#">
+                                    <i className="bi bi-circle" /><span>Create Customer</span>
+                                </Link>
                             </li>
                             <li>
-                                <a href="charts-echarts.html">
-                                    <i className="bi bi-circle" /><span>ECharts</span>
-                                </a>
+                                <Link to="#">
+                                    <i className="bi bi-circle" /><span>Manage Customer</span>
+                                </Link>
                             </li>
                         </ul>
                     </li>
+
+                    <li className="nav-item">
+                        <Link className="nav-link collapsed" to="#">
+                            <i className="bi bi-card-list"></i>
+                            <span>Register</span>
+                        </Link>
+                    </li>
+
+                    <li className="nav-item">
+                        <Link className="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse"
+                           to="#">
+                            <i className="bi bi-menu-button-wide"></i><span>Member</span><i
+                            className="bi bi-chevron-down ms-auto"></i>
+                        </Link>
+                        <ul id="components-nav" className="nav-content collapse " data-bs-parent="#sidebar-nav">
+                            <li>
+                                <Link to="">
+                                    <i className="bi bi-circle"></i><span>List Member</span>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to="">
+                                    <i className="bi bi-circle"></i><span>Create Member</span>
+                                </Link>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li className="nav-item">
+                        <Link className="nav-link collapsed" to="#">
+                            <i className="bi bi-person"></i>
+                            <span>Payment</span>
+                        </Link>
+                    </li>
+
+                    <li className="nav-item">
+                        <Link className="nav-link collapsed" to="#">
+                            <i className="bi bi-file-earmark"></i>
+                            <span>Transaction</span>
+                        </Link>
+                    </li>
+
+                    <li className="nav-item">
+                        <Link className="nav-link collapsed" to="#">
+                            <i className="bi bi-question-circle"></i>
+                            <span>Feedback</span>
+                        </Link>
+                    </li>
+
                     <li className="nav-item">
                         <Link className="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" to="#">
-                            <i className="bi bi-gem" /><span>Icons</span><i className="bi bi-chevron-down ms-auto" />
+                            <i className="bi bi-gem" /><span>Permission</span><i className="bi bi-chevron-down ms-auto" />
                         </Link>
                         <ul id="icons-nav" className="nav-content collapse " data-bs-parent="#sidebar-nav">
                             <li>
-                                <a href="icons-bootstrap.html">
-                                    <i className="bi bi-circle" /><span>Bootstrap Icons</span>
-                                </a>
+                                <Link to="#">
+                                    <i className="bi bi-circle" /><span>Upgrade Role</span>
+                                </Link>
                             </li>
                             <li>
-                                <a href="icons-remix.html">
-                                    <i className="bi bi-circle" /><span>Remix Icons</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="icons-boxicons.html">
-                                    <i className="bi bi-circle" /><span>Boxicons</span>
-                                </a>
+                                <Link to="#">
+                                    <i className="bi bi-circle" /><span>Upgrade Status</span>
+                                </Link>
                             </li>
                         </ul>
                     </li>
