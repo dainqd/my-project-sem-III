@@ -8,11 +8,12 @@ import {Form, message} from "antd";
 function ChangeEmailVerify() {
     const navigate = useNavigate();
     const AuthName = sessionStorage.getItem("username")
-    const Token = sessionStorage.getItem("accessToken")
+
+    const email = localStorage.getItem("email")
 
     const checkLogin = async () => {
-        if (AuthName == null || Token == null){
-            navigate('/login')
+        if (AuthName == null || email == null){
+            navigate('/not-found')
         }
     };
 

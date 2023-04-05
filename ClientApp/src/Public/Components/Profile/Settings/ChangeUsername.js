@@ -8,15 +8,8 @@ import {Form, message} from "antd";
 function ChangeUser() {
     const navigate = useNavigate();
     const AuthName = sessionStorage.getItem("username")
-    const Token = sessionStorage.getItem("accessToken")
 
     const [data, setData] = useState([]);
-
-    const checkLogin = async () => {
-        if (AuthName == null || Token == null){
-            navigate('/login')
-        }
-    };
 
     const isUser = async () => {
         await accountService.findUserByUsername(AuthName)
@@ -47,7 +40,6 @@ function ChangeUser() {
     };
 
     useEffect(() => {
-        checkLogin();
         isUser();
     }, []);
 

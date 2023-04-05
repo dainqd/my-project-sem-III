@@ -15,7 +15,15 @@ function IsAdmin(){
 
 function Header() {
     const AuthName = sessionStorage.getItem("username");
+    const tokenUser = sessionStorage.getItem("accessToken");
+    const idUser = sessionStorage.getItem("id");
     const navigate = useNavigate();
+
+    const login = async () => {
+        if (AuthName == null || tokenUser == null || idUser == null){
+            navigate("/not-found")
+        }
+    };
 
     let isAdmin = true;
 
@@ -38,7 +46,7 @@ function Header() {
                     if (res.data.role === "ADMIN"){
                         localStorage.setItem('isAdmin', 1);
                     } else {
-                        navigate('/profile')
+                        navigate('/not-found')
                     }
                 }
             })
@@ -52,6 +60,7 @@ function Header() {
 
     useEffect(() => {
         isUser();
+        login();
     }, []);
 
     return (

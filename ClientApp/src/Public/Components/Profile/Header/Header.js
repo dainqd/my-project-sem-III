@@ -15,9 +15,16 @@ function IsAdmin(){
 
 function Header() {
     const AuthName = sessionStorage.getItem("username");
+    const Token = sessionStorage.getItem("accessToken")
     const navigate = useNavigate();
 
     let isAdmin = true;
+
+    const checkLogin = async () => {
+        if (AuthName == null || Token == null){
+            navigate('/not-found')
+        }
+    };
 
     const handleLogout = () => {
         localStorage.clear();
@@ -49,6 +56,7 @@ function Header() {
 
     useEffect(() => {
         isUser();
+        checkLogin();
     }, []);
 
     return (
