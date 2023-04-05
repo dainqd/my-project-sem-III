@@ -81,17 +81,17 @@ function Sidebar() {
                         </Link>
                         <ul id="charts-nav" className="nav-content collapse " data-bs-parent="#sidebar-nav">
                             <li>
-                                <Link to="#">
+                                <Link to="/customer/list">
                                     <i className="bi bi-circle" /><span>List Customer</span>
                                 </Link>
                             </li>
                             <li>
-                                <Link to="#">
+                                <Link to="/customer/create">
                                     <i className="bi bi-circle" /><span>Create Customer</span>
                                 </Link>
                             </li>
                             <li>
-                                <Link to="#">
+                                <Link to="/customer/manage">
                                     <i className="bi bi-circle" /><span>Manage Customer</span>
                                 </Link>
                             </li>
