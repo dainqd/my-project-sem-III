@@ -27,6 +27,9 @@ import ChangeEmailVerify from "./Components/Profile/Settings/ChangeEmailVerify";
 import UpgradeAccount from "./Components/Profile/MyAccount/UpgradeAccount";
 import ListAppointment from "./Components/AdminApp/Appointment/List/ListAppointment";
 import DetailAppointment from "./Components/AdminApp/Appointment/Detail/DetailAppointment";
+import ListInsurance from "./Components/AdminApp/Insurance/ListInsurance/ListInsurance";
+import CreateInsurance from "./Components/AdminApp/Insurance/CreateInsurance/CreateInsurance";
+import DetailInsurance from "./Components/AdminApp/Insurance/DetailInsurance/DetailInsurance";
 
 function Public() {
     return (
@@ -70,6 +73,11 @@ function Public() {
                 //Admin
                 <Route path='/appointment/list' element={<ListAppointment />} />
                 <Route path='/appointment/:id' element={<DetailAppointment />} />
+                //
+                <Route path='/insurance/list' element={<ListInsurance />} />
+                <Route path='/insurance/:id' element={<DetailInsurance />} />
+                <Route path='/insurance/create' element={<CreateInsurance />} />
+
             </Routes>
         </div>
     )

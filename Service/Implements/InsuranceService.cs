@@ -23,7 +23,7 @@ public class InsuranceService : IInsuranceService
     
     public IEnumerable<Insurances> GetAll()
     {
-        return _context.Insurances;
+        return _context.Insurances.Where(v => v.status != Enums.InsuranceStatus.DELETED).ToList();
     }
 
     public IEnumerable<Insurances> GetAllByStatus(Enums.InsuranceStatus status)
