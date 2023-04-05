@@ -44,7 +44,7 @@ class ContactService {
             }
         };
         console.log(config)
-        return axios.put(BASE_URL_SERVER + API_ENDPOINT.UPDATE_FEEDBACK + id, data, config);
+        return axios.put(BASE_URL_SERVER + API_ENDPOINT.UPDATE_FEEDBACK + id +"?status="+ data,"", config);
     }
 
     detailFeedback = (id) => {

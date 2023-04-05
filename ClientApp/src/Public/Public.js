@@ -35,6 +35,8 @@ import ListCustomer from "./Components/AdminApp/Customer/ListCustomer/ListCustom
 import CreateCustomer from "./Components/AdminApp/Customer/CreateCustomer/CreateCustomer";
 import DetailCustomer from "./Components/AdminApp/Customer/DetailCustomer/DetailCustomer";
 import ManageCustomer from "./Components/AdminApp/Customer/ManageCustomer/ManageCustomer";
+import ListFeedback from "./Components/AdminApp/Feedback/ListFeedback/ListFeedback";
+import DetailFeedback from "./Components/AdminApp/Feedback/DetailFeedback/DetailFeedback";
 
 function Public() {
     return (
@@ -88,6 +90,9 @@ function Public() {
                 <Route path='/customer/:id' element={<DetailCustomer />} />
                 <Route path='/customer/create' element={<CreateCustomer />} />
                 <Route path='/customer/manage' element={<ManageCustomer />} />
+                //
+                <Route path='/feedback/list' element={<ListFeedback />} />
+                <Route path='/feedback/:id' element={<DetailFeedback />} />
 
             </Routes>
         </div>
