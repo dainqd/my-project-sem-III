@@ -99,9 +99,9 @@ function Sidebar() {
                     </li>
 
                     <li className="nav-item">
-                        <Link className="nav-link collapsed" to="#">
+                        <Link className="nav-link collapsed" to="/appointment/list">
                             <i className="bi bi-card-list"></i>
-                            <span>Register</span>
+                            <span>Appointment</span>
                         </Link>
                     </li>
 

@@ -53,7 +53,7 @@ class AppointmentService {
                 'Authorization': `Bearer ${sessionStorage.getItem("accessToken")}`
             }
         };
-        return axios.put(BASE_URL_SERVER + API_ENDPOINT.ADMIN_UPDATE_APPOINTMENT + id, data, config)
+        return axios.put(BASE_URL_SERVER + API_ENDPOINT.ADMIN_UPDATE_APPOINTMENT + id + "?status="+ data,"", config)
     }
 
     adminDeleteAppointment = (id) => {
