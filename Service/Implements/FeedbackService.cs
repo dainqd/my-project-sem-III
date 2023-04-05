@@ -23,7 +23,7 @@ public class FeedbackService : IFeedbackService
     
     public IEnumerable<Feedbacks> GetAll()
     {
-        return _context.Feedbacks;
+        return _context.Feedbacks.Where(v => v.status != Enums.FeedbackStatus.DELETED).ToList();
     }
 
     public IEnumerable<Feedbacks> GetAllByStatus(Enums.FeedbackStatus status)

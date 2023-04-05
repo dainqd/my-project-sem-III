@@ -140,7 +140,7 @@ function Sidebar() {
                     </li>
 
                     <li className="nav-item">
-                        <Link className="nav-link collapsed" to="#">
+                        <Link className="nav-link collapsed" to="/feedback/list">
                             <i className="bi bi-question-circle"></i>
                             <span>Feedback</span>
                         </Link>
