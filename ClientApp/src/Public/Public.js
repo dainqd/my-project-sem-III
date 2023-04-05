@@ -30,6 +30,11 @@ import DetailAppointment from "./Components/AdminApp/Appointment/Detail/DetailAp
 import ListInsurance from "./Components/AdminApp/Insurance/ListInsurance/ListInsurance";
 import CreateInsurance from "./Components/AdminApp/Insurance/CreateInsurance/CreateInsurance";
 import DetailInsurance from "./Components/AdminApp/Insurance/DetailInsurance/DetailInsurance";
+import ManageInsurance from "./Components/AdminApp/Insurance/ManageInsurance/ManageInsurance";
+import ListCustomer from "./Components/AdminApp/Customer/ListCustomer/ListCustomer";
+import CreateCustomer from "./Components/AdminApp/Customer/CreateCustomer/CreateCustomer";
+import DetailCustomer from "./Components/AdminApp/Customer/DetailCustomer/DetailCustomer";
+import ManageCustomer from "./Components/AdminApp/Customer/ManageCustomer/ManageCustomer";
 
 function Public() {
     return (
@@ -77,6 +82,12 @@ function Public() {
                 <Route path='/insurance/list' element={<ListInsurance />} />
                 <Route path='/insurance/:id' element={<DetailInsurance />} />
                 <Route path='/insurance/create' element={<CreateInsurance />} />
+                <Route path='/insurance/manage' element={<ManageInsurance />} />
+                //
+                <Route path='/customer/list' element={<ListCustomer />} />
+                <Route path='/customer/:id' element={<DetailCustomer />} />
+                <Route path='/customer/create' element={<CreateCustomer />} />
+                <Route path='/customer/manage' element={<ManageCustomer />} />
 
             </Routes>
         </div>

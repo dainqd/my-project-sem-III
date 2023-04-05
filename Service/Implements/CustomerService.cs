@@ -24,7 +24,7 @@ public class CustomerService : ICustomerService
 
     public IEnumerable<Customers> GetAll()
     {
-       return _context.Customers;
+        return _context.Customers.Where(v => v.status != Enums.CustomerStatus.DELETED).ToList();
     }
 
     public IEnumerable<Customers> GetAllByStatus(Enums.CustomerStatus status)

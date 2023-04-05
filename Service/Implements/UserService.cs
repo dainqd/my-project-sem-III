@@ -25,7 +25,7 @@ public class UserService : IUserService
     
     public IEnumerable<User> GetAll()
     {
-        return _context.User;
+        return _context.User.Where(v => v.status != Enums.UserStatus.DELETED).ToList();
     }
 
     public IEnumerable<User> GetAllByStatus(Enums.UserStatus status)
