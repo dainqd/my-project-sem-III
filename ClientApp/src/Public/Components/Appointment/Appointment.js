@@ -8,7 +8,7 @@ import img_profile from "../images/client/profile.jpg";
 import Footer from "../Shared/Client/Footer/Footer";
 import Background from "../images/client/carousel-1.jpg";
 import insuranceService from "../Service/InsuranceService";
-
+import WOW from 'wowjs';
 function Appointment() {
     const [data, setData] = useState([]);
     const list = [];
@@ -32,7 +32,9 @@ function Appointment() {
     useEffect(() => {
         getListInsurance();
     }, []);
-
+     useEffect(() => {
+     new WOW.WOW().init();
+     }, []);
     data.forEach((insure, index) => {
         list.push(
             <option value={insure.id} key={index}>{insure.name}</option>

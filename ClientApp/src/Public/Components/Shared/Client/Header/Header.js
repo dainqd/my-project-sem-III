@@ -1,12 +1,17 @@
 import { message } from 'antd';
-import React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+
 
 function HeaderClient() {
+
+
     return (
+
         <div
             className="container-fluid bg-dark text-white-50 py-2 px-0 d-none d-lg-block"
         >
+
             <div className="row gx-0 align-items-center">
                 <div className="col-lg-7 px-5 text-start">
                     <div className="h-100 d-inline-flex align-items-center me-4">

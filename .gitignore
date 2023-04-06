@@ -16,3 +16,5 @@ Entities/.DS_Store
 Resources/.DS_Store
 Service/.DS_Store
 _mail_config/.DS_Store
+
+node_modules

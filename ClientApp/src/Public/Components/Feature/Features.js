@@ -10,7 +10,9 @@ import Footer from "../Shared/Client/Footer/Footer";
 import Background from "../images/client/carousel-1.jpg";
 import {Link} from "react-router-dom";
 
+
 function Features() {
+
     return (
         <div style={{backgroundColor: "#fff"}}>
             <Header/>
