@@ -40,6 +40,7 @@ import DetailFeedback from "./Components/AdminApp/Feedback/DetailFeedback/Detail
 import ListMember from "./Components/AdminApp/Member/ListMember/ListMember";
 import DetailMember from "./Components/AdminApp/Member/DetailMember/DetailMember";
 import CreateMember from "./Components/AdminApp/Member/CreateMember/CreateMember";
+import ListOrder from "./Components/AdminApp/Order/ListOrder/ListOrder";
 
 function Public() {
     return (
@@ -100,6 +101,9 @@ function Public() {
                 <Route path='/member/list' element={<ListMember />} />
                 <Route path='/member/:id' element={<DetailMember />} />
                 <Route path='/member/create' element={<CreateMember />} />
+                //
+                <Route path='/order/list' element={<ListOrder />} />
+                {/*<Route path='/member/:id' element={<DetailMember />} />*/}
             </Routes>
         </div>
     )
