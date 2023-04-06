@@ -127,6 +127,13 @@ function Sidebar() {
 
                     <li className="nav-item">
                         <Link className="nav-link collapsed" to="#">
+                            <i className="bi bi-cart-dash"></i>
+                            <span>Order</span>
+                        </Link>
+                    </li>
+                    
+                    <li className="nav-item">
+                        <Link className="nav-link collapsed" to="#">
                             <i className="bi bi-person"></i>
                             <span>Payment</span>
                         </Link>

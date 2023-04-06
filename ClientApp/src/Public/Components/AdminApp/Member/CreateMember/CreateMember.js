@@ -254,7 +254,7 @@ function CreateMember() {
                                             </select>
                                         </div>
 
-                                        <div className="col-12">
+                                        <div className="col-12 mt-5">
                                             <Form.Item>
                                                 <Button htmlType="submit" type="primary">Submit form</Button>
                                             </Form.Item>
