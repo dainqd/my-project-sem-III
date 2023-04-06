@@ -13,5 +13,5 @@ public class UpdateMemberRequest
     public string gender { get; set; }
     public string introduce { get; set; } 
     public string description { get; set; } 
-    public Enums.MemberStatus status;
+    public Enums.MemberStatus status { get; set; }
 }

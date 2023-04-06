@@ -24,7 +24,7 @@ public class MemberService : IMemberService
     
     public IEnumerable<Members> GetAll()
     {
-        return _context.Members;
+        return _context.Members.Where(v => v.status != Enums.MemberStatus.DELETED).ToList();
     }
 
     public IEnumerable<Members> GetAllByStatus(Enums.MemberStatus status)
