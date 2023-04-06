@@ -8,6 +8,7 @@ import Footer from "../Shared/Client/Footer/Footer";
 import Background from '../images/client/carousel-1.jpg';
 
 function Contact() {
+
     const navigate = useNavigate();
 
     const onFinish = async () => {

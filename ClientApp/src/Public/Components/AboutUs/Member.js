@@ -9,6 +9,7 @@ import image1 from '../images/client/icon/icon-04-primary.png';
 import image2 from '../images/client/icon/icon-03-primary.png';
 import image3 from '../images/client/profile.jpg';
 import Background from "../images/client/carousel-1.jpg";
+import WOW from 'wowjs';
 
 function Member() {
     // const navigate = useNavigate();
@@ -37,6 +38,9 @@ function Member() {
     useEffect(() => {
         getListMember();
     }, []);
+     useEffect(() => {
+                       new WOW.WOW().init();
+                    }, []);
 
     data.forEach((member, index) => {
         list.push(

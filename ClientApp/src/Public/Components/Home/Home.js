@@ -8,6 +8,7 @@ import img_carousel_2 from '../images/client/carousel-2.jpg'
 import img_about from '../images/client/about.jpg'
 import img_icon_4_pri from '../images/client/icon/icon-04-primary.png'
 import img_icon_3_pri from '../images/client/icon/icon-03-primary.png'
+import img_icon_5_li from '../images/client/icon/icon-05-light.png'
 import img_profile from '../images/client/profile.jpg'
 import img_icon_6_pri from '../images/client/icon/icon-06-primary.png'
 import img_icon_7_pri from '../images/client/icon/icon-07-primary.png'
@@ -15,6 +16,9 @@ import img_feature from '../images/client/feature.jpg'
 import insuranceService from "../Service/InsuranceService";
 import appointmentService from "../Service/AppointmentService";
 import {Form, message} from "antd";
+import WOW from 'wowjs';
+
+
 
 
 function Home() {
@@ -53,8 +57,7 @@ function Home() {
             .then((res) => {
                 if (res.status === 200){
                     console.log("data", res.data)
-                    // list = res.data;
-                    // console.log(list[0].name)
+
                     console.log(res.data[1])
                     setData(res.data)
                 } else {
@@ -106,8 +109,13 @@ function Home() {
         );
     });
 
+        useEffect(() => {
+               new WOW.WOW().init();
+            }, []);
+
     return (
         <div style={{backgroundColor:"#fff"}}>
+
             <Header />
             <Navbar />
             <div className="container-fluid p-0 mb-5 wow fadeIn" data-wow-delay="0.1s">
@@ -120,7 +128,7 @@ function Home() {
                                 <div className="container">
                                     <div className="row">
                                         <div className="col-12 col-lg-6">
-                                            <h1 className="display-3 text-dark mb-4 animated slideInDown">
+                                            <h1 className="display-3 text-dark mb-4 animated slideInDown" style={{fontWeight: "bold"}}>
                                                 Insurance Creates Wealth For Everyone
                                             </h1>
                                             <p className="fs-5 text-body mb-5">
@@ -179,10 +187,10 @@ function Home() {
                 </div>
             </div>
            
-            <div className="container-xxl py-5">
+            <div className="container-xxl py-5" >
                 <div className="container">
-                    <div className="row g-5">
-                        <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div className="row g-5" >
+                        <div className="col-lg-6 wow fadeInUp" data-aos="fade-up" data-wow-delay="0.1s">
                             <div
                                 className="position-relative overflow-hidden rounded ps-5 pt-5 h-100"
                                 style={{minHeight: "400px"}}
@@ -207,9 +215,9 @@ function Home() {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                        <div className="col-lg-6 wow fadeInUp"  data-wow-delay="0.5s">
                             <div className="h-100">
-                                <h1 className="display-6 mb-5">
+                                <h1 className="display-6 mb-5" style={{fontWeight: "bold"}}>
                                     We're Here To Assist You With Exploring Protection
                                 </h1>
                                 <p className="fs-5 text-primary mb-4">
@@ -269,7 +277,7 @@ function Home() {
                     <div className="row g-0 mx-lg-0">
                         <div className="col-lg-6 facts-text wow fadeIn" data-wow-delay="0.1s">
                             <div className="h-100 px-4 ps-lg-0">
-                                <h1 className="text-white mb-4"> FiveSuperHero Financial Group</h1>
+                                <h1 className="text-white mb-4" style={{fontWeight: "bold"}}> FiveSuperHero Financial Group</h1>
                                 <p className="text-light mb-5">
                                     FiveSuperHero Financial Group is one of the world's
                                     leading corporations in providing financial services,
@@ -283,23 +291,23 @@ function Home() {
                                 >More Details</Link>
                             </div>
                         </div>
-                        <div className="col-lg-6 facts-counter wow fadeIn" data-wow-delay="0.2s">
+                        <div className="col-lg-6 facts-counter wow fadeIn" data-wow-delay="0.5s">
                             <div className="h-100 px-4 pe-lg-0">
                                 <div className="row g-5">
                                     <div className="col-sm-6">
-                                        <h1 className="display-5" data-toggle="counter-up">6368</h1>
+                                        <h1 className="display-5" id="counter-up" style={{fontWeight: "bold"}}>6368</h1>
                                         <p className="fs-5 text-primary">Happy Clients</p>
                                     </div>
                                     <div className="col-sm-6">
-                                        <h1 className="display-5" data-toggle="counter-up">3636</h1>
+                                        <h1 className="display-5" data-toggle="counter-up" style={{fontWeight: "bold"}}>3636</h1>
                                         <p className="fs-5 text-primary">Projects Succeed</p>
                                     </div>
                                     <div className="col-sm-6">
-                                        <h1 className="display-5" data-toggle="counter-up">1002</h1>
+                                        <h1 className="display-5" data-toggle="counter-up" style={{fontWeight: "bold"}}>1002</h1>
                                         <p className="fs-5 text-primary">Awards Achieved</p>
                                     </div>
                                     <div className="col-sm-6">
-                                        <h1 className="display-5" data-toggle="counter-up">2010</h1>
+                                        <h1 className="display-5" data-toggle="counter-up" style={{fontWeight: "bold"}}>2010</h1>
                                         <p className="fs-5 text-primary">Team Members</p>
                                     </div>
                                 </div>
@@ -313,7 +321,7 @@ function Home() {
                 <div className="container">
                     <div className="row g-5">
                         <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                            <h1 className="display-6 mb-5">Few Reasons Why People Choosing Us!</h1>
+                            <h1 className="display-6 mb-5" style={{fontWeight: "bold"}}>Few Reasons Why People Choosing Us!</h1>
                             <p className="mb-4">
                                 One of FiveSuperHero's priorities in the recently introduced 'Spread Impact'
                                 program is to open inclusive economic opportunities for all,
@@ -396,14 +404,14 @@ function Home() {
                 </div>
             </div>
             
-            <div className="container-xxl py-5">
+            <div className="container-xxl py-5 wow fadeIn">
                 <div className="container">
                     <div className="text-center mx-auto" style={{maxWidth: "500px"}}>
-                        <h1 className="display-6 mb-5">
+                        <h1 className="display-6 mb-5" style={{fontWeight: "bold"}}>
                             We Provide professional Insurance Services
                         </h1>
                     </div>
-                    <div className="row g-4 justify-content-center">
+                    <div className="row g-4 justify-content-center wow fadeIn" data-wow-delay="0.3s">
                         {list}
                     </div>
                 </div>
@@ -416,7 +424,7 @@ function Home() {
                 <div className="container py-5">
                     <div className="row g-5">
                         <div className="col-lg-6 wow fadeIn" data-wow-delay="0.3s">
-                            <h1 className="display-6 text-white mb-5">
+                            <h1 className="display-6 text-white mb-5" style={{fontWeight: "bold"}}>
                                 We're Award Winning Insurance Company
                             </h1>
                             <p className="text-white mb-5">
