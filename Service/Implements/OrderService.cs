@@ -121,11 +121,6 @@ public class OrderService : IOrderService
     {
         var order = _mapper.Map<Orders>(model);
 
-        if (model.name == null)
-        {
-            throw new AppException("Name invalid!");
-        }
-        
         ProjectUtils projectUtils = new ProjectUtils();
         order.orderCode = projectUtils.generateCodeOrder();
 
@@ -133,6 +128,11 @@ public class OrderService : IOrderService
         if (customer == null || customer.status != Enums.CustomerStatus.ACTIVE)
         {
             throw new KeyNotFoundException("Category not found");
+        }
+        
+        if (model.name == null)
+        {
+            order.name = customer.fullName;
         }
         
         var insurance = _context.Insurances.Find(model.insurance_id);
