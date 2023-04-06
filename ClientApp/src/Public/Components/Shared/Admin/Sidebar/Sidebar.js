@@ -113,12 +113,12 @@ function Sidebar() {
                         </Link>
                         <ul id="components-nav" className="nav-content collapse " data-bs-parent="#sidebar-nav">
                             <li>
-                                <Link to="">
+                                <Link to="/member/list">
                                     <i className="bi bi-circle"></i><span>List Member</span>
                                 </Link>
                             </li>
                             <li>
-                                <Link to="">
+                                <Link to="/member/create">
                                     <i className="bi bi-circle"></i><span>Create Member</span>
                                 </Link>
                             </li>
