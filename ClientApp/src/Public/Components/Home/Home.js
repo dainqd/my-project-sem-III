@@ -82,14 +82,9 @@ function Home() {
             <div className="col-lg-5 col-md-6 wow fadeInUp" data-wow-delay="0.1s" key={index}>
                 <div className="service-item rounded h-100 p-5">
                     <div className="d-flex align-items-center ms-n5 mb-4">
-                        <div
-                            className="service-icon flex-shrink-0 bg-primary rounded-end me-4"
-                        >
-                            <img
-                                className="img-fluid"
-                                src={insure.thumbnail}
-                                alt=""
-                            />
+                        <div className="" style={{backgroundColor:"#ccc", marginRight:"25px"}} >
+                        <img className="img-fluid" src={insure.thumbnail} alt="" width="100px" height="100px"
+                             style={{border:"1px solid #ccc", borderRadius:"3px"}}/>
                         </div>
                         <h4 className="mb-0">
                             {insure.name}

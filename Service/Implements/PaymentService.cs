@@ -87,7 +87,7 @@ public class PaymentService : IPaymentService
         
         _context.Transactions.Add(transaction);
         
-        _context.Update(payment);
+        _context.Payments.Update(payment);
         _context.SaveChanges();
     }
 
@@ -170,7 +170,7 @@ public class PaymentService : IPaymentService
             throw new KeyNotFoundException("Order of not found"); 
         }
 
-        var response = _mapper.Map<PaymentResponse>(order);
+        var response = _mapper.Map<PaymentResponse>(payment);
         return response;
     }
 }
