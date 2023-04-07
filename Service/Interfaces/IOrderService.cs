@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using myProject.Dtos.Order;
 using myProject.Entities;
 using myProject.Utils.Enums;
@@ -13,5 +14,5 @@ public interface IOrderService
     void Update(int id, UpdateOrderRequest model);
     void Edit(int id, EditOrderRequest model);
     void Delete(int id);
-    void Create(CreateOrderRequest model);
+    Orders Create(CreateOrderRequest model);
 }

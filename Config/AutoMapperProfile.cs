@@ -90,7 +90,7 @@ public class AutoMapperProfile : Profile
         // PaymentRequest -> Payment
         CreateMap<PaymentRequest, Payment>();
         // Payment -> PaymentResponse
-        CreateMap<Orders, PaymentResponse>();
+        CreateMap<Payment, PaymentResponse>();
         
         // Transactions
         // CreateTransactionRequest -> Transactions

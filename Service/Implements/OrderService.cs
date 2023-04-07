@@ -1,4 +1,5 @@
 using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using myProject.Config;
 using myProject.Context;
 using myProject.Dtos.Order;
@@ -117,7 +118,7 @@ public class OrderService : IOrderService
         _context.SaveChanges();
     }
 
-    public void Create(CreateOrderRequest model)
+    public Orders Create(CreateOrderRequest model)
     {
         var order = _mapper.Map<Orders>(model);
 
@@ -151,7 +152,7 @@ public class OrderService : IOrderService
         _context.Payments.Add(payment);
         _context.SaveChanges();
 
-        var new_payment = _context.Payments.Last(x => x.paymentCode == payment.paymentCode);
+        var new_payment = _context.Payments.First(x => x.paymentCode == payment.paymentCode);
         if (new_payment == null || payment.status == Enums.PaymentStatus.DELETED)
         {
             throw new KeyNotFoundException("Payment not found");
@@ -163,7 +164,7 @@ public class OrderService : IOrderService
         _context.Orders.Add(order);
         _context.SaveChanges();
         
-        var new_order = _context.Orders.Last(x => x.orderCode == order.orderCode);
+        var new_order = _context.Orders.First(x => x.orderCode == order.orderCode);
         if (new_order == null || order.status == Enums.OrderStatus.DELETED)
         {
             throw new KeyNotFoundException("Order not found");
@@ -173,6 +174,8 @@ public class OrderService : IOrderService
         payment.UpdatedAt = DateTimeOffset.Now;
         _context.Payments.Update(payment);
         _context.SaveChanges();
+
+        return new_order;
     }
     
     private Orders getOrdeById(int id)

@@ -41,6 +41,8 @@ import ListMember from "./Components/AdminApp/Member/ListMember/ListMember";
 import DetailMember from "./Components/AdminApp/Member/DetailMember/DetailMember";
 import CreateMember from "./Components/AdminApp/Member/CreateMember/CreateMember";
 import ListOrder from "./Components/AdminApp/Order/ListOrder/ListOrder";
+import InsuranceDetail from "./Components/Insurance/InsuranceDetail";
+import Payment from "./Components/Insurance/Payment/Payment";
 
 function Public() {
     return (
@@ -62,6 +64,8 @@ function Public() {
                 <Route path='/profile' element={<Profile />} />
                 // Insurance
                 <Route path='/insurances' element={<Insurance />} />
+                <Route path='/insurances/detail/:id' element={<InsuranceDetail />} />
+                <Route path='/payment/detail/:id' element={<Payment />} />
                 //
                 <Route path='/contact' element={<Contact />} />
                 //

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using myProject.Config;
 using myProject.Dtos.Order;
+using myProject.Entities;
 using myProject.Service.Interfaces;
 
 namespace myProject.Controllers;
@@ -34,10 +35,9 @@ public class OrderController : ControllerBase
     }
     
     [HttpPost]
-    public IActionResult Create(CreateOrderRequest model)
+    public Orders Create(CreateOrderRequest model)
     {
-        _orderService.Create(model);
-        return Ok(new { message = "Order created" });
+        return _orderService.Create(model);
     }
 
     [HttpPut("{id}")]
