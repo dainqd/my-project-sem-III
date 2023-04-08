@@ -3,6 +3,7 @@ import axios from "axios";
 
 const API_ENDPOINT = {
     //
+    LIST_ID_PAYMENT: "/api/payment/list/",
     DETAIL_PAYMENT: "/api/payment/detail/",
     CREATE_PAYMENT: "/api/payment",
     PAYMENT_METHOD: "/api/payment/pay/",
@@ -17,6 +18,16 @@ const API_ENDPOINT = {
     ADMIN_DELETE_PAYMENT: "/admin/api/payment/",
 }
 class PaymentService {
+
+    listPayment = (id) => {
+        const config = {
+            headers: {
+                'content-type': 'application/json',
+                'Authorization': `Bearer ${sessionStorage.getItem("accessToken")}`
+            }
+        };
+        return axios.get(BASE_URL_SERVER + API_ENDPOINT.LIST_ID_PAYMENT + id, config);
+    }
 
     detailPayment = (id) => {
         const config = {

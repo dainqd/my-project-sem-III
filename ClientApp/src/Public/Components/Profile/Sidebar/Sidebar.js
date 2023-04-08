@@ -40,7 +40,7 @@ function Sidebar() {
                         </Link>
                         <ul id="tables-nav" className="nav-content collapse " data-bs-parent="#sidebar-nav">
                             <li>
-                                <Link to="#">
+                                <Link to="/my-purchase/purchase-available">
                                     <i className="bi bi-circle" /><span>Purchase Available</span>
                                 </Link>
                             </li>

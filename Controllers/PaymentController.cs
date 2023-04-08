@@ -24,7 +24,14 @@ public class PaymentController : ControllerBase
     {
         _paymentService = paymentService;
         _mapper = mapper;
-    }  
+    } 
+    
+    [HttpGet("list/{id}")]
+    public IActionResult? GetByOUserId(int id)
+    {
+        var payments = _paymentService.GetAllByCustomerID(id);
+        return Ok(payments);
+    }
     
     [HttpGet("detail/{id}")]
     public IActionResult? GetById(int id)

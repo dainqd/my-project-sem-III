@@ -126,10 +126,41 @@ public class OrderService : IOrderService
         order.orderCode = projectUtils.generateCodeOrder();
 
         var customer = _context.Customers.Find(model.customer_id);
-        if (customer == null || customer.status != Enums.CustomerStatus.ACTIVE)
+        var user = _context.User.Find(model.customer_id);
+        if (user == null || user.status != Enums.UserStatus.ACTIVE)
+        {
+            throw new AppException("User not found");
+        }
+        
+        if (customer == null)
+        {
+            var newCustomer = new Customers();
+            if (user.lastName != null || user.firstName != null)
+            {
+                newCustomer.fullName = user.firstName + user.lastName;
+            }
+            else
+            {
+                newCustomer.fullName = user.username;
+            }
+
+            newCustomer.user_id = user.id;
+            newCustomer.avatar = user.avatar;
+            newCustomer.address = user.address;
+            newCustomer.email = user.email;
+            newCustomer.phoneNumber = user.phoneNumber;
+            newCustomer.status = Enums.CustomerStatus.ACTIVE;
+            _context.Customers.Add(newCustomer);
+            _context.SaveChanges();
+        }
+        
+        if (customer.status != Enums.CustomerStatus.ACTIVE)
         {
             throw new KeyNotFoundException("Category not found");
         }
+        
+        var thisCustomer = _context.Customers.First(c => c.user_id == user.id);
+        order.customer_id = thisCustomer.id;
         
         if (model.name == null)
         {
