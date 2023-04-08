@@ -9,6 +9,7 @@ public interface IPaymentService
 {
     IEnumerable<Payment> GetAll();
     IEnumerable<Payment> GetAllByStatus(Enums.PaymentStatus status);
+    IEnumerable<Payment> GetAllByCustomerID(int customerId);
     Payment GetById(int id);
     PaymentResponse GetByIdAndStatus(int id);
     void CheckPayment(int id, PaymentRequest model);

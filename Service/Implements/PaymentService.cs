@@ -36,6 +36,67 @@ public class PaymentService : IPaymentService
         return _context.Payments.Where(v => v.status == newstatus).ToList();
     }
 
+    public IEnumerable<Payment> GetAllByCustomerID(int userId)
+    {
+        var id = userId;
+        var user = _context.User.Find(id);
+        if (user == null || user.status != Enums.UserStatus.ACTIVE)
+        {
+            throw new AppException("User not found");
+        }
+        
+        var customer = _context.Customers.First(c => c.user_id == user.id);
+        if (customer == null)
+        {
+            var newCustomer = new Customers();
+            if (user.lastName != null || user.firstName != null)
+            {
+                newCustomer.fullName = user.firstName + user.lastName;
+            }
+            else
+            {
+                newCustomer.fullName = user.username;
+            }
+
+            newCustomer.user_id = user.id;
+            newCustomer.avatar = user.avatar;
+            newCustomer.address = user.address;
+            newCustomer.email = user.email;
+            newCustomer.phoneNumber = user.phoneNumber;
+            newCustomer.status = Enums.CustomerStatus.ACTIVE;
+            _context.Customers.Add(newCustomer);
+            _context.SaveChanges();
+        }
+        else if (customer.status != Enums.CustomerStatus.ACTIVE)
+        {
+            throw new AppException("Customer not found");
+        }
+        
+        var thisCustomer = _context.Customers.First(c => c.user_id == user.id);
+        Console.WriteLine(thisCustomer.id);
+
+        var orders = _context.Orders.Where(o => o.customer_id == thisCustomer.id).ToList();
+
+        List<Payment> payments = new List<Payment>
+        {
+            
+        };
+
+        foreach (var order in orders)
+        {
+            var payment = _context.Payments.First(p => p.order_id == order.id);
+            if (payment == null)
+            {
+                throw new AppException("Payment not found");
+            }
+            payments.Add(payment);
+        }
+        
+        Console.WriteLine(payments);
+        
+        return payments;
+    }
+
     public Payment GetById(int id)
     {
         return getPaymentById(id);

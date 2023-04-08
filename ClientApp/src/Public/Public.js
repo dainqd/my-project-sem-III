@@ -43,6 +43,7 @@ import CreateMember from "./Components/AdminApp/Member/CreateMember/CreateMember
 import ListOrder from "./Components/AdminApp/Order/ListOrder/ListOrder";
 import InsuranceDetail from "./Components/Insurance/InsuranceDetail";
 import Payment from "./Components/Insurance/Payment/Payment";
+import PurchaseAvailable from "./Components/Profile/MyPurchase/PurchaseAvailable/PurchaseAvailable";
 
 function Public() {
     return (
@@ -62,6 +63,9 @@ function Public() {
                 <Route path='/account/:id' element={<Detail />} />
                 <Route path='/*' element={<Error404 />} />
                 <Route path='/profile' element={<Profile />} />
+                //
+                <Route path='/my-purchase/purchase-available' element={<PurchaseAvailable />} />
+                {/*<Route path='/my-purchase/purchase-history' element={<ListFeedback />} />*/}
                 // Insurance
                 <Route path='/insurances' element={<Insurance />} />
                 <Route path='/insurances/detail/:id' element={<InsuranceDetail />} />

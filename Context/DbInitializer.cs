@@ -62,25 +62,29 @@ public class DbInitializer
             new Insurances()
             {
                 id = 1, category_id = 1, description = "Insurances",
-                thumbnail = "", name = "Home Insurance",
+                thumbnail = "https://insurshtml.websitelayout.net/img/service/service-details9.jpg?fbclid=IwAR0TDjs4fMdeSZnUjKu4emaQpgKbbOBzvHxf91clFsb8kWnX2os_zTv7XLc", 
+                name = "Home Insurance",
                 status = Enums.InsuranceStatus.ACTIVE, price = "999.99"
             },
             new Insurances()
             {
                 id = 2, category_id = 2, description = "Insurances",
-                thumbnail = "", name = "Life Insurance",
+                thumbnail = "https://insurshtml.websitelayout.net/img/service/service-details.jpg?fbclid=IwAR2Vgtt-qe_wWKrac9bIeuZTGDzwJ-ZAO6MbZegkWjKOabVghZWSbg0nb-s",
+                name = "Life Insurance",
                 status = Enums.InsuranceStatus.ACTIVE, price = "599.99"
             },
             new Insurances()
             {
                 id = 3, category_id = 3, description = "Insurances",
-                thumbnail = "", name = "Motor Insurance",
+                thumbnail = "https://insurshtml.websitelayout.net/img/service/service-details7.jpg?fbclid=IwAR2Vgtt-qe_wWKrac9bIeuZTGDzwJ-ZAO6MbZegkWjKOabVghZWSbg0nb-s",
+                name = "Motor Insurance",
                 status = Enums.InsuranceStatus.ACTIVE, price = "399.99"
             },
             new Insurances()
             {
                 id = 4, category_id = 4, description = "Insurances",
-                thumbnail = "", name = "Medical Insurance",
+                thumbnail = "https://insurshtml.websitelayout.net/img/service/service-details8.jpg?fbclid=IwAR1IgI4eoC6bLiIbvgsfE0TvAEAe-NBdKWAVwpIgdqD-DkC4eO6sAOVetJ4",
+                name = "Medical Insurance",
                 status = Enums.InsuranceStatus.ACTIVE, price = "399.99"
             }
         );
