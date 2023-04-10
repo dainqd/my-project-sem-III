@@ -14,4 +14,9 @@ You need to run it locally by following these steps:
 8. At the new window terminal, you need to run command:<p> cp .appsettings.example.json appsettings.json </p>to create a new appsettings.json file needed
 9. At the appsettings.json file, must make a connection to the database and set up more add variables and keys for the project environment 
 10. Run the following commands:<p> dotnet tool install --global dotnet-ef </p><p> dotnet ef migrations add InitialCreate </p><p> dotnet ef database update </p> 
-11. Launch the project with command: <p> dotnet run Project </p>
+11. Launch the project server with command: <p> dotnet run Project </p>
+12. You must download nodejs: https://nodejs.org/en/download and download with the right version and after download successful you need to activate nodejs to continue...
+13. Later, open the new window terminal, you run command: <p>cd ClientApp</p>
+14. At the this terminal, you run command: <p> cp .package.example.json package.json </p>
+15. Later, you run to command: <p>npm install</p>
+16. Wait for it, after successful install, you run command to start Project:<p>npm start</p>
