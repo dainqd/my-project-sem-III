@@ -45,6 +45,8 @@ import InsuranceDetail from "./Components/Insurance/InsuranceDetail";
 import Payment from "./Components/Insurance/Payment/Payment";
 import PurchaseAvailable from "./Components/Profile/MyPurchase/PurchaseAvailable/PurchaseAvailable";
 import PurchaseHistory from "./Components/Profile/MyPurchase/PurchaseHistory/PurchaseHistory";
+import PaymentList from "./Components/AdminApp/Insurance/Payment/PaymentList";
+import TransactionList from "./Components/AdminApp/Insurance/Transaction/TransactionList";
 
 function Public() {
     return (
@@ -113,6 +115,10 @@ function Public() {
                 //
                 <Route path='/order/list' element={<ListOrder />} />
                 {/*<Route path='/member/:id' element={<DetailMember />} />*/}
+                //
+                <Route path='/payment/list' element={<PaymentList />} />
+                //
+                <Route path='/transaction/list' element={<TransactionList />} />
             </Routes>
         </div>
     )

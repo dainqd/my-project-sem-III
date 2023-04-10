@@ -133,14 +133,14 @@ function Sidebar() {
                     </li>
                     
                     <li className="nav-item">
-                        <Link className="nav-link collapsed" to="#">
+                        <Link className="nav-link collapsed" to="/payment/list">
                             <i className="bi bi-person"></i>
                             <span>Payment</span>
                         </Link>
                     </li>
 
                     <li className="nav-item">
-                        <Link className="nav-link collapsed" to="#">
+                        <Link className="nav-link collapsed" to="/transaction/list">
                             <i className="bi bi-file-earmark"></i>
                             <span>Transaction</span>
                         </Link>

@@ -79,15 +79,15 @@ class PaymentService {
         return axios.delete(BASE_URL_SERVER + API_ENDPOINT.DELETE_PAYMENT + id, config)
     }
     // // ADMIN
-    // adminListAccount = () => {
-    //     const config = {
-    //         headers: {
-    //             'content-type': 'application/json',
-    //             'Authorization': `Bearer ${sessionStorage.getItem("accessToken")}`
-    //         }
-    //     };
-    //     return axios.get(BASE_URL_SERVER + API_ENDPOINT.ADMIN_LIST_ACCOUNT, config);
-    // }
+    adminListPayment = () => {
+        const config = {
+            headers: {
+                'content-type': 'application/json',
+                'Authorization': `Bearer ${sessionStorage.getItem("accessToken")}`
+            }
+        };
+        return axios.get(BASE_URL_SERVER + API_ENDPOINT.ADMIN_LIST_PAYMENT, config);
+    }
     //
     // adminListStatusAccount = (data) => {
     //     const config = {
@@ -129,15 +129,15 @@ class PaymentService {
     //     return axios.put(BASE_URL_SERVER + API_ENDPOINT.ADMIN_UPDATE_ACCOUNT + id, data, config);
     // }
     //
-    // adminDeleteAccount = (id) => {
-    //     const config = {
-    //         headers: {
-    //             'content-type': 'application/json',
-    //             'Authorization': `Bearer ${sessionStorage.getItem("accessToken")}`
-    //         }
-    //     };
-    //     return axios.delete(BASE_URL_SERVER + API_ENDPOINT.ADMIN_DELETE_ACCOUNT + id, config)
-    // }
+    adminDeletePayment = (id) => {
+        const config = {
+            headers: {
+                'content-type': 'application/json',
+                'Authorization': `Bearer ${sessionStorage.getItem("accessToken")}`
+            }
+        };
+        return axios.delete(BASE_URL_SERVER + API_ENDPOINT.ADMIN_DELETE_PAYMENT + id, config)
+    }
 
 }
 const paymentService = new PaymentService();
