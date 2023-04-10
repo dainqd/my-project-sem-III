@@ -73,7 +73,8 @@ public class Enums
     
     public enum TransactionStatus
     {
-        PAID,
+        SUCCESS,
+        FAIL,
         DELETED
     }
     

@@ -34,7 +34,7 @@ function PurchaseAvailable() {
             width: '10%',
         },
         {
-            title: 'OrderCode',
+            title: 'OrderID',
             dataIndex: 'order_id',
             width: '10%',
         },
@@ -136,7 +136,7 @@ function PurchaseAvailable() {
             <Sidebar />
             <main id="main" className="main" style={{backgroundColor:"#f6f9ff"}}>
                 <div className="pagetitle">
-                    <h1>Profile</h1>
+                    <h1>Purchase Available</h1>
                     <nav>
                         <ol className="breadcrumb">
                             <li className="breadcrumb-item"><Link to="/">Home</Link></li>

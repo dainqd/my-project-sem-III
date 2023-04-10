@@ -26,9 +26,48 @@ public class TransactionService : ITransactionService
         return _context.Transactions;
     }
 
+    public IEnumerable<Transactions> GetAllByUserID(int userId)
+    {
+        var user = _context.User.Find(userId);
+        if (user == null || user.status != Enums.UserStatus.ACTIVE)
+        {
+            throw new AppException("User not found");
+        }
+        var customer = _context.Customers.First(c => c.user_id == user.id);
+        if (customer == null)
+        {
+            var newCustomer = new Customers();
+            if (user.lastName != null || user.firstName != null)
+            {
+                newCustomer.fullName = user.firstName + user.lastName;
+            }
+            else
+            {
+                newCustomer.fullName = user.username;
+            }
+
+            newCustomer.user_id = user.id;
+            newCustomer.avatar = user.avatar;
+            newCustomer.address = user.address;
+            newCustomer.email = user.email;
+            newCustomer.phoneNumber = user.phoneNumber;
+            newCustomer.status = Enums.CustomerStatus.ACTIVE;
+            _context.Customers.Add(newCustomer);
+            _context.SaveChanges();
+        }
+        else if (customer.status != Enums.CustomerStatus.ACTIVE)
+        {
+            throw new AppException("Customer not found");
+        }
+        
+        var thisCustomer = _context.Customers.First(c => c.user_id == user.id);
+
+        return _context.Transactions.Where(t => t.customer_id == thisCustomer.id).ToList();
+    }
+
     public IEnumerable<Transactions> GetAllByStatus(Enums.TransactionStatus status)
     {
-        return _context.Transactions.Where(v => v.status == Enums.TransactionStatus.PAID).ToList();
+        return _context.Transactions.Where(v => v.status == Enums.TransactionStatus.SUCCESS).ToList();
     }
 
     public Transactions GetById(int id)

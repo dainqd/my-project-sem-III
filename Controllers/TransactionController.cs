@@ -8,7 +8,7 @@ using myProject.Service.Interfaces;
 namespace myProject.Controllers;
 
 [ApiController]
-[Authorize]
+// [Authorize]
 [Route("api/transactions")]
 public class TransactionController : ControllerBase
 {
@@ -28,7 +28,14 @@ public class TransactionController : ControllerBase
     [HttpGet("detail/{id}")]
     public IActionResult? GetById(int id)
     {
-        var order = _transactionService.GetByIdAndStatus(id);
-        return Ok(order);
+        var transaction = _transactionService.GetByIdAndStatus(id);
+        return Ok(transaction);
+    }
+    
+    [HttpGet("list/{id}")]
+    public IActionResult? GetByUserId(int id)
+    {
+        var transactions = _transactionService.GetAllByUserID(id);
+        return Ok(transactions);
     }
 }

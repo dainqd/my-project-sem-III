@@ -16,5 +16,5 @@ public class Transactions : BaseEntity
     public int payment_id { get; set; }
     public string total_money { get; set; }
     public string description { get; set; } = "";
-    public Enums.TransactionStatus status { get; set; } = Enums.TransactionStatus.PAID;
+    public Enums.TransactionStatus status { get; set; } = Enums.TransactionStatus.FAIL;
 }
