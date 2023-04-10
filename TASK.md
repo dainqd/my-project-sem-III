@@ -1,1 +1,1 @@
-news, recruitment, member
+news, recruitment
