@@ -7,6 +7,7 @@ namespace myProject.Service.Interfaces;
 public interface ITransactionService
 {
     IEnumerable<Transactions> GetAll();
+    IEnumerable<Transactions> GetAllByUserID(int userId);
     IEnumerable<Transactions> GetAllByStatus(Enums.TransactionStatus status);
     Transactions GetById(int id);
     TransactionResponse GetByIdAndStatus(int id);

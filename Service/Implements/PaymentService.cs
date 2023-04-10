@@ -143,7 +143,7 @@ public class PaymentService : IPaymentService
         transaction.insurance_id = order.insurance_id;
         transaction.payment_id = payment.id;
         transaction.total_money = payment.totalPrice.ToString();
-        transaction.status = Enums.TransactionStatus.PAID;
+        transaction.status = Enums.TransactionStatus.SUCCESS;
         transaction.CreatedAt = DateTimeOffset.Now;
         
         _context.Transactions.Add(transaction);
