@@ -180,6 +180,14 @@ public class OrderService : IOrderService
         payment.paymentMethods = Enums.PaymentMethod.PAY_DIRECT;
         payment.status = Enums.PaymentStatus.UNPAID;
         payment.CreatedAt = DateTimeOffset.Now;
+       
+        // save notification
+        Notification notification = new Notification();
+        notification.user_id = thisCustomer.user_id;
+        notification.status = Enums.NotifyStatus.UNSEEN;
+        notification.content = "Order insurance successful!";
+        _context.Notifications.Add(notification);
+        
         _context.Payments.Add(payment);
         _context.SaveChanges();
 

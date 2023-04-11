@@ -137,7 +137,6 @@ public class PaymentService : IPaymentService
         }
         
         var transaction = new Transactions();
-        
         transaction.customer_id = order.customer_id;
         transaction.dateTime = DateTimeOffset.Now;
         transaction.insurance_id = order.insurance_id;
@@ -145,8 +144,18 @@ public class PaymentService : IPaymentService
         transaction.total_money = payment.totalPrice.ToString();
         transaction.status = Enums.TransactionStatus.SUCCESS;
         transaction.CreatedAt = DateTimeOffset.Now;
-        
         _context.Transactions.Add(transaction);
+        var customer = _context.Customers.Find(order.customer_id);
+        if (customer == null)
+        {
+            throw new KeyNotFoundException("Customer not found"); 
+        }
+        // save notification
+        Notification notification = new Notification();
+        notification.user_id = customer.user_id;
+        notification.status = Enums.NotifyStatus.UNSEEN;
+        notification.content = "Pay order successful!";
+        _context.Notifications.Add(notification);
         
         _context.Payments.Update(payment);
         _context.SaveChanges();
@@ -206,6 +215,18 @@ public class PaymentService : IPaymentService
         {
             throw new KeyNotFoundException("Order not found");
         }
+        
+        var customer = _context.Customers.Find(order.customer_id);
+        if (customer == null)
+        {
+            throw new KeyNotFoundException("Customer not found"); 
+        }
+        // save notification
+        Notification notification = new Notification();
+        notification.user_id = customer.user_id;
+        notification.status = Enums.NotifyStatus.UNSEEN;
+        notification.content = "Create payment order account successful!";
+        _context.Notifications.Add(notification);
         
         _context.Payments.Add(payment);
         _context.SaveChanges();

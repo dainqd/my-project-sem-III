@@ -2,7 +2,10 @@ import { message } from 'antd';
 import React, {useEffect, useState} from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import accountService from "../../Service/AccountService";
+import notificationService from "../../Service/NotificationService";
 import logo from '../../images/client/bannerAsset 1.png'
+import * as moment from "@mui/material";
+import { format } from 'date-fns';
 
 function IsAdmin(){
     return (
@@ -11,6 +14,116 @@ function IsAdmin(){
                 <span>Admin</span>
             </Link>
     )
+}
+
+function Notification(){
+    const id = sessionStorage.getItem("id");
+    const [data, setData] = useState([]);
+    const list = [];
+
+    const getNotificationById = async () => {
+        await notificationService.listNotificationById(id)
+            .then((res) => {
+                if (res.status === 200){
+                    console.log("data" , res.data)
+                    setData(res.data);
+                }
+            })
+    };
+
+    useEffect(() => {
+        getNotificationById();
+    }, []);
+
+    let count = data.length;
+
+   if (data.length > 1){
+       data.forEach((notifi, index) => {
+           var link = null;
+           link = "/notification/detail/" + notifi.id;
+           list.push(
+               <div key={index}>
+                   <li>
+                       <hr className="dropdown-divider" />
+                   </li>
+                   <li className="notification-item">
+                       <i className="bi bi-exclamation-circle text-warning" />
+                       <div>
+                           <h4>
+                               <Link to={link}>{notifi.content}</Link>
+                           </h4>
+                           <p>{notifi.description}</p>
+                           <p>{moment.duration(moment(new Date().toLocaleTimeString()).diff(moment(notifi.createdAt)))} ago</p>
+                       </div>
+                   </li>
+               </div>
+           );
+       });
+
+       return (
+           <li className="nav-item dropdown">
+               <Link className="nav-link nav-icon" to="#" data-bs-toggle="dropdown">
+                   <i className="bi bi-bell" />
+                   <span className="badge bg-primary badge-number">{count}</span>
+               </Link>
+               <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+                   <li className="dropdown-header">
+                       You have {count} new notifications
+                       <Link to="#"><span className="badge rounded-pill bg-primary p-2 ms-2">View all</span></Link>
+                   </li>
+
+                   {list}
+
+                   <li>
+                       <hr className="dropdown-divider" />
+                   </li>
+                   <li className="dropdown-footer">
+                       <Link to="#">Show all notifications</Link>
+                   </li>
+               </ul>
+           </li>
+       )
+   } else if (count === 1){
+       return (
+           <li className="nav-item dropdown">
+               <Link className="nav-link nav-icon" to="#" data-bs-toggle="dropdown">
+                   <i className="bi bi-bell" />
+                   <span className="badge bg-primary badge-number">{count}</span>
+               </Link>
+               <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+                   <li className="dropdown-header">
+                       You have {count} new notifications
+                   </li>
+
+                   <li>
+                       <hr className="dropdown-divider" />
+                   </li>
+                   <li className="notification-item">
+                       <i className="bi bi-exclamation-circle text-success" />
+                       <div>
+                           <h4 >
+                               <Link className="text-success"  to="">{data[0].content}</Link>
+                           </h4>
+                           <p>{data[0].description}</p>
+                       </div>
+                   </li>
+               </ul>
+           </li>
+       )
+   } else {
+       return (
+           <li className="nav-item dropdown">
+               <Link className="nav-link nav-icon" to="#" data-bs-toggle="dropdown">
+                   <i className="bi bi-bell" />
+               </Link>
+               <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+                   <li className="dropdown-header">
+                       You have {count} new notifications
+                   </li>
+               </ul>
+           </li>
+       )
+   }
 }
 
 function Header() {
@@ -82,68 +195,9 @@ function Header() {
                                 <i className="bi bi-search" />
                             </Link>
                         </li>
-                        <li className="nav-item dropdown">
-                            <Link className="nav-link nav-icon" to="#" data-bs-toggle="dropdown">
-                                <i className="bi bi-bell" />
-                                <span className="badge bg-primary badge-number">4</span>
-                            </Link>
-                            <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
-                                <li className="dropdown-header">
-                                    You have 4 new notifications
-                                    <Link to="#"><span className="badge rounded-pill bg-primary p-2 ms-2">View all</span></Link>
-                                </li>
-                                <li>
-                                    <hr className="dropdown-divider" />
-                                </li>
-                                <li className="notification-item">
-                                    <i className="bi bi-exclamation-circle text-warning" />
-                                    <div>
-                                        <h4>Lorem Ipsum</h4>
-                                        <p>Quae dolorem earum veritatis oditseno</p>
-                                        <p>30 min. ago</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <hr className="dropdown-divider" />
-                                </li>
-                                <li className="notification-item">
-                                    <i className="bi bi-x-circle text-danger" />
-                                    <div>
-                                        <h4>Atque rerum nesciunt</h4>
-                                        <p>Quae dolorem earum veritatis oditseno</p>
-                                        <p>1 hr. ago</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <hr className="dropdown-divider" />
-                                </li>
-                                <li className="notification-item">
-                                    <i className="bi bi-check-circle text-success" />
-                                    <div>
-                                        <h4>Sit rerum fuga</h4>
-                                        <p>Quae dolorem earum veritatis oditseno</p>
-                                        <p>2 hrs. ago</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <hr className="dropdown-divider" />
-                                </li>
-                                <li className="notification-item">
-                                    <i className="bi bi-info-circle text-primary" />
-                                    <div>
-                                        <h4>Dicta reprehenderit</h4>
-                                        <p>Quae dolorem earum veritatis oditseno</p>
-                                        <p>4 hrs. ago</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <hr className="dropdown-divider" />
-                                </li>
-                                <li className="dropdown-footer">
-                                    <Link to="#">Show all notifications</Link>
-                                </li>
-                            </ul>
-                        </li>
+
+                        <Notification />
+
                         <li className="nav-item dropdown pe-3">
                             <Link className="nav-link nav-profile d-flex align-items-center pe-0" to="#" data-bs-toggle="dropdown">
                                 <img src={data.avatar} alt="Profile" className="rounded-circle" />

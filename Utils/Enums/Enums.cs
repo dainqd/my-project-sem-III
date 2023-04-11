@@ -91,4 +91,11 @@ public class Enums
         SUCCESS,
         DELETED 
     }
+    
+    public enum NotifyStatus
+    {
+        SEEN,
+        UNSEEN,
+        DELETED
+    }
 }

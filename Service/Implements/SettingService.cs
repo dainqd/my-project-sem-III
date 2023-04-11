@@ -4,6 +4,7 @@ using myProject._mail_config.Interface;
 using myProject._mail_config.Template;
 using myProject.Config;
 using myProject.Context;
+using myProject.Entities;
 using myProject.Service.Interfaces;
 using myProject.Utils;
 using myProject.Utils.Enums;
@@ -57,6 +58,12 @@ public class SettingService : ISettingService
         _emailSender.SendEmail(message);
         user.UpdatedAt = DateTimeOffset.Now.AddHours(7);
         _context.User.Update(user);
+        // save notification
+        Notification notification = new Notification();
+        notification.user_id = user.id;
+        notification.status = Enums.NotifyStatus.UNSEEN;
+        notification.content = "Change email account successful!";
+        _context.Notifications.Add(notification);
         _context.SaveChanges();
     }
     
@@ -111,6 +118,12 @@ public class SettingService : ISettingService
         user.username = username;
         user.UpdatedAt = DateTimeOffset.Now.AddHours(7);
         _context.User.Update(user);
+        // save notification
+        Notification notification = new Notification();
+        notification.user_id = user.id;
+        notification.status = Enums.NotifyStatus.UNSEEN;
+        notification.content = "Change email account successful!";
+        _context.Notifications.Add(notification);
         _context.SaveChanges();
     }
 
@@ -126,6 +139,12 @@ public class SettingService : ISettingService
         user.status = status;
         user.UpdatedAt = DateTimeOffset.Now.AddHours(7);
         _context.User.Update(user);
+        // save notification
+        Notification notification = new Notification();
+        notification.user_id = user.id;
+        notification.status = Enums.NotifyStatus.UNSEEN;
+        notification.content = "Change status account successful!";
+        _context.Notifications.Add(notification);
         _context.SaveChanges();
     }
 }
