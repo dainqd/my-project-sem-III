@@ -93,7 +93,7 @@ function Register() {
                                                 }
                                             ]}
                                         >
-                                            <Input allowClear onKeyUp="check_pass();" type="password"  placeholder="Password" />
+                                            <Input allowClear type="password"  placeholder="Password" />
                                             {/*<span toggle="#password-field"*/}
                                             {/*      className="fa fa-fw fa-eye field-icon toggle-password"></span>*/}
                                         </Form.Item>
@@ -108,7 +108,7 @@ function Register() {
                                                 }
                                             ]}
                                         >
-                                            <Input allowClear onKeyUp="check_pass();" type="password"  placeholder="Password Confirm" />
+                                            <Input allowClear type="password"  placeholder="Password Confirm" />
                                             {/*<span toggle="#password-confirm"*/}
                                             {/*      className="fa fa-fw fa-eye field-icon toggle-password"></span>*/}
                                         </Form.Item>

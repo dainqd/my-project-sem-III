@@ -8,6 +8,7 @@ import Header from "../../Shared/Client/Header/Header";
 import Navbar from "../../Shared/Client/Navbar/Navbar";
 import Background from "../../images/client/carousel-1.jpg";
 import Footer from "../../Shared/Client/Footer/Footer";
+import './Payment.scss'
 
 function Payment() {
     const { id } = useParams();
@@ -103,67 +104,126 @@ function Payment() {
                     <h1 className="display-4 animated slideInDown mb-4">Payment</h1>
                 </div>
             </div>
-            <div className="d-flex justify-content-between align-items-center">
-                <div className="" style={{marginLeft:"72px"}}>
-                    <h3 className="" style={{color:"#74bb5b"}}> Payment Information</h3>
-                    <div className="">
-                        <div className="">
-                            <label htmlFor="">PaymentCode:</label>
-                            <input type="text" className="form-control" value={payment.paymentCode} disabled/>
-                        </div>
-                        <div className="">
-                            <label htmlFor="">Insurance</label>
-                            <input type="text" className="form-control" value={insurance} disabled/>
-                        </div>
-                        <div className="">
-                            <label htmlFor="">TotalPrice</label>
-                            <input type="text" className="form-control" value={payment.totalPrice} disabled/>
-                        </div>
-                        <div className="">
-                            <label htmlFor="">Description</label>
-                            <input type="text" className="form-control" value={payment.description} disabled/>
-                        </div>
-                        <div className="">
-                            <label htmlFor="">Status</label>
-                            <input type="text" className="form-control" value={payment.status} disabled/>
+            <div className="card mb-5" style={{margin:"16px"}}>
+                <div className="row mb-5">
+                    <h1 className="text-center mb-3 ">Checkout Form</h1>
+                    <div className="col-75">
+                        <div className="container">
+                                <div className="row">
+                                    <div className="col-50">
+                                        <h3>Billing Address</h3>
+                                        <label htmlFor="" className="mb-2">PaymentCode:</label>
+                                        <input type="text" className="form-control" value={payment.paymentCode} disabled/>
+                                        <label htmlFor="" className="mb-2">Insurance</label>
+                                        <input type="text" className="form-control" value={insurance} disabled/>
+                                        <label htmlFor="" className="mb-2">TotalPrice</label>
+                                        <input type="text" className="form-control" value={payment.totalPrice} disabled/>
+                                        <label htmlFor="" className="mb-2">Description</label>
+                                        <input type="text" className="form-control" value={payment.description} disabled/>
+                                        <label htmlFor="" className="mb-2">Status</label>
+                                        <input type="text" className="form-control" value={payment.status} disabled/>
+                                    </div>
+
+                                    <div className="col-50">
+                                        <Form onFinish={PayPayment}>
+                                            <h3>Payment</h3>
+                                            <div htmlFor="" className="mb-2">Choose payment method</div>
+                                            <select name="" id="" className="form-control form-select">
+                                                <option value="" disabled>PAY_DIRECT</option>
+                                                <option value="">PAY_CARD</option>
+                                                <option value="" disabled>PAY_WALLET</option>
+                                                <option value="" disabled>PAY_BANK</option>
+                                            </select>
+                                            <label htmlFor="fname">Accepted Cards</label>
+                                            <div className="icon-container" style={{marginTop:"-10px"}}>
+                                                <i className="fa fa-cc-visa" style={{color:"navy", marginRight:"6px"}}></i>
+                                                <i className="fa fa-cc-amex" style={{color:"blue", marginRight:"6px"}}></i>
+                                                <i className="fa fa-cc-mastercard" style={{color:"red", marginRight:"6px"}}></i>
+                                                <i className="fa fa-cc-discover" style={{color:"orange"}}></i>
+                                            </div>
+                                            <label htmlFor="">Name Of Card</label>
+                                            <input id="namecard" type="text" className="form-control"/>
+                                            <label htmlFor="">Number Of Card</label>
+                                            <input id="numbercard" type="text" className="form-control"/>
+                                            <label htmlFor="">PhoneNumber</label>
+                                            <input id="phonenumber" type="text" className="form-control"/>
+
+                                            <div className=" mt-3">
+                                                <button type="submit" className="btn btn-primary"
+                                                        style={{padding:"12px 72px", marginLeft:"-126px"}}>
+                                                    Pay
+                                                </button>
+                                            </div>
+                                        </Form>
+                                    </div>
+
+                                </div>
                         </div>
                     </div>
                 </div>
-                <div className="">
-                    <img src="https://timo.vn/wp-content/uploads/thanh-toan-tien-dien-nhanh-chong.png" alt="" width="560px" height="460px"/>
-                </div>
-                <div className="" style={{marginRight:"72px"}}>
-                    <h2 className="">
-                        Pay
-                    </h2>
-                    <Form onFinish={PayPayment}>
-                        <div className="">
-                            <div htmlFor="">Choose payment method</div>
-                            <select name="" id="" className="form-control form-select">
-                                <option value="" disabled>PAY_DIRECT</option>
-                                <option value="">PAY_CARD</option>
-                                <option value="" disabled>PAY_WALLET</option>
-                                <option value="" disabled>PAY_BANK</option>
-                            </select>
-                        </div>
-                        <div className="mt-3">
-                            <label htmlFor="">Name Of Card</label>
-                            <input id="namecard" type="text" className="form-control"/>
-                        </div>
-                        <div className="mt-3">
-                            <label htmlFor="">Number Of Card</label>
-                            <input id="numbercard" type="text" className="form-control"/>
-                        </div>
-                        <div className="mt-3">
-                            <label htmlFor="">PhoneNumber</label>
-                            <input id="phonenumber" type="text" className="form-control"/>
-                        </div>
-                        <div className=" mt-3">
-                            <button type="submit" className="btn btn-primary" style={{padding:"12px 72px"}}>Pay</button>
-                        </div>
-                    </Form>
-                </div>
             </div>
+
+            {/*<div className="d-flex justify-content-between align-items-center">*/}
+            {/*    <div className="" style={{marginLeft:"72px"}}>*/}
+            {/*        <h3 className="" style={{color:"#74bb5b"}}> Payment Information</h3>*/}
+            {/*        <div className="">*/}
+            {/*            <div className="">*/}
+            {/*                <label htmlFor="">PaymentCode:</label>*/}
+            {/*                <input type="text" className="form-control" value={payment.paymentCode} disabled/>*/}
+            {/*            </div>*/}
+            {/*            <div className="">*/}
+            {/*                <label htmlFor="">Insurance</label>*/}
+            {/*                <input type="text" className="form-control" value={insurance} disabled/>*/}
+            {/*            </div>*/}
+            {/*            <div className="">*/}
+            {/*                <label htmlFor="">TotalPrice</label>*/}
+            {/*                <input type="text" className="form-control" value={payment.totalPrice} disabled/>*/}
+            {/*            </div>*/}
+            {/*            <div className="">*/}
+            {/*                <label htmlFor="">Description</label>*/}
+            {/*                <input type="text" className="form-control" value={payment.description} disabled/>*/}
+            {/*            </div>*/}
+            {/*            <div className="">*/}
+            {/*                <label htmlFor="">Status</label>*/}
+            {/*                <input type="text" className="form-control" value={payment.status} disabled/>*/}
+            {/*            </div>*/}
+            {/*        </div>*/}
+            {/*    </div>*/}
+            {/*    <div className="">*/}
+            {/*        <img src="https://timo.vn/wp-content/uploads/thanh-toan-tien-dien-nhanh-chong.png" alt="" width="560px" height="460px"/>*/}
+            {/*    </div>*/}
+            {/*    <div className="" style={{marginRight:"72px"}}>*/}
+            {/*        <h2 className="">*/}
+            {/*            Pay*/}
+            {/*        </h2>*/}
+            {/*        <Form onFinish={PayPayment}>*/}
+            {/*            <div className="">*/}
+            {/*                <div htmlFor="">Choose payment method</div>*/}
+            {/*                <select name="" id="" className="form-control form-select">*/}
+            {/*                    <option value="" disabled>PAY_DIRECT</option>*/}
+            {/*                    <option value="">PAY_CARD</option>*/}
+            {/*                    <option value="" disabled>PAY_WALLET</option>*/}
+            {/*                    <option value="" disabled>PAY_BANK</option>*/}
+            {/*                </select>*/}
+            {/*            </div>*/}
+            {/*            <div className="mt-3">*/}
+            {/*                <label htmlFor="">Name Of Card</label>*/}
+            {/*                <input id="namecard" type="text" className="form-control"/>*/}
+            {/*            </div>*/}
+            {/*            <div className="mt-3">*/}
+            {/*                <label htmlFor="">Number Of Card</label>*/}
+            {/*                <input id="numbercard" type="text" className="form-control"/>*/}
+            {/*            </div>*/}
+            {/*            <div className="mt-3">*/}
+            {/*                <label htmlFor="">PhoneNumber</label>*/}
+            {/*                <input id="phonenumber" type="text" className="form-control"/>*/}
+            {/*            </div>*/}
+            {/*            <div className=" mt-3">*/}
+            {/*                <button type="submit" className="btn btn-primary" style={{padding:"12px 72px"}}>Pay</button>*/}
+            {/*            </div>*/}
+            {/*        </Form>*/}
+            {/*    </div>*/}
+            {/*</div>*/}
 
             <Footer />
         </div>

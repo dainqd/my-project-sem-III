@@ -36,7 +36,7 @@ function Team() {
 
     data.forEach((member, index) => {
         list.push(
-            <div class="col-lg-2 col-md-6 wow fadeInUp" style={{margin: "auto"}} data-wow-delay="0.3s" key={index}>
+            <div className="col-lg-2 col-md-6 wow fadeInUp" style={{margin: "auto"}} data-wow-delay="0.3s" key={index}>
                 <div className="team-item rounded">
                     <img className="img-fluid" src={member.avatar} alt=""/>
                     <div className="text-center p-4">

@@ -126,7 +126,7 @@ function NavbarClient() {
                         className="img-fluid me-3"
                         src={logo}
                         alt=""
-                    />Insure
+                    />
                 </h1>
             </Link>
             <button

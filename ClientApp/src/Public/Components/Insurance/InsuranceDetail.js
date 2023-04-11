@@ -8,6 +8,7 @@ import Header from "../Shared/Client/Header/Header";
 import Navbar from "../Shared/Client/Navbar/Navbar";
 import Background from "../images/client/carousel-1.jpg";
 import Footer from "../Shared/Client/Footer/Footer";
+import './InsuranceDetail.scss'
 
 function CheckInsurance(id){
     switch (id){
@@ -126,25 +127,62 @@ function InsuranceDetail() {
                 </div>
             </div>
             <div className="">
-                <div className="d-flex align-items-center m-auto">
-                    <div className="" style={{border:"1px solid #ccc", borderRadius:"3px", marginRight:"72px", marginLeft:"72px"}}>
-                        <img src={insure.thumbnail} alt="img" width="500px" height="520px"/>
-                    </div>
-                    <div className="">
-                        <h2 className="mb-3" style={{color:"#5f5f5f"}}>
-                                {CheckInsurance(insure.category_id)}
-                        </h2>
-                        <h2 className="mt-3 mb-3" style={{color:"#74bb5b"}}>{insure.name}</h2>
-                        <h2 className="text-danger" >
-                            <i className="bi bi-currency-dollar"></i>{insure.price}
-                        </h2>
-                        <div className="mt-3">
-                            {insure.description}
+                <div className="card-wrapper">
+                    <div className="card-pro">
+                        <div className="product-imgs" style={{margin:"3px"}}>
+                            <div className="img-select">
+                                <div className="img-item">
+                                    <img
+                                        src={insure.thumbnail}
+                                        alt="insurance image" width="550px" height="550px"/>
+                                </div>
+                            </div>
                         </div>
-                        <div className="mt-5">
-                            <button className="btn btn-primary" type="submit"
-                                    style={{padding:"12px 72px"}}
-                                    data-toggle="modal" data-target="#orderInsurance">Buy</button>
+                        <div className="product-content" style={{marginRight:"3px"}}>
+                            <h2 className="product-title">{insure.name}</h2>
+                            <Link to="" href="#" className="product-link">{CheckInsurance(insure.category_id)}</Link>
+                            <div className="product-rating">
+                                <i className="fas fa-star"></i>
+                                <i className="fas fa-star"></i>
+                                <i className="fas fa-star"></i>
+                                <i className="fas fa-star"></i>
+                                <i className="fas fa-star-half-alt"></i>
+                                <span> 4.8(86)</span>
+                            </div>
+
+                            <div className="product-price">
+                                <p className="new-price">Price: <span>$ {insure.price}</span></p>
+                            </div>
+
+                            <div className="product-detail">
+                                <h2>about this insurance: </h2>
+                                <p>{insure.description}</p>
+                            </div>
+
+                            <div className="purchase-info">
+                                <button className="btn btn-primary" type="submit"
+                                        style={{padding:"12px 72px"}}
+                                        data-toggle="modal" data-target="#orderInsurance">Buy</button>
+                            </div>
+
+                            <div className="social-links">
+                                <p>Share At: </p>
+                                <Link to="" className="mb-3" style={{marginLeft:"4px"}}>
+                                    <i className="fab fa-facebook-f"></i>
+                                </Link>
+                                <Link to="" className="mb-3" style={{marginLeft:"4px"}}>
+                                    <i className="fab fa-twitter"></i>
+                                </Link>
+                                <Link to="" className="mb-3" style={{marginLeft:"4px"}}>
+                                    <i className="fab fa-instagram"></i>
+                                </Link>
+                                <Link to="" className="mb-3" style={{marginLeft:"4px"}}>
+                                    <i className="fab fa-whatsapp"></i>
+                                </Link>
+                                <Link to="" className="mb-3" style={{marginLeft:"4px"}}>
+                                    <i className="fab fa-pinterest"></i>
+                                </Link>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -1,0 +1,49 @@
+$color_1: #12263a;
+$color_2: #fff;
+$color_3: #ffc107;
+
+.row {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin: 0 -16px;
+}
+
+.col-25 {
+  -ms-flex: 25%;
+  flex: 25%;
+  padding: 0 16px;
+}
+.col-50 {
+  -ms-flex: 50%;
+  flex: 50%;
+  padding: 0 16px;
+}
+.col-75 {
+  -ms-flex: 75%;
+  flex: 75%;
+  padding: 0 16px;
+}
+
+label {
+  display: block;
+}
+.icon-container {
+  margin-bottom: 5px;
+  padding: 7px 0;
+  font-size: 24px;
+}
+
+span.price {
+  float: right;
+  color: $color_3;
+}
+@media (max-width: 800px) {
+  .row {
+    flex-direction: column-reverse;
+  }
+  .col-25 {
+    margin-bottom: 20px;
+  }
+}
