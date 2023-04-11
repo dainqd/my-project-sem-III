@@ -47,6 +47,7 @@ import PurchaseAvailable from "./Components/Profile/MyPurchase/PurchaseAvailable
 import PurchaseHistory from "./Components/Profile/MyPurchase/PurchaseHistory/PurchaseHistory";
 import PaymentList from "./Components/AdminApp/Insurance/Payment/PaymentList";
 import TransactionList from "./Components/AdminApp/Insurance/Transaction/TransactionList";
+import AccountHistory from "./Components/Profile/MyAccount/AccountHistory/AccountHistory";
 
 function Public() {
     return (
@@ -90,7 +91,7 @@ function Public() {
                 <Route path='/change-email-verify' element={<ChangeEmailVerify/>}/>
                 //MyAccount
                 <Route path='/upgrade-account' element={<UpgradeAccount />} />
-                {/*<Route path='/change-email' element={<ChangeEmail />} />*/}
+                <Route path='/account-history' element={<AccountHistory />} />
                 {/*<Route path='/change-username' element={<ChangeUser />} />*/}
                 //Admin
                 <Route path='/appointment/list' element={<ListAppointment />} />

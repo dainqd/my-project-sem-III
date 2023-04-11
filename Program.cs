@@ -88,6 +88,7 @@ services.AddScoped<IAppointmentService, AppointmentService>();
 services.AddScoped<IFindUserService, FindUserService>();
 services.AddScoped<IPermissionService, PermissionService>();
 services.AddScoped<ISettingService, SettingService>();
+services.AddScoped<ICredentialService, CredentialService>();
 
 builder.Services.AddTransient<IBufferedFileUploadService, BufferedFileUploadLocalService>();
 
