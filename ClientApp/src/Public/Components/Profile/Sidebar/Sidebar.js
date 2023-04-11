@@ -23,7 +23,7 @@ function Sidebar() {
                                 </Link>
                             </li>
                             <li>
-                                <Link to="#">
+                                <Link to="/account-history">
                                     <i className="bi bi-circle" /><span>Account History</span>
                                 </Link>
                             </li>
