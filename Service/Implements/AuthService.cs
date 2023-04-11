@@ -122,6 +122,12 @@ public class AuthService : IAuthService
         credential.active = Constants.REGISTER;
         credential.datetime = DateTimeOffset.Now.AddHours(7);
         _context.Credentials.Add(credential);
+        // save notification
+        Notification notification = new Notification();
+        notification.user_id = newUser.id;
+        notification.status = Enums.NotifyStatus.UNSEEN;
+        notification.content = "Register account successful!";
+        _context.Notifications.Add(notification);
         _context.SaveChanges();
     }
 
@@ -275,6 +281,12 @@ public class AuthService : IAuthService
         credential.active = Constants.CHANGE_PASS;
         credential.datetime = DateTimeOffset.Now.AddHours(7);
         _context.Credentials.Add(credential);
+        // save notification
+        Notification notification = new Notification();
+        notification.user_id = user.id;
+        notification.status = Enums.NotifyStatus.UNSEEN;
+        notification.content = "Change password account successful!";
+        _context.Notifications.Add(notification);
         _context.SaveChanges();
     }
 }
