@@ -22,6 +22,9 @@ textarea:focus, input:focus {
     z-index: 99;
 }
 
+.img-fluid-pro{
+    object-fit: cover;
+}
 
 /*** Spinner ***/
 #spinner {
