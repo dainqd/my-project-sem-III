@@ -45,13 +45,6 @@ function InsuranceDetail() {
     let username = sessionStorage.getItem('username');
     let token = sessionStorage.getItem('accessToken');
 
-    const checkLogin = async () => {
-        if (user_id == null || username == null || token == null){
-            alert('Please login to continue!')
-            navigate('/login')
-        }
-    }
-
     const IsUser = async () => {
       await accountService.detailAccount(user_id)
           .then((response) =>{
@@ -102,7 +95,6 @@ function InsuranceDetail() {
                 })
         };
         IsUser();
-        checkLogin();
         detailOrder();
     }, [ id])
 

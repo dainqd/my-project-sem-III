@@ -50,7 +50,7 @@ function Insurance() {
                         </h4>
                     </div>
                     <p className="mb-4">
-                        {insure.description}
+                        {/*{insure.description}*/}
                     </p>
                     <Link className="btn btn-light px-3" to={link}>Read More</Link>
                 </div>
