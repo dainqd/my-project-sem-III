@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import logo from '../../../images/client/bannerAsset 1.png'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 function Footer() {
     return (
@@ -42,11 +43,10 @@ function Footer() {
                     <div className="col-lg-3 col-md-6">
                         <h5 className="text-light mb-4">Address</h5>
                         <p>
-                            <i className="fa fa-map-marker-alt me-3"></i>
                             No. 8 Ton That Thuyet, My Dinh Ward, Tu Liem District, Hanoi
                         </p>
-                        <p><i className="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                        <p><i className="fa fa-envelope me-3"></i>support@gmail.com</p>
+                        <p>+012 345 67890</p>
+                        <p>support@gmail.com</p>
                     </div>
                     <div className="col-lg-3 col-md-6">
                         <h5 className="text-light mb-4">Quick Links</h5>

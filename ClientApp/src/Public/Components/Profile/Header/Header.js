@@ -53,7 +53,7 @@ function Notification(){
                                <Link to={link}>{notifi.content}</Link>
                            </h4>
                            <p>{notifi.description}</p>
-                           <p>{moment.duration(moment(new Date().toLocaleTimeString()).diff(moment(notifi.createdAt)))} ago</p>
+                           {/*<p>{moment.duration(moment(new Date().toLocaleTimeString()).diff(moment(notifi.createdAt)))} ago</p>*/}
                        </div>
                    </li>
                </div>

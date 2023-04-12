@@ -103,31 +103,31 @@ public class DbInitializer
         modelBuilder.Entity<Members>().HasData(
             new Members()
             {
-                id = 1, avatar = "https://img.myloview.com/stickers/default-avatar-profile-icon-vector-social-media-user-photo-700-205577532.jpg",
+                id = 1, avatar = "https://i.ibb.co/5BR77rP/z4257166877374-3655aa7cfe0656dd15d34ecbc9be8065.jpg",
                 fullName = "Hoang Minh Hieu", email = "hieuhm@gmail.com", phoneNumber = "0986868686", status = Enums.MemberStatus.ACTIVE,
                 position = "Position", introduce = "Introduce", description = "Description"
             },
             new Members()
             {
-                id = 2, avatar = "https://img.myloview.com/stickers/default-avatar-profile-icon-vector-social-media-user-photo-700-205577532.jpg",
+                id = 2, avatar = "https://i.ibb.co/48B2jRm/z4257160974989-8ae2f029515df759e3d421b40b430585.jpg",
                 fullName = "Ngo Quang Dai", email = "dainq@gmail.com", phoneNumber = "0898898998", status = Enums.MemberStatus.ACTIVE,
                 position = "Position", introduce = "Introduce", description = "Description"
             },
             new Members()
             {
-                id = 3, avatar = "https://img.myloview.com/stickers/default-avatar-profile-icon-vector-social-media-user-photo-700-205577532.jpg",
+                id = 3, avatar = "https://i.ibb.co/Zdr8Tn8/z4257159734118-e95130b2f86208d736db0fd156d6518d.jpg",
                 fullName = "Bui Tuan Anh", email = "anhbt@gmail.com", phoneNumber = "0986868686", status = Enums.MemberStatus.ACTIVE,
                 position = "Position", introduce = "Introduce", description = "Description"
             },
             new Members()
             {
-                id = 4, avatar = "https://img.myloview.com/stickers/default-avatar-profile-icon-vector-social-media-user-photo-700-205577532.jpg",
+                id = 4, avatar = "https://i.ibb.co/whGz6hW/z4257179572789-ee910b04bc1b51a3905a5a3164ee2c17.jpg",
                 fullName = "Nguyen Ngoc Hung", email = "hungnn@gmail.com", phoneNumber = "0898898998", status = Enums.MemberStatus.ACTIVE,
                 position = "Position", introduce = "Introduce", description = "Description"
             },
             new Members()
             {
-                id = 5, avatar = "https://img.myloview.com/stickers/default-avatar-profile-icon-vector-social-media-user-photo-700-205577532.jpg",
+                id = 5, avatar = "https://i.ibb.co/j4ZqR8v/z4257179185679-fd6d7c335e402d2dea21afb3d82bf90f.jpg",
                 fullName = "Duong Cong Ke", email = "kedc@gmail.com", phoneNumber = "046409665", status = Enums.MemberStatus.ACTIVE,
                 position = "Position", introduce = "Introduce", description = "Description"
             }

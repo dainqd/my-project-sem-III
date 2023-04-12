@@ -1,0 +1,178 @@
+$color_1: #12263a;
+$color_2: #fff;
+$color_3: #ffc107;
+$color_4: #252525;
+$color_5: #f64749;
+$color_6: #256eff;
+$color_7: #000;
+$font-family_1: 'Open Sans', sans-serif;
+$border-color_1: transparent;
+
+@import "https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap";
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: $font-family_1;
+}
+body {
+  line-height: 1.5;
+}
+.card-pro{
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 0 30px rgba(1, 41, 112, 0.1);
+  display: flex;
+  align-items: center;
+}
+.card-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.img-display {
+  overflow: hidden;
+}
+.img-showcase {
+  display: flex;
+  width: 100%;
+  transition: all 0.5s ease;
+  img {
+    min-width: 100%;
+  }
+}
+.img-select {
+  display: flex;
+}
+.img-item{
+
+}
+.product-content {
+  padding: 2rem 1rem;
+}
+.product-title {
+  font-size: 3rem;
+  text-transform: capitalize;
+  font-weight: 700;
+  position: relative;
+  color: $color_1;
+  margin: 1rem 0;
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 4px;
+    width: 80px;
+    background: #12263a;
+  }
+}
+.product-link {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 0.9rem;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  background: #256eff;
+  color: $color_2;
+  padding: 0 0.3rem;
+  transition: all 0.5s ease;
+  &:hover {
+    opacity: 0.9;
+  }
+}
+.product-rating {
+  color: $color_3;
+  span {
+    font-weight: 600;
+    color: $color_4;
+  }
+}
+.product-price {
+  margin: 1rem 0;
+  font-size: 1rem;
+  font-weight: 700;
+  span {
+    font-weight: 400;
+  }
+}
+.last-price {
+  span {
+    color: $color_5;
+    text-decoration: line-through;
+  }
+}
+.new-price {
+  span {
+    color: $color_6;
+  }
+}
+.product-detail {
+  h2 {
+    text-transform: capitalize;
+    color: $color_1;
+    padding-bottom: 0.6rem;
+  }
+  p {
+    font-size: 0.9rem;
+    padding: 0.3rem;
+    opacity: 0.8;
+  }
+  ul {
+    margin: 1rem 0;
+    font-size: 0.9rem;
+    li {
+      margin: 0;
+      list-style: none;
+      background: url(https://fadzrinmadu.github.io/hosted-assets/product-detail-page-design-with-image-slider-html-css-and-javascript/checked.png) left center no-repeat;
+      background-size: 18px;
+      padding-left: 1.7rem;
+      margin: 0.4rem 0;
+      font-weight: 600;
+      opacity: 0.9;
+      span {
+        font-weight: 400;
+      }
+    }
+  }
+}
+.purchase-info {
+  margin: 1.5rem 0;
+  input {
+    border: 1.5px solid #ddd;
+    border-radius: 25px;
+    text-align: center;
+    padding: 0.45rem 0.8rem;
+    outline: 0;
+    margin-right: 0.2rem;
+    margin-bottom: 1rem;
+    width: 60px;
+  }
+  .btn {
+    border: 1.5px solid #ddd;
+    border-radius: 25px;
+    text-align: center;
+    padding: 0.45rem 0.8rem;
+    outline: 0;
+    margin-right: 0.2rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    color: $color_2;
+    &:first-of-type {
+      background: #256eff;
+    }
+    &:last-of-type {
+      background: #f64749;
+    }
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}
+.social-links {
+  display: flex;
+  align-items: center;
+  a {
+    display: flex;
+  }
+}
